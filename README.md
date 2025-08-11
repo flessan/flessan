@@ -1,7 +1,7 @@
 # 👋 Hi, I'm Fless!  
 `💻 GDPS Developer | 🎮 Geometry Dash Enthusiast`  
 
-[![Profile Views](https://komarev.com/ghpvc/?username=github&color=blue&style=flat-square)](https://github.com/flessan)
+[![Profile Views](https://komarev.com/ghpvc/?username=flessan&color=blue&style=flat-square)](https://github.com/flessan)
 [![GitHub Followers](https://img.shields.io/github/followers/flessan?label=Follow%20Me&style=social)](https://github.com/flessan)
 [![GDPS](https://img.shields.io/badge/GDPS-FrGDPS-orange)](https://github.com/flessan/FrGDPS)
 
