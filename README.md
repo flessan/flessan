@@ -37,11 +37,11 @@ My bugs have character. My crashes have personality. And my community? It has he
 I build with tools that empower creativity and accessibility:
 
 ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
 ---
 
@@ -59,7 +59,7 @@ A **quirky, community-first Geometry Dash Private Server** built with raw passio
 **Philosophy:**  
 > *"Not the biggest. Not the fanciest. But built with heart."*
 
-🔗 [Explore FrGDPS](https://github.com/flessan/FrGDPS) | [GDPSHub Profile](https://gdpshub.com/gdps/2924) | [Database Dashboard](https://fless.ps.fhgdps.com)
+🔗 [Explore FrGDPS](https://fless.netlify.app) | [GDPSHub Profile](https://gdpshub.com/gdps/2924) | [Database Dashboard](https://fless.ps.fhgdps.com)
 
 ---
 
