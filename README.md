@@ -9,6 +9,11 @@
   </a>
 </p>
 
+<!-- Dynamic Time-based Greeting -->
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=Hello+there!;Welcome+to+my+digital+space!;Thanks+for+stopping+by!;Let's+build+something;amazing+together!" />
+</div>
+
 <p align="center">
   <a href="https://komarev.com/ghpvc/?username=flessan">
     <img src="https://komarev.com/ghpvc/?username=flessan&color=blue&style=flat-square" alt="Profile Views">
@@ -19,14 +24,14 @@
   <a href="https://github.com/flessan">
     <img src="https://img.shields.io/github/stars/flessan?affiliations=OWNER&style=social" alt="GitHub Stars">
   </a>
-  <a href="https://github.com/flessan/FrGDPS">
-    <img src="https://img.shields.io/badge/GDPS-GDIPS-orange?logo=github" alt="FrGDPS Repository">
+  <a href="https://github.com/flessan/gdips">
+    <img src="https://img.shields.io/badge/GDPS-GDIPS-orange?logo=github" alt="GDIPS Repository">
   </a>
 </p>
 
 <p align="center">
   <a href="https://discord.gg/6HEyQBcM6E">
-    <img src="https://img.shields.io/discord/748936864517734511?label=Discord&logo=discord" alt="Discord">
+    <img src="https://img.shields.io/discord/876754832113958912?label=Discord&logo=discord" alt="Discord">
   </a>
   <a href="https://threads.com/flethio">
     <img src="https://img.shields.io/badge/Threads-000000?logo=threads&logoColor=white" alt="Threads">
@@ -57,6 +62,23 @@ My bugs have character. My crashes have personality. And my community? It has he
 
 ---
 
+## 🖥️ Interactive Terminal
+
+<div align="center">
+  <a href="https://github.com/flessan">
+    <img src="https://media.tenor.com/SN2ZCSDym3sAAAAM/iisreset-iis.gif" width="400" height="130" alt="Terminal Animation">
+  </a>
+</div>
+</br>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/OS-Linux%20/%20Android%20|%20Windows%20-informational">
+  <img src="https://img.shields.io/badge/Shell-Bash%20|%20PowerShell-important">
+  <img src="https://img.shields.io/badge/Editor-QuickEdit+%20|%20VS%20Code%20|%20Firebase-success">
+</p>
+
+---
+
 ## 📊 GitHub Stats & Activity
 
 <div align="center">
@@ -77,35 +99,25 @@ My bugs have character. My crashes have personality. And my community? It has he
 ## 🛠️ Tech Stack & Skills
 
 ### Core Technologies
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,ts,php,mysql,github,firebase,react" />
+</div>
+
 ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-1572B6?logo=typescript&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-E34F26?logo=firebase&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
-
-### Skills Progress
-<div align="center">
-  
-| Skill | Proficiency |
-|-------|-------------|
-| PHP | █████ 25% |
-| JavaScript | ████████ 30% |
-| HTML/CSS | ████████████ 65% |
-| Game Development | ████ 20% |
-| Community Management | ██████████ 50% |
-| UI/UX Design | ██████ 30% |
-| Database Management | ███████ 35% |
-
-</div>
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white)
 
 ---
 
-## 🚀 Featured Project: [FrGDPS](https://github.com/flessan/FrGDPS)
+## 🚀 Featured Project: [GDIPS](https://github.com/flessan/gdips)
 
-A **quirky, community-first Geometry Dash Private Server** built with raw passion, not polish.
+A **quirky, community-first Geometry Dash Indonesia Private Server** built with raw passion, not polish.
 
 ### ✨ Highlights:
 - ✅ Basic server functionality & experimental tools  
@@ -117,7 +129,7 @@ A **quirky, community-first Geometry Dash Private Server** built with raw passio
 **Philosophy:**  
 > *"Not the biggest. Not the fanciest. But built with heart."*
 
-🔗 [Explore FrGDPS](https://fless.netlify.app) | [GDPSHub Profile](https://gdpshub.com/gdps/2924) | [Database Dashboard](https://fless.ps.fhgdps.com)
+🔗 [Explore GDIPS](https://fless.ps.fhgdps.com) | [GDPSHub Profile](https://gdpshub.com/gdps/2924) | [Database Dashboard](https://frgd.ps.fhgdps.com)
 
 ---
 
@@ -128,8 +140,8 @@ Check out my project hub for more creations, experiments, and tools:
 
 ### Recent Projects
 <div align="center">
-  <a href="https://github.com/flessan/FrGDPS">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=flessan&repo=FrGDPS&theme=radical" />
+  <a href="https://github.com/flessan/gdips">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=flessan&repo=gdips&theme=radical" />
   </a>
   <a href="https://github.com/frgdps/fles">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=frgdps&repo=fles&theme=radical" />
@@ -146,11 +158,11 @@ Check out my project hub for more creations, experiments, and tools:
 
 ## 🎮 What I'm Working On
 
-- 🔄 **FrGDPS 2.0**: Complete server rewrite with enhanced features
+- 🔄 **GDIPS 2.0**: Complete server rewrite with enhanced features
 - 🎨 **Level Editor Tools**: New utilities for creators
 - 📊 **Analytics Dashboard**: Better insights for server performance
 - 🌍 **Multi-language Support**: Expanding accessibility
-- 📱 **Mobile Companion App**: For FrGDPS on the go
+- 📱 **Mobile Companion App**: For GDIPS on the go
 
 ---
 
@@ -163,7 +175,7 @@ Check out my project hub for more creations, experiments, and tools:
 </div>
 
 ### Recent Achievements
-- 🏆 **Community Builder**: Growing the FrGDPS community to 500+ members
+- 🏆 **Community Builder**: Growing the GDIPS community to 150+ members
 - 📚 **Self-Taught Developer**: Mastering new technologies through hands-on projects
 - 🎯 **Problem Solver**: Finding creative solutions to complex challenges
 
@@ -171,12 +183,13 @@ Check out my project hub for more creations, experiments, and tools:
 
 ## 💬 Let's Connect!
 
-- 📧 Reach out via [GitHub Issues](https://github.com/flessan/FrGDPS/issues) (especially for FrGDPS feedback!)  
+- 📧 Reach out via [GitHub Issues](https://github.com/flessan/gdips/issues) (especially for GDIPS feedback!)  
 - ⭐ **Star my repos** to support my work — every star fuels the campfire!  
-- 🎮 Join the **FrGDPS community** to share levels, report bugs, or just hang out!
+- 🎮 Join the **GDIPS community** to share levels, report bugs, or just hang out!
 - 💬 [Discord Server](https://discord.gg/6HEyQBcM6E) - Join our community!
 - 🧵 [Threads](https://threads.com/flethio) - Follow for updates!
-- 🐦 [Twitter](https://twitter.com/flethio) - For quick updates and thoughts!
+- 📱 [WhatsApp](https://whatsapp.com/channel/0029VbAoWYi7T8bQVepYkn1a) - For quick updates and thoughts!
+- 📧 [Telegram](https://t.me/flethio) - Direct messaging
 
 ---
 
@@ -191,6 +204,38 @@ Check out my project hub for more creations, experiments, and tools:
   "coding_time": "Late Night Sessions"
 }
 ```
+
+---
+
+## 🌟 Fun Facts About Me
+
+<div align="center">
+  <img src="https://media1.tenor.com/m/8Fx54p5mQDMAAAAd/fact-fact-of-the-day.gif" height="170" width="500" alt="Fun Facts Animation">
+</div>
+
+- 🎮 I've completed over 500 Geometry Dash levels (including demons!)
+- 🌙 I do my best coding between 11 PM and 3 AM
+- 🐞 I name my bugs after mythical creatures
+- 🎨 I coded my first website at age 15 using ZArchiver and Chrome
+- 🌍 I've collaborated with developers from 2+ countries on GDIPS
+
+---
+
+## 🧩 Easter Egg Section
+
+<div align="center">
+  <details>
+    <summary>🔍 Click to reveal a secret message!</summary>
+  </br>
+   <div align="center">
+  <img src="https://media.tenor.com/l4Kth0iWGA8AAAAM/mwah.gif" alt="Fun Facts Animation">
+</div>
+  <p>Thanks for exploring my profile! I appreciate your interest in my work. Feel free to reach out if you'd like to collaborate or just chat about development and Geometry Dash!</p>
+  <a href="https://t.me/flethio">
+  <img src="https://img.shields.io/badge/Connect_on_Telegram-blue?logo=telegram&logoColor=white" alt="Connect on Telegram">
+</a>
+  </details>
+</div>
 
 ---
 
@@ -215,11 +260,10 @@ If you find my projects helpful and want to support my work:
 ## 📝 Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎮 Added new levels to FrGDPS
-2. 🐛 Fixed critical bugs in the server
-3. 📊 Improved analytics dashboard
-4. 🌐 Enhanced CDN performance
-5. 🎨 Updated UI components
+1. 🐛 Fixed critical bugs in the server
+2. 📊 Analytics dashboard added
+3. 🌐 Enhanced CDN performance
+4. 🎨 Updated UI components
 <!--END_SECTION:activity-->
 
 ---
@@ -228,10 +272,33 @@ If you find my projects helpful and want to support my work:
 
 Special thanks to everyone who has contributed to my projects:
 
-- 🌟 All the FrGDPS community members
+- 🌟 All the GDIPS community members
 - 🛠️ Developers who have submitted pull requests
 - 🐛 Bug reporters who help improve my projects
 - 💡 Idea contributors who inspire new features
+
+---
+
+## 🎨 ASCII Art Signature
+<div align="center">
+  <details>
+    <summary>🔍 Click to reveal ASCII art</summary>
+  </br>
+<pre>
+    ╔══════════════════════════════════════════════════════════════╗
+    ║                                                              ║
+    ║    _____ _                   _____           _             ║
+    ║   |_   _| |__   ___ _ __ ___ |  ___|_ _  ___| |_ ___ _ __  ║
+    ║     | | | '_ \ / _ \ '__/ _ \| |_ / _` |/ __| __/ _ \ '__| ║
+    ║     | | | | | |  __/ | | (_) |  _| (_| | (__| ||  __/ |    ║
+    ║     |_| |_| |_|\___|_|  \___/|_|  \__,_|\___|\__\___|_|    ║
+    ║                                                              ║
+    ║                     Geometry Dash Enthusiast                ║
+    ║                                                              ║
+    ╚══════════════════════════════════════════════════════════════╝
+</pre>
+</details>
+</div>
 
 ---
 
