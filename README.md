@@ -3,7 +3,7 @@
 # 👋 Hi, I'm Fless!  
 `💻 Website Developer | 🎮 Geometry Dash Enthusiast | 🛠️ Passionate Creator`
 <p align="right">
-  <a href="#bottom">
+  <a href="#my-pins">
     <img src="https://img.shields.io/badge/See%20repository%20Pins-000000?style=for-the-badge" alt="GoToBottom">
   </a>
 </p>
@@ -326,3 +326,5 @@ Special thanks to everyone who has contributed to my projects:
     <img src="https://img.shields.io/badge/Back%20to%20Top-000000?style=for-the-badge" alt="Back to Top">
   </a>
 </p>
+
+### My Pins:
