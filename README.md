@@ -1,6 +1,6 @@
 
 
-# 👋 Hi, I'm Fless!  
+# 👋 Hi, I'm Flessan!  
 `💻 Website Developer | 🎮 Geometry Dash Enthusiast | 🛠️ Passionate Creator`
 <p align="right">
   <a href="#my-pins">
@@ -205,7 +205,7 @@ Check out my project hub for more creations, experiments, and tools:
   "currently_playing": "Lazycar - Superb",
   "favorite_genres": ["Electronic", "Chiptune", "Ambient"],
   "coding_playlist": "Geometry Dash Soundtrack",
-  "coding_snack": "Coffee & Chips",
+  "coding_snack": "Tea & Chips",
   "coding_time": "Late Night Sessions"
 }
 ```
