@@ -2,6 +2,11 @@
 
 ### 👋 Hi, I'm Flessan!  
 
+<p align="right">
+  <a href="https://github.com/thiosaputra/flessan/blob/main/backup/readme.md">
+    <img src="https://img.shields.io/badge/See%20README%20Full%20Page%20Here-000000?style=for-the-badge" alt="GoToBottom">
+  </a>
+</p>
 
 <div align="center">
   <img src="https://github.com/flessan/flessan/blob/main/20250713_044409.png" width="100%" />
