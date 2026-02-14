@@ -1,10 +1,6 @@
-
-
-### 👋 Hi, I'm Flessan!  
-
 <p align="right">
   <a href="https://github.com/thiosaputra/flessan/blob/main/backup/readme.md">
-    <img src="https://img.shields.io/badge/See%20README%20Full%20Page%20Here-000000?style=for-the-badge" alt="GoToBottom">
+    <img src="https://img.shields.io/badge/Click%20%20Here%20to%20See%20the%20Full%20README%20Page-000000?style=for-the-badge" alt="GoToBottom">
   </a>
 </p>
 
@@ -48,33 +44,4 @@
 > — Founder of **GDIPS**
 
 ---
-
-## 🌟 About Me
-
-I'm a self-taught developer with a deep love for **Geometry Dash** and community-driven projects. My work blends technical problem-solving with creative expression, especially through **GDIPS**, my passion-driven Geometry Dash Private Server.
-
-I believe in:
-- **Learning-first development** over chasing perfection  
-- **Creative freedom** with respectful collaboration  
-- **Embracing imperfection** as part of the journey  
-
-My bugs have character. My crashes have personality. And my community? It has heart ❤️.
-
-### Core Technologies
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,js,ts,php,mysql,github,firebase,react" />
-</div>
-
-![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-1572B6?logo=typescript&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-E34F26?logo=firebase&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS-1572B6?logo=css&logoColor=white)
-
----
-
 ### My Pins:
