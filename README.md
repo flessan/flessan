@@ -41,7 +41,7 @@
 </p>
 
 > *"We're building a digital campfire, not a perfect one, but warm enough for those who want to gather around."*  
-> — Founder of **GDIPS**
+> — <a href="https://github.com/thiosaputra/flessan/blob/main/backup/readme.md">M. Thio Saputra</a> | Founder of **GDIPS**
 
 ---
 ### My Pins:
