@@ -56,7 +56,7 @@
 
 ## 🌟 About Me
 
-I'm a self-taught developer with a deep love for **Geometry Dash** and community-driven projects. My work blends technical problem-solving with creative expression, especially through **GDIPS**, my passion-driven Geometry Dash Private Server.
+Hello thereee, well, first of all, let me introduce myself. My name is Thio Saputra. Muhammad Thio Saputra, people shorten it to "M." and I don't really like that, so instead of adding "M." I think it's better to just hide it. Okay, I'm a self-taught developer with a deep love for **Geometry Dash** and community-driven projects. My work blends technical problem-solving with creative expression, especially through **GDIPS**, my passion-driven Geometry Dash Private Server.
 
 I believe in:
 - **Learning-first development** over chasing perfection  
