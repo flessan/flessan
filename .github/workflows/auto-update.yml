@@ -2,9 +2,8 @@ name: Auto Daily Update
 
 on:
   schedule:
-    # Berjalan otomatis setiap hari jam 00:00 UTC (07:00 WIB)
     - cron: '0 0 * * *'
-  workflow_dispatch: # Memunculkan tombol "Run workflow" untuk tes manual
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -14,15 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update file with current date
+      - name: Update file and README
         run: |
-          echo "Terakhir diperbarui pada: $(date)" > update.txt
+          TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+          echo "Terakhir diperbarui pada: $TIMESTAMP" > update.txt
+          
+          sed -i '/<!-- update-start -->/,/<!-- update-end -->/c\<!-- update-start -->\nLast Update: '"$TIMESTAMP"'\n<!-- update-end -->' README.md
 
       - name: Commit and Push
         run: |
           git config --global user.name "flessan"
           git config --global user.email "thiosaputra605@gmail.com"
           
-          git add update.txt
+          git add update.txt README.md
           git commit -m "chore: auto update tanggal $(date +'%Y-%m-%d')" || exit 0
           git push
