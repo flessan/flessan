@@ -1,19 +1,22 @@
-### Hi there!
 
-![Metrics](https://github.com/tdrkDev/tdrkDev/blob/main/github-metrics.svg)
+<p align="right">
+  <a href="https://github.com/flethio/flessan/blob/main/backup/simple.md">
+    <img src="https://img.shields.io/badge/Click%20%20Here%20to%20See%20the%20SIMPLER%20Page-000000?style=for-the-badge" alt="GoToBottom">
+  </a>
+
+![Metrics](https://github.com/flessan/flessan/blob/main/github-metrics.svg)
 
 ### Who am I
 
-I am Dart/C developer, Android system developer. For scripting purposes, I use shell or Python.
-Experienced in modifying Linux kernel, AOSP; Linux system administration.
+I am a web developer specializing in building and deploying both static and dynamic web projects. Proficient in scripting with Bash, Shell, and Python, I automate workflows and enhance development efficiency. I have extensive experience transforming static HTML sites into dynamic-looking experiences using modern frontend techniques and lightweight backend integrations. Whether it's setting up CI/CD pipelines, optimizing static deployments, or managing full-stack applications, I focus on delivering fast, scalable, and maintainable solutions.
 
 Some of my public work:
-* Maintaining and developing device tree for LineageOS for some Snapdragon 845 based devices
-* AndroidAPS (artificial pancreas system) [fork](https://github.com/customaaps/AndroidAPS)
-  * Developing an AndroidAPS driver for Apex TruCare III insulin pump
-* [HandyGram](https://github.com/HandyGram) - unofficial Telegram client for Wear OS devices
-* [MeizuSucks](https://github.com/meizucustoms) - custom firmware for Meizu devices
+* [34Labs - QuickDevTools](https://github.com/34labs/QuickDevTools) - Free browser open-source static tools for developers
+* [Skenpat - Skenpintas](https://github.com/skenpat/skenpat) - Layanan Gratis untuk Siswa/i SMKN 4 Banjarmasin
 
 ### Links
 
-* [Telegram](https://t.me/tdrkDev)
+* [Email](mailto:tio@cc.cc)
+
+---
+### My Pins:
