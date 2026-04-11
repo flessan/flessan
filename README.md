@@ -13,6 +13,7 @@ I am a web developer specializing in building and deploying both static and dyna
 Some of my public work:
 * [34Labs - QuickDevTools](https://github.com/34labs/QuickDevTools) - Free browser open-source static tools for developers
 * [Skenpat - Skenpintas](https://github.com/skenpat/skenpat) - Layanan Gratis untuk Siswa/i SMKN 4 Banjarmasin
+* [Flessan - HTMLWalLarper](https://github.com/flessan/htmlwallarper) - Free open-source HTML Live Wallpaper library/repo
 
 ### Links
 
