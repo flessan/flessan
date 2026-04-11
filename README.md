@@ -6,7 +6,7 @@
 
 ![Metrics](https://github.com/flessan/flessan/blob/main/github-metrics.svg)
 
-### Who am I
+### whoami
 
 I am a web developer specializing in building and deploying both static and dynamic web projects. Proficient in scripting with Bash, Shell, and Python, I automate workflows and enhance development efficiency. I have extensive experience transforming static HTML sites into dynamic-looking experiences using modern frontend techniques and lightweight backend integrations. Whether it's setting up CI/CD pipelines, optimizing static deployments, or managing full-stack applications, I focus on delivering fast, scalable, and maintainable solutions.
 
