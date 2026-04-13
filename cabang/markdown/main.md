@@ -9,7 +9,7 @@ Last Update: 2026-03-29 02:11:17
 </p>
 
 <div align="center">
-  <img src="https://github.com/flessan/flessan/blob/main/20250713_044409.png" width="100%" />
+  <img src="https://github.com/flessan/flessan/blob/main/gudang/gambar/banner-flessan.png" width="100%" />
 </div>
 
 ---
