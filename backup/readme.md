@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/flessan">
-    <img src="https://github.com/flessan/flessan/blob/main/wide.png" width="300" alt="Fless Banner">
+    <img src="https://github.com/flessan/flessan/blob/main/gudang/gepeng_full-body.png" width="300" alt="Fless Banner">
   </a>
 </p>
 
@@ -318,7 +318,7 @@ Special thanks to everyone who has contributed to my projects:
 ---
 
 <div align="center">
-  <img src="https://github.com/flessan/flessan/blob/main/20250713_044409.png" width="100%" />
+  <img src="https://github.com/flessan/flessan/blob/main/gudang/gambar/banner-flessan.png" width="100%" />
 </div>
 
 <p align="center">
