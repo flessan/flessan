@@ -1,9 +1,10 @@
 name: Metrics
 on:
-  # Update otomatis setiap jam
-  schedule: [{cron: "0 * * * *"}]
-  # Jalankan setiap ada push di branch main/master atau dijalankan manual
-  push: {branches: ["master", "main"]}
+  # 1. Update otomatis cuma sekali sehari (jam 00:00) supaya hemat quota
+  schedule: [{cron: "0 0 * * *"}]
+  
+  # 2. HANYA jalan kalau kamu manual push kode (bukan saat bot update gambar)
+  # Kita hapus baris push branches agar tidak loop
   workflow_dispatch:
 
 jobs:
@@ -17,19 +18,14 @@ jobs:
 
       - uses: lowlighter/metrics@latest
         with:
-          # Target akun yang diambil datanya
           user: flessan
-          
-          # Gunakan METRICS_TOKEN milikmu untuk otentikasi data
           token: ${{ secrets.METRICS_TOKEN }}
-          
-          # PAKAI METRICS_TOKEN JUGA DI SINI (BUKAN GITHUB_TOKEN)
-          # Ini kunci supaya commit-nya pakai akun kamu, bukan github-actions[bot]
           committer_token: ${{ secrets.METRICS_TOKEN }}
-          
-          # Pesan commit kustom
           committer_message: "update metrics for Thio Saputra"
           
-          # Plugins yang diaktifkan
+          # Tambahan: Jangan jalankan kalau tidak ada perubahan data
+          config_timezone: Asia/Jakarta
+          
+          # Plugins
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
