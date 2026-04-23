@@ -11,15 +11,14 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          # Menentukan target akun yang akan diambil datanya
+          # Tetap pakai username untuk akses data
           user: flessan
           
-          # Token utama (pastikan secrets.METRICS_TOKEN punya akses ke akun flessan)
           token: ${{ secrets.METRICS_TOKEN }}
-          
-          # Konfigurasi agar commit hasil metrics menggunakan identitas email kamu
           committer_token: ${{ secrets.GITHUB_TOKEN }}
-          committer_github: thiosaputra605@gmail.com
+          
+          # Kamu bisa tulis nama kamu di pesan commit-nya
+          committer_message: "update metrics for Thio Saputra (flessan)"
           
           # Plugins
           plugin_isocalendar: yes
