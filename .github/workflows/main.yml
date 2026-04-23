@@ -1,15 +1,15 @@
 name: Metrics
 on:
-  # Schedule updates
+  # Update otomatis setiap jam
   schedule: [{cron: "0 * * * *"}]
-  # Lines below let you run workflow manually and on each commit
+  # Jalankan setiap ada push di branch main/master atau dijalankan manual
   push: {branches: ["master", "main"]}
   workflow_dispatch:
+
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
-      # Step tambahan untuk mengatur identitas pengirim
       - name: Set Git Config
         run: |
           git config --global user.name "Thio Saputra"
@@ -17,10 +17,19 @@ jobs:
 
       - uses: lowlighter/metrics@latest
         with:
+          # Target akun yang diambil datanya
           user: flessan
+          
+          # Gunakan METRICS_TOKEN milikmu untuk otentikasi data
           token: ${{ secrets.METRICS_TOKEN }}
-          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # PAKAI METRICS_TOKEN JUGA DI SINI (BUKAN GITHUB_TOKEN)
+          # Ini kunci supaya commit-nya pakai akun kamu, bukan github-actions[bot]
+          committer_token: ${{ secrets.METRICS_TOKEN }}
+          
+          # Pesan commit kustom
           committer_message: "update metrics for Thio Saputra"
           
-          # Plugins
+          # Plugins yang diaktifkan
           plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
