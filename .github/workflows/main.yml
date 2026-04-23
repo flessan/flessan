@@ -9,16 +9,18 @@ jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
+      # Step tambahan untuk mengatur identitas pengirim
+      - name: Set Git Config
+        run: |
+          git config --global user.name "Thio Saputra"
+          git config --global user.email "thiosaputra605@gmail.com"
+
       - uses: lowlighter/metrics@latest
         with:
-          # Tetap pakai username untuk akses data
           user: flessan
-          
           token: ${{ secrets.METRICS_TOKEN }}
           committer_token: ${{ secrets.GITHUB_TOKEN }}
-          
-          # Kamu bisa tulis nama kamu di pesan commit-nya
-          committer_message: "update metrics for Thio Saputra (flessan)"
+          committer_message: "update metrics for Thio Saputra"
           
           # Plugins
           plugin_isocalendar: yes
