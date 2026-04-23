@@ -9,12 +9,17 @@ jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
-      # See action.yml for all options
       - uses: lowlighter/metrics@latest
         with:
-          # Your GitHub token
-          token: ${{ secrets.METRICS_TOKEN }}
-          # GITHUB_TOKEN is a special auto-generated token restricted to current repository, which is used to push files in it
-          committer_token: ${{ secrets.GITHUB_TOKEN }}
-          plugin_isocalendar: yes
+          # Menentukan target akun yang akan diambil datanya
+          user: flessan
           
+          # Token utama (pastikan secrets.METRICS_TOKEN punya akses ke akun flessan)
+          token: ${{ secrets.METRICS_TOKEN }}
+          
+          # Konfigurasi agar commit hasil metrics menggunakan identitas email kamu
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
+          committer_github: thiosaputra605@gmail.com
+          
+          # Plugins
+          plugin_isocalendar: yes
