@@ -15,11 +15,12 @@ Some of my public work:
 * [Skenpat - Skenpintas](https://github.com/skenpat/skenpat) - Layanan Gratis untuk Siswa/i SMKN 4 Banjarmasin
 * [NovaUi - NovaUI Website](https://freedom.gamer.gd/nova) - Geode Texture Pack to use
 * [Flessan - HTMLWalLarper](https://github.com/flessan/htmlwallarper) - Free open-source Linux HTML Live Wallpaper library/repo
+* [Flessan - NurLaily](https://github.com/flessan/nurlaily) - Tulis draf dailymu di terminal, ubahlah jadi website
 * [Flessan - GMD2TXT](https://github.com/flessan/gmd2txt) - Convert your Raw GDShare files to txt Geometry Dash Level, LOCALY!
 
 ### Links
 
-* [Email](mailto:tio@cc.cc)
+* [Email: tio@cc.cc](mailto:tio@cc.cc)
 
 ---
 ### My Pins:
