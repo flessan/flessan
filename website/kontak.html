@@ -823,98 +823,171 @@
 							</nav>
 						</div>
 					</div>
+					<!-- Tambahkan ini di bagian atas file jika belum ada -->
+					<style>
+						/* Dasar responsif untuk seluruh konten */
+						.vector-body {
+							font-family: sans-serif;
+							line-height: 1.6;
+							padding: 10px;
+							box-sizing: border-box;
+						}
+
+						/* Tabel kontak responsif */
+						.infobox-responsive {
+							width: 100% !important;
+							/* Default lebar penuh di HP */
+							max-width: 333px;
+							/* Maksimal lebar di Desktop */
+							background-color: #f8f9fa;
+							border: 1px solid #a2a9b1;
+							border-collapse: collapse;
+							margin-bottom: 20px;
+						}
+
+						.infobox-responsive th,
+						.infobox-responsive td {
+							padding: 8px;
+							border: 1px solid #a2a9b1;
+							text-align: left;
+							font-size: 14px;
+						}
+
+						/* Email agar tidak merusak layout jika terlalu panjang */
+						.infobox-data a {
+							word-break: break-all;
+						}
+
+						/* Container formulir responsif */
+						.form-container {
+							background-color: #f8f9fa;
+							border: 1px solid #a2a9b1;
+							padding: 20px;
+							border-radius: 2px;
+							width: 100%;
+							max-width: 600px;
+							box-sizing: border-box;
+							/* Sangat penting agar padding tidak melebar */
+						}
+
+						.form-group {
+							margin-bottom: 15px;
+						}
+
+						.form-group label {
+							display: block;
+							font-weight: bold;
+							margin-bottom: 5px;
+						}
+
+						.form-group input,
+						.form-group textarea {
+							width: 100%;
+							padding: 10px;
+							border: 1px solid #a2a9b1;
+							box-sizing: border-box;
+							border-radius: 2px;
+						}
+
+						.btn-submit {
+							background-color: #36c;
+							color: #fff;
+							border: none;
+							padding: 10px 20px;
+							cursor: pointer;
+							border-radius: 2px;
+							font-weight: bold;
+						}
+
+						.btn-submit:hover {
+							background-color: #2a4b8d;
+						}
+					</style>
+
 					<div id="bodyContent" class="vector-body" aria-labelledby="firstHeading"
 						data-mw-ve-target-container>
 						<div class="vector-body-before-content">
-							<div class="mw-indicators">
+							<div class="mw-indicators"></div>
+							<div id="siteSub" class="noprint">
+								Dari <a href="https://freedom.gamer.gd" target="_blank">freedom.gamer.gd</a>, biodata
+								pribadi
 							</div>
-
-							<div id="siteSub" class="noprint">Dari <a href="https://freedom.gamer.gd"
-									target="_blank">freedom.gamer.gd</a>, biodata pribadi</div>
 						</div>
+
 						<div id="contentSub">
 							<div id="mw-content-subtitle"></div>
 						</div>
 
 						<div id="mw-content-text" class="mw-body-content">
-							<div class="mw-content-ltr mw-parser-output" lang="id" dir="ltr"
-								data-mw-parsoid-version="0.23.0.0-alpha22" data-mw-html-version="2.8.0">
+							<div class="mw-content-ltr mw-parser-output" lang="id" dir="ltr">
 
+								<!-- Bagian Kontak -->
 								<section data-mw-section-id="1" id="mwJQ" aria-labelledby="Kontak_Saya">
 									<div class="mw-heading mw-heading3">
 										<h3 id="Kontak_Saya">Kontak Saya</h3>
 									</div>
-									<table class="infobox"
-										style="color: #000; width: 333px; background-color: #f8f9fa; border: 1px solid #a2a9b1;">
-										<caption class="infobox-title">Informasi Kontak</caption>
+									<table class="infobox-responsive">
+										<caption style="font-weight: bold; padding: 5px;">Informasi Kontak</caption>
 										<tbody>
 											<tr>
-												<th scope="row" class="infobox-label">WhatsApp</th>
+												<th scope="row">WhatsApp</th>
 												<td class="infobox-data"><a href="https://wa.me/6289523234160"
 														target="_blank" rel="noopener">+62 895 2323 4160</a></td>
 											</tr>
 											<tr>
-												<th scope="row" class="infobox-label">Telegram</th>
+												<th scope="row">Telegram</th>
 												<td class="infobox-data"><a href="https://t.me/flethio" target="_blank"
 														rel="noopener">@flethio</a></td>
 											</tr>
 											<tr>
-												<th scope="row" class="infobox-label">Surel (Email)</th>
+												<th scope="row">Email</th>
 												<td class="infobox-data"><a
 														href="mailto:kambinghirang2@gmail.com">kambinghirang2@gmail.com</a>
 												</td>
 											</tr>
 											<tr>
-												<th scope="row" class="infobox-label">Situs Web</th>
+												<th scope="row">Situs Web</th>
 												<td class="infobox-data"><a href="https://flessan.pages.dev/"
 														target="_blank" rel="noopener">flessan.pages.dev</a></td>
 											</tr>
 											<tr>
-												<th scope="row" class="infobox-label">GitHub</th>
+												<th scope="row">GitHub</th>
 												<td class="infobox-data"><a href="https://github.com/flessan"
 														target="_blank" rel="noopener">flessan</a></td>
 											</tr>
 										</tbody>
 									</table>
 								</section>
+
+								<!-- Bagian Formulir -->
 								<section data-mw-section-id="2" id="mwLQ" aria-labelledby="Formulir_Kontak">
 									<div class="mw-heading mw-heading2">
 										<h2 id="Formulir_Kontak">Formulir Kontak</h2>
 									</div>
 									<p>Silakan gunakan borang di bawah ini untuk mengirimkan pesan langsung kepada saya.
 									</p>
-									<div
-										style="background-color: #f8f9fa; border: 1px solid #a2a9b1; padding: 20px; border-radius: 2px; max-width: 600px;">
+
+									<div class="form-container">
 										<form action="#" method="POST">
-											<div style="margin-bottom: 15px;">
-												<label
-													style="display: block; font-weight: bold; margin-bottom: 5px;">Nama
-													Lengkap:</label>
-												<input type="text" name="name"
-													style="width: 100%; padding: 8px; border: 1px solid #a2a9b1; box-sizing: border-box;"
-													required placeholder="Nama Anda...">
+											<div class="form-group">
+												<label>Nama Lengkap:</label>
+												<input type="text" name="name" required placeholder="Nama Anda...">
 											</div>
-											<div style="margin-bottom: 15px;">
-												<label
-													style="display: block; font-weight: bold; margin-bottom: 5px;">Alamat
-													Surel:</label>
-												<input type="email" name="email"
-													style="width: 100%; padding: 8px; border: 1px solid #a2a9b1; box-sizing: border-box;"
-													required placeholder="surel@contoh.com">
+											<div class="form-group">
+												<label>Alamat Surel:</label>
+												<input type="email" name="email" required
+													placeholder="surel@contoh.com">
 											</div>
-											<div style="margin-bottom: 15px;">
-												<label
-													style="display: block; font-weight: bold; margin-bottom: 5px;">Pesan:</label>
-												<textarea name="message" rows="5"
-													style="width: 100%; padding: 8px; border: 1px solid #a2a9b1; box-sizing: border-box;"
-													required placeholder="Tuliskan pesan Anda di sini..."></textarea>
+											<div class="form-group">
+												<label>Pesan:</label>
+												<textarea name="message" rows="5" required
+													placeholder="Tuliskan pesan Anda di sini..."></textarea>
 											</div>
-											<button type="submit"
-												style="background-color: #36c; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 2px;">Kirim
-												Pesan</button>
+											<button type="submit" class="btn-submit">Kirim Pesan</button>
 										</form>
 									</div>
 								</section>
+
 								<hr>
 								<section data-mw-section-id="3" id="mwSQ" aria-labelledby="Media_Sosial">
 									<div class="mw-heading mw-heading2">
