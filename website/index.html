@@ -1083,10 +1083,9 @@
 															title="OC (Original Character) Saya, Berambut Hitam Dan Kulit Sawo Matang"><img
 																alt="OC (Original Character) Saya, Berambut Hitam Dan Kulit Sawo Matang"
 																resource="//id.wikipedia.org/wiki/Berkas:Flessan.png"
-																src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flessan.png/250px-Flessan.png"
-																decoding="async" data-file-width="460"
-																data-file-height="460" data-file-type="bitmap"
-																height="238" width="238"
+																src="./gudang/me.png" decoding="async"
+																data-file-width="460" data-file-height="460"
+																data-file-type="bitmap" height="238" width="238"
 																srcset="//upload.wikimedia.org/wikipedia/commons/6/69/Flessan.png 1.5x, //upload.wikimedia.org/wikipedia/commons/6/69/Flessan.png 2x"
 																class="mw-file-element"></a></span>
 													<div class="infobox-caption">OC (Original Character) Saya, Berambut
@@ -1444,36 +1443,6 @@
 																	<link rel="mw:PageProp/Category"
 																		href="./Kategori:Pengguna_Musisi#Flessan">
 																	<div class="wikipediauserbox"
-																		style="float:left;border:1px solid black;margin:1px;width:238px">
-																		<table role="presentation"
-																			style="border-collapse:collapse;width:238px;margin-bottom:0;margin-top:0;background:#C0C0F0;color:inherit">
-																			<tbody>
-																				<tr>
-																					<td
-																						style="border:0;width:45px;height:45px;background:#C0F0F0;text-align:center;font-size:14pt;font-weight:bold;color:black;padding:0 1px 0 0;line-height:1.25em;vertical-align:middle">
-																						<span typeof="mw:File"><a
-																								href="http://id.wikipedia.org/wiki/Berkas:Local-time2.svg"
-																								class="mw-file-description"><img
-																									resource="//id.wikipedia.org/wiki/Berkas:Local-time2.svg"
-																									src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Local-time2.svg/60px-Local-time2.svg.png"
-																									decoding="async"
-																									data-file-width="200"
-																									data-file-height="200"
-																									data-file-type="drawing"
-																									height="50"
-																									width="50"
-																									srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/Local-time2.svg/120px-Local-time2.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/df/Local-time2.svg/120px-Local-time2.svg.png 2x"
-																									class="mw-file-element"></a></span>
-																					</td>
-																					<td
-																						style="border:0;text-align:center;font-size:8pt;padding:0 4px 0 4px;height:45px;line-height:1.25em;color:black;vertical-align:middle">
-																						Hari ini tanggal <b>19 Maret
-																							2026</b></td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</div>
-																	<div class="wikipediauserbox"
 																		style="float:left;border:1px solid #8D40B3;margin:1px;width:238px">
 																		<table role="presentation"
 																			style="border-collapse:collapse;width:238px;margin-bottom:0;margin-top:0;background:#F0E6F5;color:inherit">
@@ -1498,12 +1467,10 @@
 																					<td
 																						style="border:0;text-align:left;font-size:8pt;padding:0 4px 0 4px;height:45px;line-height:1.25em;color:black;vertical-align:middle">
 																						<div class="center">Pengguna ini
-																							berumur <br> <b>16
-																								tahun,<span
-																									typeof="mw:Entity">&nbsp;</span>7
-																								bulan<span
-																									typeof="mw:Entity">&nbsp;</span>dan<span
-																									typeof="mw:Entity">&nbsp;</span>17
+																							berumur <br> <b
+																								id="user-age">16
+																								tahun, 7
+																								bulan dan 17
 																								hari</b></div>
 																					</td>
 																				</tr>
@@ -2511,6 +2478,49 @@ Post‐processing cache key idwiki:postproc‐parsoid‐pcache:4517191:|#|:idhas
 
 		</ul>
 	</div>
+	<script>
+		function updateAge() {
+			const birthDate = new Date('2009-07-30T08:00:00');
+			const now = new Date();
+
+			let years = now.getFullYear() - birthDate.getFullYear();
+			let months = now.getMonth() - birthDate.getMonth();
+			let days = now.getDate() - birthDate.getDate();
+			let hours = now.getHours() - birthDate.getHours();
+			let minutes = now.getMinutes() - birthDate.getMinutes();
+			let seconds = now.getSeconds() - birthDate.getSeconds();
+
+			if (seconds < 0) {
+				seconds += 60;
+				minutes--;
+			}
+			if (minutes < 0) {
+				minutes += 60;
+				hours--;
+			}
+			if (hours < 0) {
+				hours += 24;
+				days--;
+			}
+			if (days < 0) {
+				const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+				days += lastMonth.getDate();
+				months--;
+			}
+			if (months < 0) {
+				months += 12;
+				years--;
+			}
+
+			const ageString = `${years} tahun, ${months} bulan, ${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
+			const element = document.getElementById('user-age');
+			if (element) {
+				element.innerHTML = ageString;
+			}
+		}
+		setInterval(updateAge, 1000);
+		updateAge();
+	</script>
 	<script>(RLQ = window.RLQ || []).push(function () { mw.config.set({ "wgHostname": "mw-web.codfw.main-6645d49757-4pskw", "wgBackendResponseTime": 139, "wgPageParseReport": { "limitreport": { "cputime": "1.027", "walltime": "1.284", "ppvisitednodes": { "value": 3281, "limit": 1000000 }, "revisionsize": { "value": 12752, "limit": 2097152 }, "postexpandincludesize": { "value": 232868, "limit": 2097152 }, "templateargumentsize": { "value": 13499, "limit": 2097152 }, "expansiondepth": { "value": 21, "limit": 100 }, "expensivefunctioncount": { "value": 4, "limit": 500 }, "unstrip-depth": { "value": 0, "limit": 20 }, "unstrip-size": { "value": 7097, "limit": 5000000 }, "entityaccesscount": { "value": 0, "limit": 500 }, "timingprofile": ["100.00%  923.459      1 -total", " 28.11%  259.560     83 Templat:Userbox", " 13.90%  128.405      5 Templat:Babel-box", " 13.12%  121.196      1 Templat:User_ar-1", " 12.82%  118.414      1 Templat:Lang", "  7.56%   69.826      1 Templat:Infobox_pengguna", "  7.25%   66.987      1 Templat:Infobox", "  2.56%   23.639      1 Templat:Pengguna_tetap_dingin", "  2.41%   22.216      1 Templat:Pengguna_GitHub", "  2.12%   19.553      1 Templat:Pengguna_Kalimantan_Selatan"] }, "scribunto": { "limitreport-timeusage": { "value": "0.209", "limit": "10.000" }, "limitreport-memusage": { "value": 24105202, "limit": 52428800 } }, "cachereport": { "origin": "mw-web.codfw.main-cc4995978-jkdkx", "timestamp": "20260319134143", "ttl": 1813, "transientcontent": true, "expiry-source": "Templat:Pengguna_perhitungan_tanggal (#time)" } } }); });</script>
 </body>
 
