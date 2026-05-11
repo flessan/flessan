@@ -1,49 +1,54 @@
 #!/bin/bash
 
 # ========================================================
-# TLP Portable Switcher - By Flessan
-# Lokasi: ~/Destop (Folder Eksperimen)
+# Script Pengelolaan Mode Hemat Daya TLP - By Flessan
+# Optimized for Universal Run (curl | bash)
 # ========================================================
 
-# Variabel Lokasi
+# Variabel lokasi agar konsisten
 FOLDER_KERJA="$HOME/Destop"
-NAMA_SKRIP="tlp-control.sh"
-PATH_SKRIP="$FOLDER_KERJA/$NAMA_SKRIP"
+PATH_SKRIP="$FOLDER_KERJA/tlp-control.sh"
 PATH_DESKTOP="$FOLDER_KERJA/TLP-Switch.desktop"
+URL_SUMBER="https://pages.dev"
 
 function print_message() {
     echo -e "\n[$1]\n$2\n"
 }
 
-# 1. Fungsi Install & Setup Awal
-function setup_system() {
-    # Cek dan install TLP
-    if ! command -v tlp &> /dev/null; then
-        print_message "SETUP" "Mengunduh dependensi TLP..."
-        sudo pacman -S --noconfirm tlp
-        sudo systemctl disable tlp
-    fi
-
-    # Pastikan file skrip ini tersimpan di Destop
+# --- FITUR AUTO DEPLOY (PENTING) ---
+function deploy_script() {
+    mkdir -p "$FOLDER_KERJA"
+    
+    # Jika dijalankan via curl, simpan dirinya sendiri ke Destop
     if [ ! -f "$PATH_SKRIP" ]; then
-        print_message "SETUP" "Menyimpan skrip ke $PATH_SKRIP"
-        cp "$0" "$PATH_SKRIP" 2>/dev/null || cat "$0" > "$PATH_SKRIP"
+        print_message "DEPLOY" "Menyimpan skrip permanen ke $PATH_SKRIP..."
+        curl -s "$URL_SUMBER" > "$PATH_SKRIP"
         chmod +x "$PATH_SKRIP"
     fi
 
-    # Buat Ikon Desktop (Panggung Khusus)
+    # Buat Ikon Desktop jika belum ada
     if [ ! -f "$PATH_DESKTOP" ]; then
-        print_message "SETUP" "Membuat panggung aplikasi di Desktop..."
+        print_message "INFO" "Membuat ikon aplikasi di Desktop..."
         cat <<EOF > "$PATH_DESKTOP"
 [Desktop Entry]
 Name=TLP Switcher
-Comment=Klik untuk Ganti Mode Baterai ala Flessan
-Exec=konsole --hold -e bash "$PATH_SKRIP"
+Comment=Klik untuk Ganti Mode Baterai
+Exec=konsole -e bash "$PATH_SKRIP"
 Icon=battery-low
 Terminal=false
 Type=Application
 EOF
         chmod +x "$PATH_DESKTOP"
+        print_message "INFO" "Shortcut 'TLP-Switch.desktop' siap di Destop!"
+    fi
+}
+
+function check_install_tlp() {
+    if ! command -v tlp &> /dev/null; then
+        print_message "INFO" "System detects TLP is not installed. Installing..."
+        sudo pacman -S --noconfirm tlp
+        sudo systemctl disable tlp
+        print_message "INFO" "TLP installation completed!"
     fi
 }
 
@@ -51,42 +56,47 @@ function show_battery_status() {
     BATTERY_LEVEL_FILE="/sys/class/power_supply/BAT1/capacity"
     BATTERY_STATUS_FILE="/sys/class/power_supply/BAT1/status"
     if [ -f "$BATTERY_LEVEL_FILE" ]; then
-        echo -e ">>> Level Baterai: $(cat $BATTERY_LEVEL_FILE)% [$(cat $BATTERY_STATUS_FILE)] <<<"
+        echo -e "Level baterai: $(cat $BATTERY_LEVEL_FILE)% | Status: $(cat $BATTERY_STATUS_FILE)"
     fi
 }
 
-function toggle_power() {
-    STATUS=$(systemctl is-active tlp)
-    
-    if [ "$STATUS" = "active" ]; then
-        print_message "MODE" "Mematikan Mode Hemat (Back to Normal)..."
-        sudo systemctl stop tlp
-        sudo systemctl mask tlp
-        sudo systemctl unmask power-profiles-daemon
-        sudo systemctl restart power-profiles-daemon
-        echo "Hasil: Performa kembali kencang!"
-    else
-        print_message "MODE" "Mengaktifkan Mode Hemat (Baterai Awet)..."
-        sudo systemctl stop power-profiles-daemon
-        sudo systemctl unmask tlp
-        sudo systemctl start tlp
-        sudo tlp bat
-        echo "Hasil: Mode hemat aktif!"
-    fi
+function activate_power_saving() {
+    print_message "MODE" "Mengaktifkan Mode Hemat Daya (TLP)..."
+    sudo systemctl stop power-profiles-daemon
+    sudo systemctl unmask tlp
+    sudo systemctl start tlp
+    sudo tlp bat
+    print_message "MODE" "Mode hemat daya aktif!"
+}
+
+function deactivate_power_saving() {
+    print_message "MODE" "Menonaktifkan Mode Hemat Daya (TLP)..."
+    sudo systemctl stop tlp
+    sudo systemctl mask tlp
+    sudo systemctl restart power-profiles-daemon
+    print_message "MODE" "Mode normal aktif!"
 }
 
 # ================================
 # Main Program
 # ================================
 
-# Pastikan folder Destop ada (biar nggak error)
-mkdir -p "$FOLDER_KERJA"
+# 1. Pastikan skrip ter-deploy dan TLP terpasang
+deploy_script
+check_install_tlp
 
-setup_system
-show_battery_status
-toggle_power
+# 2. Cek Status & Toggle
+STATUS=$(systemctl is-active tlp)
 show_battery_status
 
-echo -e "\nSelesai! Ikon aplikasi sudah siap di ~/Destop."
-echo "Tekan apa saja untuk keluar... ^^"
+if [ "$STATUS" = "active" ]; then
+    read -p "Mode hemat AKTIF. Matikan? (y/n): " CHOICE
+    [[ "$CHOICE" =~ ^[Yy]$ ]] && deactivate_power_saving || echo "Tetap aktif."
+else
+    read -p "Mode hemat MATI. Aktifkan? (y/n): " CHOICE
+    [[ "$CHOICE" =~ ^[Yy]$ ]] && activate_power_saving || echo "Tetap mati."
+fi
+
+show_battery_status
+echo -e "\nSelesai! Tekan apa saja untuk keluar... ^^"
 read -n1 -s
