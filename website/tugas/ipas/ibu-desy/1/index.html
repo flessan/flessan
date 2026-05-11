@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LKS - Keuangan Keluarga Pak Rudi</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['Fredoka', 'sans-serif'],
+        body: ['Nunito', 'sans-serif'],
+      },
+      colors: {
+        bluepop: {
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
+        },
+        popyellow: '#FBBF24',
+        poppink: '#F472B6',
+        popgreen: '#34D399',
+        poporange: '#FB923C',
+        popred: '#F87171',
+        poppurple: '#A78BFA',
+      },
+      boxShadow: {
+        'cartoon': '4px 4px 0px #1E3A8A',
+        'cartoon-sm': '3px 3px 0px #1E3A8A',
+        'cartoon-lg': '6px 6px 0px #1E3A8A',
+        'cartoon-xl': '8px 8px 0px #1E3A8A',
+        'cartoon-yellow': '4px 4px 0px #92700C',
+        'cartoon-pink': '4px 4px 0px #9D174D',
+        'cartoon-green': '4px 4px 0px #065F46',
+        'cartoon-orange': '4px 4px 0px #9A3412',
+        'cartoon-red': '4px 4px 0px #991B1B',
+        'cartoon-purple': '4px 4px 0px #5B21B6',
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: #DBEAFE; overflow-x: hidden; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  @keyframes pop-in {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes slide-up {
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes dash-move {
+    to { stroke-dashoffset: -20; }
+  }
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+  @keyframes confetti-fall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  .float-anim { animation: float 3s ease-in-out infinite; }
+  .bounce-anim { animation: bounce-slow 2s ease-in-out infinite; }
+  .wiggle-anim { animation: wiggle 2s ease-in-out infinite; }
+  .pop-in { animation: pop-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+
+  .cartoon-border {
+    border: 3px solid #1E3A8A;
+    border-radius: 16px;
+  }
+  .cartoon-border-thick {
+    border: 4px solid #1E3A8A;
+    border-radius: 20px;
+  }
+
+  .section-card {
+    background: white;
+    border: 4px solid #1E3A8A;
+    border-radius: 24px;
+    box-shadow: 6px 6px 0px #1E3A8A;
+    transition: all 0.3s ease;
+  }
+  .section-card:hover {
+    box-shadow: 8px 8px 0px #1E3A8A;
+    transform: translate(-2px, -2px);
+  }
+
+  .badge-primer {
+    background: #34D399;
+    border: 2px solid #065F46;
+    color: #065F46;
+    box-shadow: 2px 2px 0px #065F46;
+  }
+  .badge-sekunder {
+    background: #60A5FA;
+    border: 2px solid #1E3A8A;
+    color: #1E3A8A;
+    box-shadow: 2px 2px 0px #1E3A8A;
+  }
+  .badge-tersier {
+    background: #FBBF24;
+    border: 2px solid #92700C;
+    color: #92700C;
+    box-shadow: 2px 2px 0px #92700C;
+  }
+
+  .blob-bg {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  .dotted-line {
+    border-bottom: 4px dashed #93C5FD;
+  }
+
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  .toast {
+    animation: slide-up 0.4s ease-out;
+    border: 3px solid #1E3A8A;
+    box-shadow: 4px 4px 0px #1E3A8A;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+  }
+
+  .tab-btn {
+    border: 3px solid #1E3A8A;
+    border-radius: 14px;
+    padding: 10px 20px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 3px 3px 0px #1E3A8A;
+  }
+  .tab-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #1E3A8A; }
+  .tab-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #1E3A8A; }
+  .tab-btn.active { background: #3B82F6; color: white; }
+
+  .progress-bar {
+    height: 28px;
+    border-radius: 14px;
+    border: 3px solid #1E3A8A;
+    overflow: hidden;
+    background: #EFF6FF;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(255,255,255,0.2) 8px,
+      rgba(255,255,255,0.2) 16px
+    );
+  }
+
+  .star-burst {
+    position: relative;
+  }
+  .star-burst::before {
+    content: '★';
+    position: absolute;
+    font-size: 20px;
+    color: #FBBF24;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  .nav-link {
+    border: 3px solid transparent;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .nav-link:hover {
+    background: #3B82F6;
+    color: white;
+    border-color: #1E3A8A;
+    box-shadow: 3px 3px 0px #1E3A8A;
+    transform: translate(-1px, -1px);
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: #DBEAFE; }
+  ::-webkit-scrollbar-thumb {
+    background: #3B82F6;
+    border: 3px solid #1E3A8A;
+    border-radius: 6px;
+  }
+
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    z-index: 9998;
+    pointer-events: none;
+    animation: confetti-fall 3s linear forwards;
+  }
+
+  .comic-shadow {
+    box-shadow: 6px 6px 0px #1E3A8A;
+  }
+
+  .zigzag-divider {
+    background: linear-gradient(135deg, #3B82F6 25%, transparent 25%) -14px 0,
+                linear-gradient(225deg, #3B82F6 25%, transparent 25%) -14px 0,
+                linear-gradient(315deg, #3B82F6 25%, transparent 25%),
+                linear-gradient(45deg, #3B82F6 25%, transparent 25%);
+    background-size: 28px 14px;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    height: 14px;
+  }
+
+  .table-row {
+    transition: all 0.2s;
+    border-bottom: 2px dashed #BFDBFE;
+  }
+  .table-row:hover {
+    background: #EFF6FF;
+    transform: scale(1.01);
+  }
+
+  @media (max-width: 768px) {
+    .section-card { border-width: 3px; box-shadow: 4px 4px 0px #1E3A8A; border-radius: 18px; }
+    .comic-shadow { box-shadow: 4px 4px 0px #1E3A8A; }
+  }
+</style>
+</head>
+<body class="min-h-screen relative">
+
+<!-- Floating Decorations -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+  <div class="blob-bg w-96 h-96 bg-bluepop-400 top-0 -left-48" style="position:absolute;"></div>
+  <div class="blob-bg w-80 h-80 bg-poppink top-1/3 -right-40" style="position:absolute;"></div>
+  <div class="blob-bg w-72 h-72 bg-popyellow bottom-0 left-1/4" style="position:absolute;"></div>
+  <!-- Floating icons -->
+  <div class="absolute top-20 left-10 text-4xl float-anim opacity-20" style="animation-delay:0s;">💰</div>
+  <div class="absolute top-40 right-20 text-3xl float-anim opacity-20" style="animation-delay:0.5s;">📊</div>
+  <div class="absolute bottom-40 left-20 text-3xl float-anim opacity-20" style="animation-delay:1s;">🏦</div>
+  <div class="absolute top-1/2 right-10 text-4xl float-anim opacity-20" style="animation-delay:1.5s;">💡</div>
+  <div class="absolute bottom-20 right-1/3 text-3xl float-anim opacity-20" style="animation-delay:2s;">🎯</div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Navigation -->
+<nav class="sticky top-4 z-50 mx-4 md:mx-8 mt-4">
+  <div class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md border-3 border-bluepop-900 rounded-2xl px-4 py-3 flex items-center justify-between" style="border:3px solid #1E3A8A; box-shadow: 4px 4px 0px #1E3A8A;">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-bluepop-500 rounded-xl flex items-center justify-center border-2 border-bluepop-900" style="box-shadow:2px 2px 0 #1E3A8A;">
+        <span class="text-white text-lg">📖</span>
+      </div>
+      <span class="font-heading font-bold text-bluepop-900 text-lg hidden sm:block">LKS Keuangan</span>
+    </div>
+    <div class="flex items-center gap-1 md:gap-2 text-sm overflow-x-auto">
+      <a href="#pendapatan" class="nav-link text-bluepop-800 text-xs md:text-sm whitespace-nowrap">A. Pendapatan</a>
+      <a href="#pengeluaran" class="nav-link text-bluepop-800 text-xs md:text-sm whitespace-nowrap">B. Pengeluaran</a>
+      <a href="#analisis" class="nav-link text-bluepop-800 text-xs md:text-sm whitespace-nowrap">C. Analisis</a>
+      <a href="#rpl" class="nav-link text-bluepop-800 text-xs md:text-sm whitespace-nowrap">D. RPL</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative z-10 pt-12 pb-8 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="inline-block mb-4 pop-in">
+      <div class="bg-popyellow border-4 border-bluepop-900 rounded-full px-6 py-2 inline-flex items-center gap-2" style="box-shadow:4px 4px 0 #1E3A8A;">
+        <span class="text-xl">📝</span>
+        <span class="font-heading font-bold text-bluepop-900 text-sm">Tugas IPAS Thio</span>
+      </div>
+    </div>
+    <h1 class="font-heading font-bold text-4xl md:text-6xl text-bluepop-900 mb-4 leading-tight">
+      Keuangan Keluarga<br>
+      <span class="text-bluepop-500">Pak Rudi</span>
+      <span class="inline-block wiggle-anim ml-2">👨‍👩‍👧‍👦</span>
+    </h1>
+    <p class="font-body text-bluepop-700 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+      Hitung, kelompokkan, dan analisis pendapatan & pengeluaran.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <div class="bg-white border-3 border-bluepop-900 rounded-xl px-4 py-2 flex items-center gap-2" style="border:3px solid #1E3A8A; box-shadow:3px 3px 0 #1E3A8A;">
+        <span class="text-2xl">💰</span>
+        <div class="text-left">
+          <div class="text-xs text-bluepop-500 font-bold">Pendapatan</div>
+          <div class="font-heading font-bold text-bluepop-900">Rp7.8jt</div>
+        </div>
+      </div>
+      <div class="bg-white border-3 border-bluepop-900 rounded-xl px-4 py-2 flex items-center gap-2" style="border:3px solid #1E3A8A; box-shadow:3px 3px 0 #1E3A8A;">
+        <span class="text-2xl">🛒</span>
+        <div class="text-left">
+          <div class="text-xs text-popred font-bold">Pengeluaran</div>
+          <div class="font-heading font-bold text-bluepop-900">Rp10.6jt</div>
+        </div>
+      </div>
+      <div class="bg-white border-3 border-bluepop-900 rounded-xl px-4 py-2 flex items-center gap-2" style="border:3px solid #1E3A8A; box-shadow:3px 3px 0 #1E3A8A;">
+        <span class="text-2xl">⚠️</span>
+        <div class="text-left">
+          <div class="text-xs text-poporange font-bold">Defisit</div>
+          <div class="font-heading font-bold text-popred">-Rp2.8jt</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="zigzag-divider max-w-5xl mx-auto"></div>
+
+<!-- ===================== BAGIAN A ===================== -->
+<section id="pendapatan" class="relative z-10 py-12 px-4">
+  <div class="max-w-4xl mx-auto scroll-reveal">
+    <!-- Section Header -->
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-14 h-14 bg-popgreen rounded-2xl border-4 border-bluepop-900 flex items-center justify-center text-2xl font-heading font-bold text-white" style="box-shadow:4px 4px 0 #065F46;">
+        A
+      </div>
+      <div>
+        <h2 class="font-heading font-bold text-2xl md:text-3xl text-bluepop-900">Hitung Total Pendapatan</h2>
+        <p class="text-bluepop-600 font-body">Jumlahkan semua sumber pemasukan keluarga Pak Rudi</p>
+      </div>
+    </div>
+
+    <div class="section-card p-6 md:p-8">
+      <!-- Income Items -->
+      <div class="space-y-4 mb-6">
+        <div class="flex items-center justify-between p-4 bg-bluepop-50 rounded-2xl border-3 border-bluepop-200 hover:border-bluepop-400 transition-all" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-bluepop-500 rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl" style="box-shadow:2px 2px 0 #1E3A8A;">💼</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900">Gaji Pokok Pak Rudi</div>
+              <div class="text-sm text-bluepop-500">Pendapatan utama</div>
+            </div>
+          </div>
+          <div class="font-heading font-bold text-bluepop-900 text-lg md:text-xl">Rp4.500.000</div>
+        </div>
+
+        <div class="flex items-center justify-between p-4 bg-bluepop-50 rounded-2xl border-3 border-bluepop-200 hover:border-bluepop-400 transition-all" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-popyellow rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl" style="box-shadow:2px 2px 0 #92700C;">⏰</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900">Uang Lembur</div>
+              <div class="text-sm text-bluepop-500">Tambahan kerja extra</div>
+            </div>
+          </div>
+          <div class="font-heading font-bold text-bluepop-900 text-lg md:text-xl">Rp500.000</div>
+        </div>
+
+        <div class="flex items-center justify-between p-4 bg-bluepop-50 rounded-2xl border-3 border-bluepop-200 hover:border-bluepop-400 transition-all" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-poppink rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl" style="box-shadow:2px 2px 0 #9D174D;">🧁</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900">Keuntungan Jualan Kue Bu Siti</div>
+              <div class="text-sm text-bluepop-500">Usaha sampingan</div>
+            </div>
+          </div>
+          <div class="font-heading font-bold text-bluepop-900 text-lg md:text-xl">Rp1.800.000</div>
+        </div>
+
+        <div class="flex items-center justify-between p-4 bg-bluepop-50 rounded-2xl border-3 border-bluepop-200 hover:border-bluepop-400 transition-all" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-popgreen rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl" style="box-shadow:2px 2px 0 #065F46;">🎁</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900">Bonus THR</div>
+              <div class="text-sm text-bluepop-500">Tunjangan hari raya</div>
+            </div>
+          </div>
+          <div class="font-heading font-bold text-bluepop-900 text-lg md:text-xl">Rp1.000.000</div>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="relative p-5 bg-bluepop-600 rounded-2xl border-4 border-bluepop-900" style="box-shadow:4px 4px 0 #1E3A8A;">
+        <div class="absolute -top-4 -right-2 bg-popyellow text-bluepop-900 font-heading font-bold text-xs px-3 py-1 rounded-full border-2 border-bluepop-900 wiggle-anim" style="box-shadow:2px 2px 0 #92700C;">TOTAL!</div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">💰</span>
+            <span class="font-heading font-bold text-white text-lg">Total Pendapatan</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-heading font-bold text-white text-2xl md:text-3xl">Rp4.500.000 + Rp500.000 + Rp1.800.000 + Rp1.000.000</span>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <div class="inline-block bg-white rounded-xl px-6 py-3 border-3 border-bluepop-900" style="border-width:3px;">
+            <span class="font-heading font-bold text-bluepop-900 text-3xl md:text-4xl">= Rp7.800.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BAGIAN B ===================== -->
+<section id="pengeluaran" class="relative z-10 py-12 px-4">
+  <div class="max-w-5xl mx-auto scroll-reveal">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-14 h-14 bg-bluepop-500 rounded-2xl border-4 border-bluepop-900 flex items-center justify-center text-2xl font-heading font-bold text-white" style="box-shadow:4px 4px 0 #1E3A8A;">
+        B
+      </div>
+      <div>
+        <h2 class="font-heading font-bold text-2xl md:text-3xl text-bluepop-900">Kelompokkan Pengeluaran</h2>
+        <p class="text-bluepop-600 font-body">Sesuai prioritas: Primer, Sekunder, dan Tersier</p>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      <button onclick="filterTable('semua')" class="tab-btn active bg-bluepop-500 text-white text-sm" id="tab-semua">📋 Semua</button>
+      <button onclick="filterTable('primer')" class="tab-btn bg-popgreen text-white text-sm" id="tab-primer">🟢 Primer</button>
+      <button onclick="filterTable('sekunder')" class="tab-btn bg-bluepop-400 text-white text-sm" id="tab-sekunder">🔵 Sekunder</button>
+      <button onclick="filterTable('tersier')" class="tab-btn bg-popyellow text-bluepop-900 text-sm" id="tab-tersier">🟡 Tersier</button>
+    </div>
+
+    <div class="section-card overflow-hidden">
+      <!-- Table Header -->
+      <div class="bg-bluepop-900 text-white p-4 grid grid-cols-12 gap-2 font-heading font-bold text-sm">
+        <div class="col-span-1 text-center">#</div>
+        <div class="col-span-5 md:col-span-6">Jenis Pengeluaran</div>
+        <div class="col-span-3 md:col-span-3 text-right">Jumlah</div>
+        <div class="col-span-3 md:col-span-2 text-center">Kategori</div>
+      </div>
+
+      <!-- Table Body -->
+      <div id="expenseTable">
+        <!-- Primer -->
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="primer">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">1</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🏠 Bayar kontrakan rumah</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp1.200.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-primer text-xs font-bold px-3 py-1 rounded-full inline-block">Primer</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center bg-bluepop-50/50" data-category="primer">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">2</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">💡 Listrik + Air + WiFi</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp650.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-primer text-xs font-bold px-3 py-1 rounded-full inline-block">Primer</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="primer">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">3</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🍳 Belanja dapur & beras sebulan</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp1.500.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-primer text-xs font-bold px-3 py-1 rounded-full inline-block">Primer</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center bg-bluepop-50/50" data-category="primer">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">4</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🎓 Uang SPP anak pertama</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp300.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-primer text-xs font-bold px-3 py-1 rounded-full inline-block">Primer</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="primer">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">5</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🚌 Uang saku & bensin 2 anak sekolah</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp800.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-primer text-xs font-bold px-3 py-1 rounded-full inline-block">Primer</span></div>
+        </div>
+
+        <!-- Sekunder -->
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center bg-bluepop-100/50" data-category="sekunder">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">6</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🏍️ Bayar cicilan motor</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp900.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-sekunder text-xs font-bold px-3 py-1 rounded-full inline-block">Sekunder</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="sekunder">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">7</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🤝 Arisan RT wajib bayar</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp150.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-sekunder text-xs font-bold px-3 py-1 rounded-full inline-block">Sekunder</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center bg-bluepop-100/50" data-category="sekunder">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">8</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🛟 Dana darurat & tabungan</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp500.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-sekunder text-xs font-bold px-3 py-1 rounded-full inline-block">Sekunder</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="sekunder">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">9</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🕌 Sedekah rutin Jumat</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp200.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-sekunder text-xs font-bold px-3 py-1 rounded-full inline-block">Sekunder</span></div>
+        </div>
+
+        <!-- Tersier -->
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center bg-popyellow/10" data-category="tersier">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">10</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">📱 Beli HP baru buat Bu Siti jualan</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp2.200.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-tersier text-xs font-bold px-3 py-1 rounded-full inline-block">Tersier</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="tersier">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">11</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🏖️ Liburan ke Pantai Batakan</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp1.000.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-tersier text-xs font-bold px-3 py-1 rounded-full inline-block">Tersier</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center bg-popyellow/10" data-category="tersier">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">12</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">👕 Beli baju lebaran keluarga</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp1.200.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-tersier text-xs font-bold px-3 py-1 rounded-full inline-block">Tersier</span></div>
+        </div>
+        <div class="table-row p-4 grid grid-cols-12 gap-2 items-center" data-category="tersier">
+          <div class="col-span-1 text-center font-bold text-bluepop-500">13</div>
+          <div class="col-span-5 md:col-span-6 font-bold text-bluepop-900 text-sm">🎬 Langganan Netflix</div>
+          <div class="col-span-3 md:col-span-3 text-right font-heading font-bold text-bluepop-900">Rp65.000</div>
+          <div class="col-span-3 md:col-span-2 text-center"><span class="badge-tersier text-xs font-bold px-3 py-1 rounded-full inline-block">Tersier</span></div>
+        </div>
+      </div>
+
+      <!-- Totals -->
+      <div class="p-5 bg-bluepop-50 border-t-4 border-bluepop-900 space-y-3">
+        <div class="flex flex-wrap gap-3">
+          <div class="flex-1 min-w-[180px] bg-popgreen/20 p-3 rounded-xl border-3 border-popgreen/50" style="border-width:3px;">
+            <div class="text-xs font-bold text-bluepop-700 mb-1">🟢 Total Primer</div>
+            <div class="font-heading font-bold text-bluepop-900 text-lg">Rp4.450.000</div>
+          </div>
+          <div class="flex-1 min-w-[180px] bg-bluepop-100 p-3 rounded-xl border-3 border-bluepop-300" style="border-width:3px;">
+            <div class="text-xs font-bold text-bluepop-700 mb-1">🔵 Total Sekunder</div>
+            <div class="font-heading font-bold text-bluepop-900 text-lg">Rp1.750.000</div>
+          </div>
+          <div class="flex-1 min-w-[180px] bg-popyellow/20 p-3 rounded-xl border-3 border-popyellow/50" style="border-width:3px;">
+            <div class="text-xs font-bold text-bluepop-700 mb-1">🟡 Total Tersier</div>
+            <div class="font-heading font-bold text-bluepop-900 text-lg">Rp4.465.000</div>
+          </div>
+        </div>
+        <div class="bg-popred/20 p-4 rounded-xl border-3 border-popred/50 flex items-center justify-between" style="border-width:3px;">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">😱</span>
+            <span class="font-heading font-bold text-bluepop-900">Total Semua Pengeluaran</span>
+          </div>
+          <span class="font-heading font-bold text-popred text-2xl">Rp10.665.000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BAGIAN C ===================== -->
+<section id="analisis" class="relative z-10 py-12 px-4">
+  <div class="max-w-5xl mx-auto scroll-reveal">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-14 h-14 bg-poppink rounded-2xl border-4 border-bluepop-900 flex items-center justify-center text-2xl font-heading font-bold text-white" style="box-shadow:4px 4px 0 #9D174D;">
+        C
+      </div>
+      <div>
+        <h2 class="font-heading font-bold text-2xl md:text-3xl text-bluepop-900">Analisis & Buat Anggaran</h2>
+        <p class="text-bluepop-600 font-body">Cek kondisi keuangan dan buat rencana yang lebih baik</p>
+      </div>
+    </div>
+
+    <!-- 3. Sisa Uang -->
+    <div class="section-card p-6 md:p-8 mb-8">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="bg-bluepop-500 text-white font-heading font-bold text-xl w-10 h-10 rounded-xl flex items-center justify-center border-2 border-bluepop-900" style="box-shadow:2px 2px 0 #1E3A8A;">3</span>
+        <h3 class="font-heading font-bold text-xl text-bluepop-900">Sisa Uang</h3>
+      </div>
+
+      <div class="bg-bluepop-50 rounded-2xl p-5 border-3 border-bluepop-200 mb-4" style="border-width:3px;">
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-4 flex-wrap text-lg font-bold">
+            <span class="font-heading text-popgreen">Rp7.800.000</span>
+            <span class="text-2xl">➖</span>
+            <span class="font-heading text-popred">Rp10.665.000</span>
+            <span class="text-2xl">=</span>
+          </div>
+          <div class="mt-4 inline-block bg-popred text-white font-heading font-bold text-3xl md:text-4xl px-8 py-4 rounded-2xl border-4 border-bluepop-900 wiggle-anim" style="box-shadow:4px 4px 0 #1E3A8A;">
+            Rp-2.865.000 😱
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-popred/10 rounded-2xl p-5 border-3 border-popred/40" style="border-width:3px;">
+        <div class="flex items-start gap-3">
+          <span class="text-3xl">⚠️</span>
+          <div>
+            <div class="font-heading font-bold text-popred text-lg mb-1">Artinya: Keluarga Pak Rudi TEKOR Rp2.865.000!</div>
+            <p class="text-bluepop-800 font-body">Pengeluaran melebihi pendapatan. Berisiko hutang atau tidak bisa bayar kebutuhan primer. Harus segera ditangani! 🚨</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Anggaran Ideal -->
+    <div class="section-card p-6 md:p-8 mb-8">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="bg-popyellow text-bluepop-900 font-heading font-bold text-xl w-10 h-10 rounded-xl flex items-center justify-center border-2 border-bluepop-900" style="box-shadow:2px 2px 0 #92700C;">4</span>
+        <h3 class="font-heading font-bold text-xl text-bluepop-900">Anggaran Bulanan Ideal (Aturan 50/30/20)</h3>
+      </div>
+
+      <!-- Rule Visual -->
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        <div class="text-center p-4 bg-popgreen/20 rounded-2xl border-3 border-popgreen/50" style="border-width:3px;">
+          <div class="font-heading font-bold text-4xl text-popgreen">50%</div>
+          <div class="font-heading font-bold text-bluepop-900 mt-1">Primer</div>
+          <div class="font-heading font-bold text-bluepop-800">Rp3.900.000</div>
+        </div>
+        <div class="text-center p-4 bg-bluepop-100 rounded-2xl border-3 border-bluepop-300" style="border-width:3px;">
+          <div class="font-heading font-bold text-4xl text-bluepop-500">30%</div>
+          <div class="font-heading font-bold text-bluepop-900 mt-1">Sekunder</div>
+          <div class="font-heading font-bold text-bluepop-800">Rp2.340.000</div>
+        </div>
+        <div class="text-center p-4 bg-popyellow/20 rounded-2xl border-3 border-popyellow/50" style="border-width:3px;">
+          <div class="font-heading font-bold text-4xl text-popyellow">20%</div>
+          <div class="font-heading font-bold text-bluepop-900 mt-1">Tabungan/Tersier</div>
+          <div class="font-heading font-bold text-bluepop-800">Rp1.560.000</div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <h4 class="font-heading font-bold text-lg text-bluepop-900 mb-4">📊 Perbandingan: Anggaran Ideal vs Pengeluaran Asli</h4>
+      <div class="space-y-5">
+        <!-- Primer -->
+        <div class="bg-white rounded-2xl p-5 border-3 border-bluepop-200" style="border-width:3px;">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-heading font-bold text-bluepop-900">🟢 Primer</span>
+            <span class="font-heading font-bold text-popred text-sm bg-popred/10 px-3 py-1 rounded-full border-2 border-popred/30">Over Rp550.000 ⬆️</span>
+          </div>
+          <div class="progress-bar mb-2">
+            <div class="progress-fill bg-popgreen" style="width: 0%;" data-target="87"></div>
+          </div>
+          <div class="flex justify-between text-sm font-bold">
+            <span class="text-bluepop-600">Ideal: Rp3.900.000</span>
+            <span class="text-popred">Asli: Rp4.450.000</span>
+          </div>
+        </div>
+        <!-- Sekunder -->
+        <div class="bg-white rounded-2xl p-5 border-3 border-bluepop-200" style="border-width:3px;">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-heading font-bold text-bluepop-900">🔵 Sekunder</span>
+            <span class="font-heading font-bold text-popgreen text-sm bg-popgreen/10 px-3 py-1 rounded-full border-2 border-popgreen/30">Under Rp590.000 ⬇️</span>
+          </div>
+          <div class="progress-bar mb-2">
+            <div class="progress-fill bg-bluepop-400" style="width: 0%;" data-target="75"></div>
+          </div>
+          <div class="flex justify-between text-sm font-bold">
+            <span class="text-bluepop-600">Ideal: Rp2.340.000</span>
+            <span class="text-popgreen">Asli: Rp1.750.000</span>
+          </div>
+        </div>
+        <!-- Tersier -->
+        <div class="bg-white rounded-2xl p-5 border-3 border-popred/30" style="border-width:3px;">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-heading font-bold text-bluepop-900">🟡 Tersier</span>
+            <span class="font-heading font-bold text-popred text-sm bg-popred/10 px-3 py-1 rounded-full border-2 border-popred/30">Over Rp2.905.000 🔺 3x lipat!</span>
+          </div>
+          <div class="progress-bar mb-2">
+            <div class="progress-fill bg-popred" style="width: 0%;" data-target="100"></div>
+          </div>
+          <div class="flex justify-between text-sm font-bold">
+            <span class="text-bluepop-600">Ideal: Rp1.560.000</span>
+            <span class="text-popred">Asli: Rp4.465.000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="mt-6 bg-popred/10 p-5 rounded-2xl border-3 border-popred/40" style="border-width:3px;">
+        <div class="flex items-start gap-3">
+          <span class="text-3xl">❌</span>
+          <div>
+            <div class="font-heading font-bold text-popred text-lg mb-1">Kesimpulan: Belum Sehat!</div>
+            <p class="text-bluepop-800 font-body"><strong>Tersier kelebihan 3x lipat</strong>, primer juga over. Harus potong tersier dulu! ✂️</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Saran -->
+    <div class="section-card p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="bg-popgreen text-white font-heading font-bold text-xl w-10 h-10 rounded-xl flex items-center justify-center border-2 border-bluepop-900" style="box-shadow:2px 2px 0 #065F46;">5</span>
+        <h3 class="font-heading font-bold text-xl text-bluepop-900">3 Saran untuk Keluarga Pak Rudi 💡</h3>
+      </div>
+
+      <div class="space-y-5">
+        <!-- Saran 1 -->
+        <div class="bg-popgreen/10 rounded-2xl p-5 border-3 border-popgreen/50 relative overflow-hidden" style="border-width:3px;">
+          <div class="absolute top-0 right-0 bg-popgreen text-white font-heading font-bold text-5xl opacity-10 leading-none px-3">01</div>
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-popgreen rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl shrink-0" style="box-shadow:2px 2px 0 #065F46;">✂️</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900 text-lg mb-2">Tunda beli HP baru & liburan</div>
+              <p class="text-bluepop-800 font-body text-sm leading-relaxed">HP baru (Rp2,2 juta) dan liburan (Rp1 juta) ditunda dulu. Bu Siti bisa pakai HP lama + aplikasi gratis seperti Google Sheets untuk catat orderan kue. <strong class="text-popgreen">Hemat Rp3,2 juta</strong> — langsung tutup defisit! 💪</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saran 2 -->
+        <div class="bg-bluepop-50 rounded-2xl p-5 border-3 border-bluepop-300 relative overflow-hidden" style="border-width:3px;">
+          <div class="absolute top-0 right-0 bg-bluepop-500 text-white font-heading font-bold text-5xl opacity-10 leading-none px-3">02</div>
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-bluepop-500 rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl shrink-0" style="box-shadow:2px 2px 0 #1E3A8A;">👕</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900 text-lg mb-2">Baju lebaran → second / diskon</div>
+              <p class="text-bluepop-800 font-body text-sm leading-relaxed">Beli baju lebaran diganti beli second atau diskon akhir tahun. Rp1,2 juta bisa dialihkan ke dana darurat. <strong class="text-bluepop-600">THR lebih baik untuk kebutuhan primer</strong>, bukan tersier. 🎯</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saran 3 -->
+        <div class="bg-popyellow/10 rounded-2xl p-5 border-3 border-popyellow/50 relative overflow-hidden" style="border-width:3px;">
+          <div class="absolute top-0 right-0 bg-popyellow text-bluepop-900 font-heading font-bold text-5xl opacity-10 leading-none px-3">03</div>
+          <div class="flex items-start gap-3">
+            <div class="w-12 h-12 bg-popyellow rounded-xl border-3 border-bluepop-900 flex items-center justify-center text-xl shrink-0" style="box-shadow:2px 2px 0 #92700C;">🎬</div>
+            <div>
+              <div class="font-heading font-bold text-bluepop-900 text-lg mb-2">Batasi Netflix & kurangi uang saku</div>
+              <p class="text-bluepop-800 font-body text-sm leading-relaxed">Batasi Netflix (Rp65rb) dan kurangi uang saku anak jadi Rp600rb. <strong class="text-popyellow">Hemat Rp265rb</strong>. Ajari anak pakai transportasi sekolah atau jalan kaki untuk hemat bensin. 🚶‍♂️</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BAGIAN D ===================== -->
+<section id="rpl" class="relative z-10 py-12 px-4">
+  <div class="max-w-4xl mx-auto scroll-reveal">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-14 h-14 bg-poppurple rounded-2xl border-4 border-bluepop-900 flex items-center justify-center text-2xl font-heading font-bold text-white" style="box-shadow:4px 4px 0 #5B21B6;">
+        D
+      </div>
+      <div>
+        <h2 class="font-heading font-bold text-2xl md:text-3xl text-bluepop-900">Tantangan RPL</h2>
+        <p class="text-bluepop-600 font-body">Data minimal untuk aplikasi pencatat keuangan keluarga</p>
+      </div>
+    </div>
+
+    <div class="section-card p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="bg-poppurple text-white font-heading font-bold text-xl w-10 h-10 rounded-xl flex items-center justify-center border-2 border-bluepop-900" style="box-shadow:2px 2px 0 #5B21B6;">6</span>
+        <h3 class="font-heading font-bold text-xl text-bluepop-900">5 Input Utama Aplikasi Pencatat Keuangan 💻</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="bg-bluepop-50 rounded-2xl p-5 border-3 border-bluepop-200 flex items-start gap-3 hover:border-bluepop-400 transition-all cursor-pointer" style="border-width:3px;" onclick="showToast('📅 Tanggal penting untuk laporan bulanan & tahunan!', 'bluepop')">
+          <div class="w-10 h-10 bg-bluepop-500 rounded-xl border-2 border-bluepop-900 flex items-center justify-center text-white font-heading font-bold shrink-0" style="box-shadow:2px 2px 0 #1E3A8A;">1</div>
+          <div>
+            <div class="font-heading font-bold text-bluepop-900">📅 Tanggal Transaksi</div>
+            <div class="text-sm text-bluepop-600 mt-1">Untuk laporan bulanan/tahunan</div>
+          </div>
+        </div>
+
+        <div class="bg-popgreen/10 rounded-2xl p-5 border-3 border-popgreen/40 flex items-start gap-3 hover:border-popgreen transition-all cursor-pointer" style="border-width:3px;" onclick="showToast('💰 Jumlah uang: positif = pemasukan, negatif = pengeluaran', 'green')">
+          <div class="w-10 h-10 bg-popgreen rounded-xl border-2 border-bluepop-900 flex items-center justify-center text-white font-heading font-bold shrink-0" style="box-shadow:2px 2px 0 #065F46;">2</div>
+          <div>
+            <div class="font-heading font-bold text-bluepop-900">💰 Jumlah Uang</div>
+            <div class="text-sm text-bluepop-600 mt-1">Positif pemasukan, negatif pengeluaran</div>
+          </div>
+        </div>
+
+        <div class="bg-popyellow/10 rounded-2xl p-5 border-3 border-popyellow/40 flex items-start gap-3 hover:border-popyellow transition-all cursor-pointer" style="border-width:3px;" onclick="showToast('🏷️ Kategori bisa custom: Makan, Cicilan, Hiburan, dll.', 'yellow')">
+          <div class="w-10 h-10 bg-popyellow rounded-xl border-2 border-bluepop-900 flex items-center justify-center text-bluepop-900 font-heading font-bold shrink-0" style="box-shadow:2px 2px 0 #92700C;">3</div>
+          <div>
+            <div class="font-heading font-bold text-bluepop-900">🏷️ Kategori</div>
+            <div class="text-sm text-bluepop-600 mt-1">Primer/Sekunder/Tersier atau custom</div>
+          </div>
+        </div>
+
+        <div class="bg-poppink/10 rounded-2xl p-5 border-3 border-poppink/40 flex items-start gap-3 hover:border-poppink transition-all cursor-pointer" style="border-width:3px;" onclick="showToast('📝 Contoh: Bayar listrik PLN Mei 2025', 'pink')">
+          <div class="w-10 h-10 bg-poppink rounded-xl border-2 border-bluepop-900 flex items-center justify-center text-white font-heading font-bold shrink-0" style="box-shadow:2px 2px 0 #9D174D;">4</div>
+          <div>
+            <div class="font-heading font-bold text-bluepop-900">📝 Deskripsi</div>
+            <div class="text-sm text-bluepop-600 mt-1">Contoh: "Bayar listrik PLN Mei"</div>
+          </div>
+        </div>
+
+        <div class="bg-poppurple/10 rounded-2xl p-5 border-3 border-poppurple/40 flex items-start gap-3 hover:border-poppurple transition-all md:col-span-2 cursor-pointer" style="border-width:3px;" onclick="showToast('🔄 Jenis transaksi: Pemasukan / Pengeluaran / Transfer tabungan', 'purple')">
+          <div class="w-10 h-10 bg-poppurple rounded-xl border-2 border-bluepop-900 flex items-center justify-center text-white font-heading font-bold shrink-0" style="box-shadow:2px 2px 0 #5B21B6;">5</div>
+          <div>
+            <div class="font-heading font-bold text-bluepop-900">🔄 Jenis</div>
+            <div class="text-sm text-bluepop-600 mt-1">Pemasukan / Pengeluaran / Transfer ke tabungan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bonus Features -->
+      <div class="bg-gradient-to-r from-bluepop-500 to-poppurple p-5 rounded-2xl border-4 border-bluepop-900" style="box-shadow:4px 4px 0 #1E3A8A;">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">⭐</span>
+          <span class="font-heading font-bold text-white text-lg">Bonus Fitur RPL</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-white/20 backdrop-blur text-white font-bold text-sm px-4 py-2 rounded-xl border-2 border-white/30">📊 Grafik pie chart prioritas</span>
+          <span class="bg-white/20 backdrop-blur text-white font-bold text-sm px-4 py-2 rounded-xl border-2 border-white/30">🚨 Alert kalau tersier >20%</span>
+          <span class="bg-white/20 backdrop-blur text-white font-bold text-sm px-4 py-2 rounded-xl border-2 border-white/30">📄 Export PDF laporan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RINGKASAN ===================== -->
+<section class="relative z-10 py-12 px-4">
+  <div class="max-w-4xl mx-auto scroll-reveal">
+    <div class="section-card overflow-hidden">
+      <div class="bg-bluepop-900 p-6 md:p-8 text-center">
+        <span class="text-5xl mb-4 inline-block bounce-anim">🏆</span>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl text-white mb-2">Ringkasan Akhir</h2>
+        <p class="text-bluepop-300 font-body">Semua yang perlu kamu ingat!</p>
+      </div>
+
+      <div class="p-6 md:p-8 space-y-4">
+        <div class="flex items-center justify-between p-4 bg-popgreen/10 rounded-2xl border-3 border-popgreen/50" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">✅</span>
+            <span class="font-heading font-bold text-bluepop-900 text-lg">Total Pendapatan</span>
+          </div>
+          <span class="font-heading font-bold text-popgreen text-2xl">Rp7.800.000</span>
+        </div>
+
+        <div class="flex items-center justify-between p-4 bg-popred/10 rounded-2xl border-3 border-popred/50" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">❌</span>
+            <span class="font-heading font-bold text-bluepop-900 text-lg">Total Pengeluaran</span>
+          </div>
+          <span class="font-heading font-bold text-popred text-2xl">Rp10.665.000</span>
+        </div>
+
+        <div class="flex items-center justify-between p-4 bg-popred/10 rounded-2xl border-3 border-popred/50" style="border-width:3px;">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">📉</span>
+            <span class="font-heading font-bold text-bluepop-900 text-lg">Tekor (Defisit)</span>
+          </div>
+          <span class="font-heading font-bold text-popred text-2xl wiggle-anim">Rp2.865.000</span>
+        </div>
+
+        <div class="p-5 bg-popgreen/20 rounded-2xl border-3 border-popgreen" style="border-width:3px;">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-3xl">🎯</span>
+            <span class="font-heading font-bold text-bluepop-900 text-xl">Solusi:</span>
+          </div>
+          <p class="font-body text-bluepop-800 text-lg ml-12">
+            Potong tersier <strong>Rp3 juta</strong> → langsung <strong class="text-popgreen">SURPLUS!</strong> 🎉
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="p-6 md:p-8 bg-bluepop-50 text-center border-t-4 border-bluepop-900">
+        <div class="mb-4">
+          <span class="text-4xl inline-block bounce-anim">🥳</span>
+        </div>
+        <p class="font-heading font-bold text-bluepop-900 text-2xl mb-2">Sudah selesee buu</p>
+        <p class="text-bluepop-600 font-body mb-6">Diolah dari codingan .html di hosting dari cloudflare</p>
+        <button onclick="launchConfetti(); showToast('🎉 Horeee!', 'success')" class="bg-bluepop-500 text-white font-heading font-bold text-lg px-8 py-4 rounded-2xl border-4 border-bluepop-900 hover:bg-bluepop-600 transition-all active:translate-x-1 active:translate-y-1" style="box-shadow:4px 4px 0 #1E3A8A;">
+          📨 Coba Klik Buu ^^
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="relative z-10 py-8 px-4 mt-8">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="bg-white/60 backdrop-blur rounded-2xl p-6 border-3 border-bluepop-200" style="border-width:3px;">
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <span class="text-2xl">📖</span>
+        <span class="font-heading font-bold text-bluepop-900">LKS Keuangan Keluarga Pak Rudi</span>
+      </div>
+      <p class="text-bluepop-500 text-sm font-body">Thio Saputra | SMKN 4 Banjarmasin</p>
+    </div>
+  </div>
+</footer>
+
+<div style="height:40px;"></div>
+
+<script>
+// Toast Notification
+function showToast(message, type = 'bluepop') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+
+  const colors = {
+    bluepop: 'bg-bluepop-100 text-bluepop-900 border-bluepop-900',
+    green: 'bg-popgreen/20 text-bluepop-900 border-bluepop-900',
+    yellow: 'bg-popyellow/20 text-bluepop-900 border-bluepop-900',
+    pink: 'bg-poppink/20 text-bluepop-900 border-bluepop-900',
+    purple: 'bg-poppurple/20 text-bluepop-900 border-bluepop-900',
+    success: 'bg-popgreen text-white border-bluepop-900',
+    error: 'bg-popred text-white border-bluepop-900',
+  };
+
+  toast.className = `toast ${colors[type] || colors.bluepop}`;
+  toast.innerHTML = message;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.transition = 'all 0.3s ease';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(100px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+// Filter Table
+function filterTable(category) {
+  const rows = document.querySelectorAll('#expenseTable .table-row');
+  const tabs = document.querySelectorAll('.tab-btn');
+
+  tabs.forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + category).classList.add('active');
+
+  rows.forEach(row => {
+    if (category === 'semua') {
+      row.style.display = '';
+    } else {
+      row.style.display = row.dataset.category === category ? '' : 'none';
+    }
+  });
+}
+
+// Progress Bar Animation
+function animateProgressBars() {
+  const fills = document.querySelectorAll('.progress-fill');
+  fills.forEach(fill => {
+    const target = fill.dataset.target;
+    if (target) {
+      setTimeout(() => {
+        fill.style.width = target + '%';
+      }, 300);
+    }
+  });
+}
+
+// Scroll Reveal
+function handleScrollReveal() {
+  const elements = document.querySelectorAll('.scroll-reveal');
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+// Confetti
+function launchConfetti() {
+  const colors = ['#3B82F6', '#FBBF24', '#F472B6', '#34D399', '#FB923C', '#A78BFA', '#F87171'];
+  for (let i = 0; i < 50; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.top = '-10px';
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    piece.style.animationDelay = Math.random() * 0.5 + 's';
+    piece.style.width = (Math.random() * 8 + 6) + 'px';
+    piece.style.height = (Math.random() * 8 + 6) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 4000);
+  }
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Init
+window.addEventListener('scroll', handleScrollReveal);
+window.addEventListener('load', () => {
+  handleScrollReveal();
+  setTimeout(animateProgressBars, 800);
+});
+</script>
+
+</body>
+</html>
