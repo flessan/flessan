@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>404 - Route Not Found | Thio Saputra</title>
+
+    <!-- Preconnect & Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Prevent FOUC for Dark Mode -->
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #eaf4fb;
+            --content-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #34495e;
+            --text-muted: #7f8c8d;
+            --accent: #4bb2e1;
+            --accent-hover: #3997c6;
+            --border: #d0eafc;
+            --skill-bg: #d0eafc;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark {
+            --bg-color: #0a0a0a;
+            --content-bg: #1e2a38;
+            --text-main: #ecf0f1;
+            --text-secondary: #bdc3c7;
+            --text-muted: #7f8c8d;
+            --accent: #367d9e;
+            --accent-hover: #388cb5;
+            --border: #34495e;
+            --skill-bg: #1e2a38;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.7;
+            transition: background .4s ease, color .4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .error-container {
+            background: var(--content-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px 32px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: background .4s ease, border-color .4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background element */
+        .error-container::before {
+            content: ">_";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.3;
+        }
+
+        .error-code {
+            font-size: 100px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 10px rgba(75, 178, 225, 0.2);
+        }
+
+        .error-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            transition: color .3s;
+        }
+
+        .error-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            transition: color .3s;
+        }
+
+        .terminal-box {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            font-size: 13px;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+        }
+
+        .terminal-box .cmd::before {
+            content: "$ ";
+            color: var(--accent);
+        }
+
+        .terminal-box .cmd {
+            color: #fff;
+        }
+
+        .terminal-box .output {
+            color: #ff5555;
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Nunito', sans-serif;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all .3s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(75, 178, 225, .3);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn-back svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Dark Mode Toggle for 404 page */
+        .theme-toggle-404 {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all .3s ease;
+        }
+
+        .theme-toggle-404:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .theme-toggle-404 svg {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="error-container">
+        <button id="theme-toggle-404" class="theme-toggle-404" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
+
+        <div class="error-code">404</div>
+        <h1 class="error-title">Deployment Failed: Route Not Found</h1>
+        <p class="error-desc">Oops! The requested pipeline broke or this endpoint hasn't been pushed to production yet.
+        </p>
+
+        <div class="terminal-box">
+            <span class="cmd">curl -I https://flessan.pages.dev<span id="path-display"></span></span>
+            <span class="output">HTTP/1.1 404 Not Found</span>
+        </div>
+
+        <a href="/" class="btn-back">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Rollback to Homepage
+        </a>
+    </div>
+
+    <script>
+        // Display dynamic path in terminal box
+        const pathDisplay = document.getElementById('path-display');
+        if (window.location.pathname !== '/') {
+            pathDisplay.textContent = window.location.pathname;
+        }
+
+        // Simple Dark mode toggle for 404 page
+        const toggle404 = document.getElementById('theme-toggle-404');
+        const html = document.documentElement;
+
+        // Swap icon on load if dark
+        function updateIcon() {
+            const isDark = html.classList.contains('dark');
+            if (isDark) {
+                toggle404.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+            } else {
+                toggle404.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+            }
+        }
+        updateIcon();
+
+        toggle404.addEventListener('click', function () {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateIcon();
+        });
+    </script>
+</body>
+
+</html>
