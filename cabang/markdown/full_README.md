@@ -248,8 +248,8 @@ Check out my project hub for more creations, experiments, and tools:
 
 If you find my projects helpful and want to support my work:
 
-<a href="https://saweria.co/thiosaputra">
-  <img src="https://img.shields.io/badge/Support_Me-Saweria-red?logo=buymeacoffee&logoColor=white" alt="Support Me on Saweria">
+<a href="https://trakteer.id/flessan">
+  <img src="https://img.shields.io/badge/Support_Me-Trakteer-red?logo=buymeacoffee&logoColor=white" alt="Support Me on Trakteer">
 </a>
 
 ---

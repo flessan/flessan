@@ -1,0 +1,67 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Smooth transition */
+button,
+input,
+select,
+textarea {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Prevent iOS auto-zoom */
+input,
+select,
+textarea {
+    font-size: 16px !important;
+}
+
+@media (min-width: 768px) {
+
+    input,
+    select,
+    textarea {
+        font-size: 14px !important;
+    }
+}
+
+/* Active state feedback */
+button:active {
+    transform: scale(0.97);
+}
+
+/* Line clamp for notes */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Tab button active state */
+.tab-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* Note card hover effect */
+.note-card:hover {
+    transform: translateY(-2px);
+}

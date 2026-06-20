@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinShare Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+    // Check Neon Auth session
+    (async () => {
+        if (window.authClient) {
+            const { data } = await authClient.getSession();
+            if (data?.session) {
+                // Update userId dari Neon session
+                localStorage.setItem('userId', data.session.user.id);
+                localStorage.setItem('neonSession', JSON.stringify(data.session));
+            }
+        }
+    })();
+</script>
+
+<body class="bg-gray-50 text-gray-800 pb-20 lg:pb-0">
+
+    <!-- Top Navbar dengan Profile Dropdown -->
+    <nav class="bg-white border-b border-gray-200 px-4 py-3 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">💰</span>
+                <h1 class="text-xl font-bold text-gray-800 hidden sm:block">FinShare</h1>
+            </div>
+
+            <div class="flex items-center gap-3 relative">
+                <!-- Streak Badge -->
+                <div id="streakBadge"
+                    class="hidden sm:flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full text-xs font-bold shadow-md">
+                    <span>🔥</span>
+                    <span id="streakCount">0</span>
+                    <span class="opacity-80">days</span>
+                </div>
+
+                <!-- Profile Dropdown Trigger -->
+                <button onclick="toggleProfileMenu()"
+                    class="flex items-center gap-2 p-1 pr-3 rounded-full hover:bg-gray-100 transition"
+                    id="profileTrigger">
+                    <img id="userAvatar" src="https://ui-avatars.com/api/?name=U&background=8b5cf6&color=fff"
+                        alt="Avatar" class="w-8 h-8 rounded-full border-2 border-purple-500">
+                    <span id="userName" class="text-sm font-medium text-gray-700 hidden sm:inline">Loading...</span>
+                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <!-- Profile Dropdown Menu -->
+                <div id="profileMenu"
+                    class="hidden absolute top-full right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50">
+                    <!-- Header -->
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-600 p-4 text-white">
+                        <div class="flex items-center gap-3">
+                            <img id="menuAvatar" src="" alt="" class="w-14 h-14 rounded-full border-2 border-white/30">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2">
+                                    <h3 id="menuName" class="font-bold text-lg truncate">User</h3>
+                                    <span id="roleBadge"
+                                        class="hidden px-2 py-0.5 bg-white/20 rounded-full text-xs font-semibold"></span>
+                                </div>
+                                <p id="menuUsername" class="text-sm opacity-90 truncate">@username</p>
+                                <p id="menuEmail" class="text-xs opacity-75 truncate">email@example.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-white/20">
+                            <div class="text-center">
+                                <div id="statDonations" class="text-xl font-bold">0</div>
+                                <div class="text-xs opacity-80">Donations</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="statStreak" class="text-xl font-bold">0</div>
+                                <div class="text-xs opacity-80">Streak</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="statBadges" class="text-xl font-bold">0</div>
+                                <div class="text-xs opacity-80">Badges</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Menu Items -->
+                    <div class="p-2">
+                        <a href="#" onclick="viewMyProfile(); return false;"
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition">
+                            <span class="text-lg">👤</span>
+                            <span class="text-sm font-medium text-gray-700">My Profile</span>
+                        </a>
+                        <a href="#" onclick="openEditProfile(); return false;"
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition">
+                            <span class="text-lg">✏️</span>
+                            <span class="text-sm font-medium text-gray-700">Edit Profile</span>
+                        </a>
+                        <a href="#" onclick="syncGitHub(); return false;"
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 transition">
+                            <span class="text-lg">🔄</span>
+                            <span class="text-sm font-medium text-gray-700">Sync from GitHub</span>
+                        </a>
+
+                        <div class="border-t border-gray-100 my-2"></div>
+
+                        <button onclick="logout()"
+                            class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-50 transition text-left">
+                            <span class="text-lg">🚪</span>
+                            <span class="text-sm font-medium text-red-600">Sign Out</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="fixed top-20 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg z-50 transition-all duration-300 opacity-0 pointer-events-none text-sm font-medium">
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto p-4 lg:p-8">
+
+        <!-- Desktop Tab Navigation -->
+        <div class="hidden lg:flex space-x-2 mb-8 bg-white p-2 rounded-2xl shadow-sm">
+            <button onclick="switchTab('home')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-medium transition"
+                data-tab="home">🏠 Home</button>
+            <button onclick="switchTab('budget')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-medium transition"
+                data-tab="budget">💸 Budget</button>
+            <button onclick="switchTab('donate')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-medium transition"
+                data-tab="donate">❤️ Donasi</button>
+            <button onclick="switchTab('goals')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-medium transition"
+                data-tab="goals">🎯 Goals</button>
+            <button onclick="switchTab('notes')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-medium transition"
+                data-tab="notes">📝 Notes</button>
+        </div>
+
+        <!-- ==================== HOME TAB ==================== -->
+        <div id="tab-home" class="tab-content space-y-6">
+            <div class="flex items-center gap-4">
+                <img id="homeAvatar" src="" alt="Avatar" class="w-16 h-16 rounded-full border-4 border-purple-500">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">Halo, <span id="homeUserName"></span>! 👋</h2>
+                    <p class="text-sm text-gray-500" id="homeUserEmail"></p>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-green-500">
+                    <p class="text-sm text-gray-500 mb-1">Pemasukan</p>
+                    <p id="sum_income" class="text-2xl font-bold text-green-600">Rp 0</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-red-500">
+                    <p class="text-sm text-gray-500 mb-1">Pengeluaran</p>
+                    <p id="sum_expense" class="text-2xl font-bold text-red-600">Rp 0</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-500">
+                    <p class="text-sm text-gray-500 mb-1">Saldo</p>
+                    <p id="sum_balance" class="text-2xl font-bold text-blue-600">Rp 0</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-emerald-500">
+                    <p class="text-sm text-gray-500 mb-1">Total Donasi</p>
+                    <p id="sum_donation" class="text-2xl font-bold text-emerald-600">Rp 0</p>
+                </div>
+            </div>
+
+            <!-- Fun Features -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-gradient-to-br from-purple-500 to-indigo-600 p-6 rounded-2xl text-white shadow-lg">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-lg">🤡 Financial Roast</h3>
+                        <button onclick="loadRoast()"
+                            class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition active:scale-95">🔄</button>
+                    </div>
+                    <div id="roastContent" class="text-sm opacity-90 mb-3">Memuat...</div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex-1 bg-white/20 rounded-full h-2">
+                            <div id="roastScoreBar" class="bg-white h-2 rounded-full transition-all" style="width: 0%">
+                            </div>
+                        </div>
+                        <span id="roastScore" class="text-xs font-bold">0</span>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-amber-400 to-orange-500 p-6 rounded-2xl text-white shadow-lg">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-lg">🔮 Daily Fortune</h3>
+                        <button onclick="loadFortune()"
+                            class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition active:scale-95">🔄</button>
+                    </div>
+                    <p id="fortuneContent" class="text-sm italic opacity-90">Memuat...</p>
+                </div>
+            </div>
+
+            <!-- Achievements & Leaderboard -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-gray-800 text-lg">🏅 Pencapaian</h3>
+                    <button onclick="checkAchievements()"
+                        class="text-xs bg-blue-100 text-blue-600 px-3 py-1.5 rounded-full hover:bg-blue-200 transition active:scale-95">Cek
+                        Baru</button>
+                </div>
+                <div id="achievementsList" class="flex flex-wrap gap-2 mb-6"></div>
+
+                <h3 class="font-bold text-gray-800 mb-3 pt-4 border-t">🏆 Top Donors</h3>
+                <div id="leaderboardList" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- ==================== BUDGET TAB ==================== -->
+        <div id="tab-budget" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-gray-800">💸 Budget</h2>
+                <button onclick="exportBudget()"
+                    class="text-xs bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition active:scale-95">📥
+                    Export</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm">
+                <h3 class="font-semibold text-gray-700 mb-4">Tambah Transaksi</h3>
+                <form id="budgetForm" class="space-y-4">
+                    <input type="text" id="budget_category" placeholder="Kategori (misal: Makan, Gaji)"
+                        class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                            <input type="text" id="budget_amount_formatted" placeholder="1.000"
+                                class="w-full pl-10 pr-3 p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                            <input type="hidden" id="budget_amount">
+                        </div>
+                        <select id="budget_type"
+                            class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                            <option value="expense">Pengeluaran</option>
+                            <option value="income">Pemasukan</option>
+                        </select>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white p-3 rounded-xl font-semibold hover:bg-blue-700 transition active:scale-95">Simpan</button>
+                </form>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm">
+                <h3 class="font-semibold text-gray-700 mb-4">Filter</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <select id="filter_type" onchange="loadBudgets()"
+                        class="p-3 border rounded-xl outline-none bg-white">
+                        <option value="">Semua</option>
+                        <option value="income">Pemasukan</option>
+                        <option value="expense">Pengeluaran</option>
+                    </select>
+                    <input type="text" id="filter_category" onkeyup="debouncedLoadBudgets()"
+                        placeholder="Cari kategori..." class="p-3 border rounded-xl outline-none">
+                </div>
+            </div>
+
+            <div id="budgetList" class="space-y-3"></div>
+        </div>
+
+        <!-- ==================== DONATE TAB ==================== -->
+        <div id="tab-donate" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-gray-800">❤️ Donasi</h2>
+                <button onclick="exportDonations()"
+                    class="text-xs bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition active:scale-95">📥
+                    Export</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm">
+                <h3 class="font-semibold text-gray-700 mb-4">Buat Kampanye</h3>
+                <form id="campaignForm" class="space-y-3">
+                    <input type="text" id="camp_name" placeholder="Nama Kampanye"
+                        class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500" required>
+                    <textarea id="camp_desc" placeholder="Deskripsi (opsional)"
+                        class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
+                        rows="2"></textarea>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                        <input type="text" id="camp_target_formatted" placeholder="1.000.000"
+                            class="w-full pl-10 pr-3 p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
+                            required>
+                        <input type="hidden" id="camp_target">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-emerald-600 text-white p-3 rounded-xl font-semibold hover:bg-emerald-700 transition active:scale-95">Buat
+                        Kampanye</button>
+                </form>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-gray-700 mb-3">Kampanye Aktif</h3>
+                <div id="campaignList" class="space-y-3"></div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <h3 class="font-semibold text-gray-700 mb-4">Kirim Donasi</h3>
+                <form id="donationForm" class="space-y-3">
+                    <select id="don_campaign_id"
+                        class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+                        required>
+                        <option value="">Pilih Kampanye...</option>
+                    </select>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="don_name" placeholder="Nama Donatur"
+                            class="p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500" required>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                            <input type="text" id="don_amount_formatted" placeholder="50.000"
+                                class="w-full pl-10 pr-3 p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
+                                required>
+                            <input type="hidden" id="don_amount">
+                        </div>
+                    </div>
+                    <textarea id="don_message" placeholder="Pesan (opsional)"
+                        class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
+                        rows="2"></textarea>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button type="submit"
+                            class="bg-emerald-600 text-white p-3 rounded-xl font-semibold hover:bg-emerald-700 transition active:scale-95">💝
+                            Donasi</button>
+                        <button type="button" onclick="submitMysteryDonation()"
+                            class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-3 rounded-xl font-semibold hover:opacity-90 transition active:scale-95">🎰
+                            Gacha!</button>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-gray-700 mb-3">Feed Terbaru</h3>
+                <div id="donationList" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- ==================== GOALS TAB ==================== -->
+        <div id="tab-goals" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-gray-800">🎯 Goals</h2>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm">
+                <h3 class="font-semibold text-gray-700 mb-4">Buat Target Baru</h3>
+                <form id="goalForm" class="space-y-3">
+                    <input type="text" id="goal_name" placeholder="Nama (misal: Beli Laptop)"
+                        class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                        <input type="text" id="goal_target_formatted" placeholder="5.000.000"
+                            class="w-full pl-10 pr-3 p-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"
+                            required>
+                        <input type="hidden" id="goal_target">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-indigo-600 text-white p-3 rounded-xl font-semibold hover:bg-indigo-700 transition active:scale-95">Buat
+                        Target</button>
+                </form>
+            </div>
+
+            <div id="goalsList" class="space-y-3"></div>
+        </div>
+
+        <!-- ==================== NOTES TAB ==================== -->
+        <div id="tab-notes" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-gray-800">📝 Catatan</h2>
+                <button onclick="openNoteModal()"
+                    class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition text-sm font-medium active:scale-95">+
+                    Catatan Baru</button>
+            </div>
+
+            <div id="notesList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+    </main>
+
+    <!-- Note Modal -->
+    <div id="noteModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800" id="noteModalTitle">Catatan Baru</h2>
+            <input type="hidden" id="noteId">
+            <div class="space-y-4">
+                <input type="text" id="noteTitle" placeholder="Judul"
+                    class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500 text-lg font-semibold">
+                <textarea id="noteContent" placeholder="Isi catatan..."
+                    class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="6"></textarea>
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-gray-700">Warna Catatan</label>
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="selectNoteColor('white')"
+                            class="color-btn w-10 h-10 rounded-full bg-white border-2 border-gray-300 hover:scale-110 transition"
+                            data-color="white"></button>
+                        <button onclick="selectNoteColor('yellow')"
+                            class="color-btn w-10 h-10 rounded-full bg-yellow-200 border-2 border-transparent hover:scale-110 transition"
+                            data-color="yellow"></button>
+                        <button onclick="selectNoteColor('green')"
+                            class="color-btn w-10 h-10 rounded-full bg-green-200 border-2 border-transparent hover:scale-110 transition"
+                            data-color="green"></button>
+                        <button onclick="selectNoteColor('blue')"
+                            class="color-btn w-10 h-10 rounded-full bg-blue-200 border-2 border-transparent hover:scale-110 transition"
+                            data-color="blue"></button>
+                        <button onclick="selectNoteColor('pink')"
+                            class="color-btn w-10 h-10 rounded-full bg-pink-200 border-2 border-transparent hover:scale-110 transition"
+                            data-color="pink"></button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" id="notePinned" class="w-5 h-5">
+                    <label for="notePinned" class="text-sm text-gray-700">📌 Pin catatan</label>
+                </div>
+            </div>
+            <div class="mt-6 flex gap-2">
+                <button onclick="closeNoteModal()"
+                    class="flex-1 px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition active:scale-95">Batal</button>
+                <button onclick="deleteNote()" id="deleteNoteBtn"
+                    class="px-4 py-3 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition hidden active:scale-95">🗑️
+                    Hapus</button>
+                <button onclick="saveNote()"
+                    class="flex-1 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition active:scale-95">💾
+                    Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contribute Modal -->
+    <div id="contributeModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Tambah Tabungan</h2>
+            <div class="relative mb-4">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                <input type="text" id="contributeAmountFormatted" placeholder="100.000"
+                    class="w-full pl-10 pr-3 p-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
+                <input type="hidden" id="contributeAmount">
+            </div>
+            <div class="flex gap-2">
+                <button onclick="closeContributeModal()"
+                    class="flex-1 px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition active:scale-95">Batal</button>
+                <button onclick="submitContribution()"
+                    class="flex-1 px-4 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition active:scale-95">Tambah</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile Only) -->
+    <nav
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center h-16 z-40 shadow-lg">
+        <button onclick="switchTab('home')"
+            class="nav-btn flex flex-col items-center justify-center w-full h-full text-blue-600" data-tab="home">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                </path>
+            </svg>
+            <span class="text-[10px] mt-1 font-medium">Home</span>
+        </button>
+        <button onclick="switchTab('budget')"
+            class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400" data-tab="budget">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
+                </path>
+            </svg>
+            <span class="text-[10px] mt-1 font-medium">Budget</span>
+        </button>
+        <button onclick="switchTab('donate')"
+            class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400" data-tab="donate">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                </path>
+            </svg>
+            <span class="text-[10px] mt-1 font-medium">Donasi</span>
+        </button>
+        <button onclick="switchTab('goals')"
+            class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400" data-tab="goals">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
+                </path>
+            </svg>
+            <span class="text-[10px] mt-1 font-medium">Goals</span>
+        </button>
+        <button onclick="switchTab('notes')"
+            class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400" data-tab="notes">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                </path>
+            </svg>
+            <span class="text-[10px] mt-1 font-medium">Notes</span>
+        </button>
+    </nav>
+
+    <script src="auth.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold text-gray-800">✏️ Edit Profile</h2>
+                <button onclick="closeEditProfile()" class="p-2 hover:bg-gray-100 rounded-full transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="editProfileForm" class="p-6 space-y-5">
+                <!-- Banner & Avatar Preview -->
+                <div class="relative h-32 rounded-xl overflow-hidden bg-gradient-to-br from-purple-500 to-indigo-600">
+                    <img id="bannerPreview" src="" class="w-full h-full object-cover">
+                    <div class="absolute -bottom-8 left-6">
+                        <img id="avatarPreview" src="" class="w-16 h-16 rounded-full border-4 border-white shadow-lg">
+                    </div>
+                </div>
+
+                <!-- GitHub Sync Section -->
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-4 text-white">
+                    <label class="block text-sm font-semibold mb-2">🐙 Sync from GitHub</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="edit_github" placeholder="github_username"
+                            class="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-purple-500">
+                        <button type="button" onclick="fetchFromGitHub()"
+                            class="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition text-sm">
+                            Fetch Data
+                        </button>
+                    </div>
+                    <p id="githubStatus" class="text-xs opacity-75 mt-2">Akan auto-fetch: avatar, bio, name, location
+                    </p>
+                </div>
+
+                <!-- Username -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Username (Public URL)</label>
+                    <div class="flex items-center gap-2">
+                        <span class="text-gray-500 text-sm">/u/</span>
+                        <input type="text" id="edit_username"
+                            class="flex-1 px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 lowercase"
+                            pattern="[a-z0-9_]+" placeholder="yourname">
+                        <span id="usernameStatus" class="text-sm"></span>
+                    </div>
+                    <p id="usernameHint" class="text-xs text-gray-500 mt-1">Hanya huruf kecil, angka, dan underscore</p>
+                </div>
+
+                <!-- Display Name -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Display Name</label>
+                    <input type="text" id="edit_display_name"
+                        class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Your Name">
+                </div>
+
+                <!-- Bio -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Bio</label>
+                    <textarea id="edit_bio" rows="3"
+                        class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                        placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">📍 Location</label>
+                    <input type="text" id="edit_location"
+                        class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Jakarta, Indonesia">
+                </div>
+
+                <!-- Social Links -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">🌐 Social Links</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" id="edit_twitter" placeholder="Twitter username"
+                            class="px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm">
+                        <input type="text" id="edit_website" placeholder="Website URL"
+                            class="px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-2 pt-4 border-t">
+                    <button type="button" onclick="closeEditProfile()"
+                        class="flex-1 px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition font-semibold">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="flex-1 px-4 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition font-semibold">
+                        💾 Save Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Public Profile Modal -->
+    <div id="publicProfileModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+            <div id="publicProfileContent"></div>
+        </div>
+    </div>
+</body>
+
+</html>
