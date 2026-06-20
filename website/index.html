@@ -226,14 +226,17 @@
         }
 
         .slider .sun {
-            color: #f39c12;
-            transition: opacity .3s
+            position: absolute;
+            left: 30px;
+            color: #1a758e;
+            transition: opacity .10s
         }
 
         .slider .moon {
-            color: #f1c40f;
+            position: relative;
+            color: #ffffff;
             opacity: 0;
-            transition: opacity .3s
+            transition: opacity .10s
         }
 
         .slider:before {
@@ -508,7 +511,7 @@
         }
 
         .project-mockup {
-            flex: 0 0 140px;
+            flex: 0 0 150px;
             height: 90px;
             background: var(--bg-color);
             border-radius: 8px;
@@ -736,7 +739,7 @@
 
             .project-mockup {
                 flex: none;
-                height: 120px;
+                height: 220px;
                 width: 100%
             }
 
@@ -806,14 +809,14 @@
                             <path
                                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
-                        <span><a href="https://github.com/flessan">github</a></span>
+                        <span><a href="https://github.com/flessan">GitHub</a></span>
                     </li>
                     <li>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                         </svg>
-                        <span><a href="https://linkedin.com/in/flethio">linkedin</a></span>
+                        <span><a href="https://linkedin.com/in/flethio">LinkedIn</a></span>
                     </li>
                 </ul>
                 <a href="thiosaputra_cv.pdf" download class="cv-btn" aria-label="Download Thio Saputra CV">
@@ -909,16 +912,18 @@
                         <li>
                             <article class="project-item">
                                 <div class="project-mockup">
-                                    <img src="gudang/ss1.jpg" alt="FinFlow App Mockup" loading="lazy" decoding="async"
-                                        width="140" height="90">
+                                    <img src="https://placehold.co/600x400/EEE/31343C?font=poppins&text=Anonimbuz"
+                                        alt="FinFlow App Mockup" loading="lazy" decoding="async" width="140"
+                                        height="90">
                                 </div>
                                 <div class="project-content">
-                                    <div class="project-title">FinFlow</div>
-                                    <div class="project-desc">Financial dashboard streamlining budget tracking for
-                                        startups. Improved user retention by +28%.</div>
-                                    <div class="project-tags">React, TypeScript</div>
+                                    <div class="project-title">Anonimbuz</div>
+                                    <div class="project-desc">Only-Text Social Media with Anonymity and some features.
+                                    </div>
+                                    <div class="project-tags">React, JavaScript, CSS, PostgreSQL, JWT, NeonDB,
+                                        Cloudflare Pages</div>
                                     <div class="project-links">
-                                        <a href="#" title="Live Demo">
+                                        <a href="https://anon.thio.qzz.io" title="Live">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
                                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
@@ -928,7 +933,7 @@
                                             </svg>
                                             Live
                                         </a>
-                                        <a href="#" title="Case Study">
+                                        <a href="./project/Anonimbuz" title="Case Study">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
                                                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -944,17 +949,16 @@
                         <li>
                             <article class="project-item">
                                 <div class="project-mockup">
-                                    <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=SehatKu+Mockup"
-                                        alt="SehatKu App Mockup" loading="lazy" decoding="async" width="140"
-                                        height="90">
+                                    <img src="./gudang/dotfiles.avif" alt="The Amazing Dotfiles Library" loading="lazy"
+                                        decoding="async" width="140" height="90">
                                 </div>
                                 <div class="project-content">
-                                    <div class="project-title">SehatKu</div>
-                                    <div class="project-desc">Telemedicine app connecting patients with doctors
-                                        seamlessly. Reached 10K+ users in month 1.</div>
-                                    <div class="project-tags">Flutter</div>
+                                    <div class="project-title">Dotfiles Library</div>
+                                    <div class="project-desc">Linux Dotfiles for Rice rice rice (TMK).</div>
+                                    <div class="project-tags">React, TypeScript, CSS, PostgreSQL, JWT, NeonDB Auth,
+                                        Cloudflare Workers</div>
                                     <div class="project-links">
-                                        <a href="#" title="Live Demo">
+                                        <a href="https://dotfiles.qzz.io" title="Live">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2">
                                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
@@ -964,7 +968,7 @@
                                             </svg>
                                             Live
                                         </a>
-                                        <a href="#" title="GitHub Repo">
+                                        <a href="https://github.com/filesdot" title="GitHub Repo">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="currentColor">
                                                 <path
@@ -977,7 +981,7 @@
                             </article>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <article class="project-item">
                                 <div class="project-mockup">
                                     <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=TokoPintar+Mockup"
@@ -1003,7 +1007,7 @@
                                     </div>
                                 </div>
                             </article>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
 
@@ -1012,16 +1016,19 @@
                     <ul class="experience-ul">
                         <li>
                             <div class="exp-header">
-                                <div><span class="exp-role">Senior Product Designer</span> @ <span
-                                        class="exp-place">Tokopedia</span></div>
-                                <span class="exp-date">2023 – Now</span>
+                                <div><span class="exp-role">Freelance Developer</span> @ <span
+                                        class="exp-place">Freelance</span></div>
+                                <span class="exp-date">2025 – Now</span>
                             </div>
                             <ul class="exp-achievements">
-                                <li>Redesigned the checkout flow, reducing drop-off rates by 15%</li>
-                                <li>Led the design system revamp used by 20+ product teams</li>
+                                <li>Build Dotfiles Library (React, TypeScript, CSS, PostgreSQL, JWT, NeonDB Auth,
+                                    Cloudflare Workers) - ongoing</li>
+                                <li>Build Portfolio (HTML, Vanilla CSS, JS) with SEO Optimized and Mobile Friendly -
+                                    finished</li>
+                                <li>Build Website for PMR SMKN 4 Banjarmasin (PHP, MySQL, Vanilla CSS) - ongoing</li>
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="exp-header">
                                 <div><span class="exp-role">Full-Stack Developer</span> @ <span
                                         class="exp-place">Gojek</span></div>
@@ -1048,7 +1055,7 @@
                                         class="exp-place">Universitas Indonesia</span></div>
                                 <span class="exp-date">2015 – 2019</span>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </section>
 
