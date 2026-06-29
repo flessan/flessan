@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>M. Thio Saputra - Web Developer & Automation Engineer Portfolio</title>
+    <meta name="description" content="Portfolio resmi M. Thio Saputra, Web Developer & Automation Engineer dari Banjarmasin. Spesialisasi React, TypeScript, Cloudflare, dan kontribusi open source.">
+    <meta name="keywords" content="M. Thio Saputra, Thio Saputra, Flessan, Web Developer Banjarmasin, Automation Engineer, React Developer, TypeScript, Cloudflare Workers, Portfolio">
+    <meta name="author" content="M. Thio Saputra">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flessan.pages.dev/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flessan.pages.dev/">
+    <meta property="og:title" content="M. Thio Saputra - Web Developer & Automation Engineer">
+    <meta property="og:description" content="Web Developer & Automation Engineer dari Banjarmasin. Fokus pada aplikasi web modern, efisien, dan scalable.">
+    <meta property="og:image" content="https://image.qwenlm.ai/public_source/198c6ddd-c817-4a83-827b-edcfccdb1cd8/11c13a0ed-f675-4be7-80fa-46126a9b2dcf.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://flessan.pages.dev/">
+    <meta name="twitter:title" content="M. Thio Saputra - Web Developer & Automation Engineer">
+    <meta name="twitter:description" content="Web Developer & Automation Engineer dari Banjarmasin. Fokus pada aplikasi web modern, efisien, dan scalable.">
+    <meta name="twitter:image" content="https://image.qwenlm.ai/public_source/198c6ddd-c817-4a83-827b-edcfccdb1cd8/11c13a0ed-f675-4be7-80fa-46126a9b2dcf.png">
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "M. Thio Saputra",
+      "jobTitle": "Web Developer & Automation Engineer",
+      "url": "https://flessan.pages.dev",
+      "email": "mailto:flessan@yahoo.com",
+      "telephone": "+6289523234160",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Banjarmasin",
+        "addressRegion": "Kalimantan Selatan",
+        "addressCountry": "ID"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "SMK Negeri 4 Banjarmasin"
+      },
+      "sameAs": [
+        "https://github.com/flessan",
+        "https://linkedin.com/in/flessan"
+      ]
+    }
+    </script>
+
+    <style>
+        /* CSS Variables for easy theming */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --secondary-text: #333333;
+            --border-color: #000000;
+            --border-light: #cccccc;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Paper Layout (HVS Style) */
+        .paper {
+            background: var(--bg-color);
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Typography */
+        h1 { font-size: 2rem; line-height: 1.2; }
+        h2 { 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            border-bottom: 2px solid var(--border-color); 
+            padding-bottom: 0.25rem; 
+            margin-bottom: 1rem; 
+            margin-top: 2rem;
+        }
+        h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+        p { font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 0.5rem; }
+
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .header-content h1 { margin-bottom: 0.25rem; }
+        .header-role { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+        .header-summary { font-size: 0.9rem; text-align: justify; }
+        .header-logo {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Sections */
+        section { margin-bottom: 1.5rem; }
+        
+        /* Skills Layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .skill-category h3 {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Custom Bullets */
+        .clean-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .clean-list li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+        .clean-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects & Items */
+        .item {
+            border-bottom: 1px dashed #888;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+        .item-tech {
+            font-weight: 600;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .tag {
+            border: 1px solid var(--border-color);
+            padding: 0.1rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: transparent;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        footer p { font-size: 0.9rem; color: var(--text-color); }
+        .footer-note { font-size: 0.75rem; color: #666; margin-top: 0.5rem; }
+
+        /* Print Styles */
+        @media print {
+            body { background: #fff; }
+            .no-print { display: none !important; }
+            .paper { 
+                box-shadow: none; 
+                margin: 0; 
+                max-width: 100%;
+                padding: 0;
+            }
+            @page {
+                margin: 1.5cm;
+                size: A4;
+            }
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+            z-index: 100;
+        }
+        .print-btn:hover { background: #333; }
+        .print-btn svg { width: 16px; height: 16px; }
+
+        /* Instructions Box */
+        .instructions {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            padding: 1.5rem;
+            border: 1px solid #000;
+            background: #fff;
+        }
+        .instructions h3 { 
+            margin-bottom: 0.5rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        .instructions h3 svg { width: 18px; height: 18px; }
+        .instructions ol { padding-left: 1.5rem; font-size: 0.9rem; }
+        .instructions li { margin-bottom: 0.25rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .paper { padding: 1.5rem; margin: 1rem; }
+            header { flex-direction: column; }
+            .header-logo { width: 64px; height: 64px; }
+            .skills-grid, .two-col, .contact-grid { grid-template-columns: 1fr; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="print-btn no-print" aria-label="Download PDF">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Download PDF
+    </button>
+
+    <main class="paper" role="main">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1>M. THIO SAPUTRA</h1>
+                <div class="header-role">Web Developer &amp; Automation Engineer</div>
+                <p class="header-summary">
+                    Web developer berusia 16 tahun asal Banjarmasin yang berfokus pada pembangunan aplikasi web modern yang efisien, skalabel, dan ramah pengguna. Memiliki pengalaman langsung dalam pengembangan full-stack, automation, serta deployment cloud menggunakan Cloudflare Pages &amp; Workers.
+                </p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Banjarmasin, Kalimantan Selatan
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <a href="https://flessan.pages.dev" target="_blank" rel="noopener">flessan.pages.dev</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <a href="mailto:flessan@yahoo.com">flessan@yahoo.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <a href="https://github.com/flessan" target="_blank" rel="noopener">github.com/flessan</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        0895-2323-4160
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <a href="https://linkedin.com/in/flessan" target="_blank" rel="noopener">linkedin.com/in/flessan</a>
+                    </div>
+                </div>
+            </div>
+            <img src="https://image.qwenlm.ai/public_source/198c6ddd-c817-4a83-827b-edcfccdb1cd8/11c13a0ed-f675-4be7-80fa-46126a9b2dcf.png" 
+                 alt="Logo M. Thio Saputra (Flessan)" 
+                 class="header-logo" 
+                 width="80" 
+                 height="80"
+                 loading="eager">
+        </header>
+
+        <!-- Profile -->
+        <section>
+            <h2>Profil Pribadi</h2>
+            <p>
+                Saya seorang Web Developer yang sedang menempuh pendidikan di SMK Negeri 4 Banjarmasin jurusan Rekayasa Perangkat Lunak. Memiliki minat mendalam terhadap teknologi web modern, khususnya ekosistem React dan TypeScript. Selain belajar di sekolah, saya aktif mengembangkan proyek pribadi, berkontribusi pada komunitas open source, serta mengeksplorasi teknologi backend, database, automation, dan CI/CD pipelines. Terbiasa bekerja mandiri maupun kolaboratif, dan selalu terbuka untuk belajar hal baru serta berkolaborasi dalam proyek yang berdampak.
+            </p>
+        </section>
+
+        <!-- Skills -->
+        <section>
+            <h2>Keahlian Teknis</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <ul class="clean-list">
+                        <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                        <li>React, TypeScript, Vue</li>
+                        <li>Responsive Web Design</li>
+                        <li>Bootstrap, Tailwind CSS</li>
+                        <li>Nunjucks, Eleventy (SSG)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <ul class="clean-list">
+                        <li>PHP, Go</li>
+                        <li>PostgreSQL, MySQL, Firebase</li>
+                        <li>NeonDB, RESTful API</li>
+                        <li>JWT Authentication</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Automation &amp; DevOps</h3>
+                    <ul class="clean-list">
+                        <li>Bash / Shell Scripting</li>
+                        <li>Git &amp; GitHub Workflow</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Cloudflare Pages &amp; Workers</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools &amp; Platform</h3>
+                    <ul class="clean-list">
+                        <li>Visual Studio Code</li>
+                        <li>Browser DevTools</li>
+                        <li>Figma (UI/UX Design)</li>
+                        <li>AI-Assisted Development</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>Proyek Unggulan</h2>
+            <article class="item">
+                <div class="item-header">
+                    <h3>Anonimbuz</h3>
+                    <span class="tag">Live</span>
+                </div>
+                <p>Platform media sosial anonim berbasis only-text yang memungkinkan pengguna berinteraksi tanpa perlu mengungkap identitas. Dibangun dari nol mulai dari desain UI, implementasi frontend, hingga backend authentication.</p>
+                <div class="item-tech">Tech Stack: React, JavaScript, CSS, PostgreSQL, JWT, NeonDB, Cloudflare Pages</div>
+            </article>
+            <article class="item">
+                <div class="item-header">
+                    <h3>Skenpat (Skenpintas)</h3>
+                    <span class="tag">Live</span>
+                </div>
+                <p>Portal layanan digital untuk siswa SMKN 4 Banjarmasin. Menyediakan akses informasi jadwal pelajaran, kegiatan ekstrakurikuler, serta berita sekolah dalam satu platform terpadu.</p>
+                <div class="item-tech">Website: skenpat.pages.dev</div>
+            </article>
+            <article class="item">
+                <div class="item-header">
+                    <h3>Dotfiles Library</h3>
+                    <span class="tag">Ongoing</span>
+                </div>
+                <p>Kumpulan konfigurasi Linux untuk customization desktop yang dirapikan dalam bentuk platform web agar mudah diakses dan dibagikan kepada komunitas Linux user.</p>
+                <div class="item-tech">Tech Stack: React, TypeScript, CSS, PostgreSQL, JWT, NeonDB Auth, Cloudflare Workers</div>
+            </article>
+            <article class="item">
+                <div class="item-header">
+                    <h3>Website PMR SMKN 4 Banjarmasin</h3>
+                    <span class="tag">Ongoing</span>
+                </div>
+                <p>Website resmi Palang Merah Remaja sekolah sebagai pusat informasi kegiatan, dokumentasi, dan pengumuman organisasi.</p>
+                <div class="item-tech">Tech Stack: PHP, MySQL, Vanilla CSS</div>
+            </article>
+            <article class="item">
+                <div class="item-header">
+                    <h3>Open Source Projects</h3>
+                    <span class="tag">Public</span>
+                </div>
+                <p>Berbagai proyek open source yang dipublikasikan di GitHub: 34Labs QuickDevTools, NurLaily, NovaUI, HTMLWalLarper, GMD2TXT, GoScRcPy!, AdbPureFlow, lintasindo.</p>
+                <div class="item-tech">GitHub: github.com/flessan</div>
+            </article>
+        </section>
+
+        <!-- Open Source -->
+        <section>
+            <h2>Kontribusi Open Source</h2>
+            <article class="item">
+                <h3>Muffon (staniel359/muffon)</h3>
+                <p>Advanced multi-source music streaming client dengan lebih dari 2.200 stars di GitHub.</p>
+                <p>Kontribusi: Menambahkan terjemahan Bahasa Indonesia melalui Pull Request dengan 15 comments (Juni 2025).</p>
+            </article>
+            <article class="item">
+                <h3>KiyoEditz/Anomia</h3>
+                <p>Berperan sebagai developer penerus dari proyek sosial media tersebut (Juni 2025).</p>
+            </article>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2>Pendidikan &amp; Organisasi</h2>
+            <article class="item">
+                <h3>SMK Negeri 4 Banjarmasin</h3>
+                <p>Rekayasa Perangkat Lunak | 2025 - 2028</p>
+                <p>Konsentrasi: Web Development</p>
+            </article>
+            <div>
+                <h3>Pengalaman Organisasi</h3>
+                <ul class="clean-list">
+                    <li><strong>OSIS SMKN 4 Banjarmasin</strong> — Anggota Sekbid Keagamaan</li>
+                    <li><strong>PMR (Palang Merah Remaja)</strong> — Anggota Aktif</li>
+                    <li><strong>Green Generation</strong> — Divisi Bank Sampah (Okt 2025 - Sekarang)</li>
+                    <li><strong>Habsyi (Habibussalam)</strong> — Anggota Aktif</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Languages & Interests -->
+        <section class="two-col">
+            <div>
+                <h2>Bahasa</h2>
+                <ul class="clean-list">
+                    <li><strong>Indonesia</strong> — Native</li>
+                    <li><strong>Inggris</strong> — Pasif / Aktif</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Minat</h2>
+                <ul class="clean-list">
+                    <li>Web Development &amp; Automation</li>
+                    <li>Open Source Contribution</li>
+                    <li>Music Production (Electronic)</li>
+                    <li>Content Creation</li>
+                    <li>Private Game Servers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>Currently Open to Work</strong></p>
+            <p>Terbuka untuk peluang kerja, magang, freelance, dan kolaborasi proyek.</p>
+            <p class="footer-note">Portfolio terakhir diperbarui: Juni 2026</p>
+        </footer>
+    </main>
+
+    <!-- Instructions -->
+    <div class="instructions no-print">
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Cara Download PDF:
+        </h3>
+        <ol>
+            <li>Klik tombol "Download PDF" di pojok kanan atas.</li>
+            <li>Pilih "Save as PDF" sebagai destination.</li>
+            <li>Pada pengaturan, aktifkan "Background graphics" jika tersedia.</li>
+            <li>Klik "Save" dan pilih lokasi penyimpanan.</li>
+            <li>Selesai! Portfolio PDF kamu siap digunakan.</li>
+        </ol>
+    </div>
+
+</body>
+</html>
