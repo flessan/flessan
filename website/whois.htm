@@ -42,7 +42,7 @@
     </h1>
 
     <script>
-        const words = [""];
+        const words = ["What Exactly, Who Am I?"];
         const text = document.getElementById("text");
 
         let wordIndex = 0;
@@ -56,7 +56,7 @@
                 text.textContent = currentWord.substring(0, charIndex++);
                 if (charIndex > currentWord.length) {
                     deleting = true;
-                    setTimeout(typeEffect, 1000); // jeda sebelum hapus
+                    setTimeout(typeEffect, 4000); // jeda sebelum hapus
                     return;
                 }
             } else {
@@ -67,16 +67,16 @@
                 }
             }
 
-            setTimeout(typeEffect, deleting ? 80 : 150);
+            setTimeout(typeEffect, deleting ? 110 : 150);
         }
 
         typeEffect();
+
     </script>
     <script>
         setTimeout(() => {
-            // window.location.replace("./whois.htm");
-            window.location.replace("./fastpages.docx");
-        }, 3500);
+            window.location.replace("./project/idunno.htm");
+        }, 10500);
     </script>
 
 </body>

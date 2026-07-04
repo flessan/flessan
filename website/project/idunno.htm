@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Effect</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink .7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .flying-letter {
+            display: inline-block;
+            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        .fly {
+            opacity: 0;
+            transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0);
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particle-fly 2s ease-out forwards;
+        }
+
+        @keyframes particle-fly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--px), var(--py)) scale(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        <span id="text"></span><span class="cursor">|</span>
+    </h1>
+
+    <script>
+        const words = ["I DON'T KNOWW, Whattt??"];
+        const text = document.getElementById("text");
+        const cursor = document.querySelector(".cursor");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+        let typingComplete = false;
+
+        function typeEffect() {
+            if (typingComplete) return;
+
+            const currentWord = words[wordIndex];
+
+            if (!deleting) {
+                text.textContent = currentWord.substring(0, charIndex++);
+                if (charIndex > currentWord.length) {
+                    deleting = true;
+                    typingComplete = true;
+                    setTimeout(startFlyingEffect, 1000);
+                    return;
+                }
+            } else {
+                text.textContent = currentWord.substring(0, charIndex--);
+                if (charIndex < 0) {
+                    deleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 110 : 150);
+        }
+
+        function startFlyingEffect() {
+            const fullText = text.textContent;
+            text.innerHTML = '';
+            cursor.style.display = 'none';
+
+            fullText.split('').forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.className = 'flying-letter';
+                span.textContent = letter === ' ' ? '\u00A0' : letter;
+
+                const randomX = (Math.random() - 0.5) * 1500;
+                const randomY = (Math.random() - 0.5) * 1500;
+                const randomRotation = (Math.random() - 0.5) * 720;
+
+                span.style.setProperty('--tx', `${randomX}px`);
+                span.style.setProperty('--ty', `${randomY}px`);
+                span.style.setProperty('--rot', `${randomRotation}deg`);
+
+                text.appendChild(span);
+
+                setTimeout(() => {
+                    span.classList.add('fly');
+                    createParticles(span);
+                }, index * 30);
+            });
+
+            setTimeout(() => {
+                window.location.replace("./index.html");
+            }, 2100);
+        }
+
+        function createParticles(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 3; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+
+                const px = (Math.random() - 0.5) * 300;
+                const py = (Math.random() - 0.5) * 300;
+                particle.style.setProperty('--px', `${px}px`);
+                particle.style.setProperty('--py', `${py}px`);
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 2000);
+            }
+        }
+
+        typeEffect();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,2341 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome — M. Thio Saputra (Flessan)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'google': ['"Google Sans"', 'Inter', 'sans-serif'],
+                        'google-display': ['"Google Sans Display"', '"Google Sans"', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#1a73e8',
+                            light: '#4285F4',
+                            dark: '#1967d2',
+                            container: '#d3e3fd',
+                            'on-container': '#041e49',
+                        },
+                        secondary: {
+                            DEFAULT: '#34A853',
+                            container: '#ceead6',
+                            'on-container': '#0d3d1a',
+                        },
+                        tertiary: {
+                            DEFAULT: '#FBBC05',
+                            container: '#fef7e0',
+                            'on-container': '#3d2e00',
+                        },
+                        error: {
+                            DEFAULT: '#EA4335',
+                            container: '#fcd8d5',
+                            'on-container': '#410e0b',
+                        },
+                        surface: {
+                            DEFAULT: '#ffffff',
+                            dim: '#f8f9fa',
+                            bright: '#ffffff',
+                            container: '#f1f3f4',
+                            'container-low': '#f8f9fa',
+                            'container-high': '#e8eaed',
+                            variant: '#e8eaed',
+                        },
+                        'on-surface': {
+                            DEFAULT: '#1f1f1f',
+                            variant: '#444746',
+                        },
+                        outline: {
+                            DEFAULT: '#747775',
+                            variant: '#c4c7c5',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+            height: 100%;
+            transition: background-color 0.4s ease;
+        }
+
+        body {
+            font-family: 'Google Sans', 'Inter', sans-serif;
+            background: #ffffff;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .loading-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            animation: loadingBounce 1.4s infinite ease-in-out both;
+        }
+
+        .loading-dot:nth-child(1) {
+            background: #4285F4;
+            animation-delay: -0.32s;
+        }
+
+        .loading-dot:nth-child(2) {
+            background: #EA4335;
+            animation-delay: -0.16s;
+        }
+
+        .loading-dot:nth-child(3) {
+            background: #FBBC05;
+        }
+
+        .loading-dot:nth-child(4) {
+            background: #34A853;
+            animation-delay: 0.16s;
+        }
+
+        @keyframes loadingBounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        .loading-text {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 14px;
+            color: #5f6368;
+            letter-spacing: 0.5px;
+        }
+
+
+        /* Floating Icons Background */
+        .floating-icons {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.08;
+            font-size: 32px;
+            animation: floatIcon 20s infinite ease-in-out;
+            transition: opacity 0.3s ease;
+        }
+
+
+        @keyframes floatIcon {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(30px, -40px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(-20px, -80px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-40px, -40px) rotate(270deg);
+            }
+        }
+
+        /* Google Particles */
+        .google-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particleFloat 15s infinite ease-in-out;
+        }
+
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translate(100px, -100px) scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
+        /* Cursor Trail */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: screen;
+            transition: transform 0.1s ease;
+        }
+
+        /* Slide Container */
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slide {
+            min-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background: #ffffff;
+        }
+
+        .slide::before,
+        .slide::after {
+            content: "";
+            flex: 1;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                    #1a73e8 25%,
+                    #34A853 25%, #34A853 50%,
+                    #FBBC05 50%, #FBBC05 75%,
+                    #EA4335 75%);
+
+            transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+        }
+
+        /* Dots */
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #dadce0;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #1a73e8;
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        /* Nav Arrows */
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 50;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-arrow:hover {
+            background: #f8f9fa;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .nav-arrow.left {
+            left: 24px;
+        }
+
+        .nav-arrow.right {
+            right: 24px;
+        }
+
+        .nav-arrow.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Chrome Logo Animation */
+        .chrome-logo {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            animation: chromeSpin 8s linear infinite;
+            cursor: pointer;
+        }
+
+        @keyframes chromeSpin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .chrome-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 14px solid transparent;
+        }
+
+        .chrome-ring:nth-child(1) {
+            inset: 0;
+            border-top-color: #4285F4;
+            border-right-color: #4285F4;
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        }
+
+        .chrome-ring:nth-child(2) {
+            inset: 0;
+            border-bottom-color: #EA4335;
+            border-left-color: #EA4335;
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+        }
+
+        .chrome-ring:nth-child(3) {
+            inset: 0;
+            border-right-color: #FBBC05;
+            border-bottom-color: #FBBC05;
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        }
+
+        .chrome-ring:nth-child(4) {
+            inset: 0;
+            border-left-color: #34A853;
+            border-top-color: #34A853;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+
+        .chrome-center {
+            position: absolute;
+            inset: 32px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Material You Buttons */
+        .btn-filled {
+            background: #1a73e8;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Google Sans', sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-filled:hover {
+            background: #1557b0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .btn-filled:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+
+        /* Keyboard Help Button */
+        .help-button {
+            position: fixed;
+            top: 24px;
+            right: 84px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 60;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            font-size: 20px;
+            font-weight: 600;
+            color: #5f6368;
+        }
+
+        .help-button:hover {
+            background: #f8f9fa;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transform: scale(1.08);
+        }
+
+
+        /* Keyboard Shortcuts Modal */
+        .shortcuts-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .shortcuts-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .shortcuts-content {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .shortcuts-modal.active .shortcuts-content {
+            transform: scale(1);
+        }
+
+        .shortcut-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        .shortcut-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Skill bars */
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0;
+        }
+
+        .slide.active .skill-bar-fill {
+            width: var(--fill);
+        }
+
+        /* Project card hover */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e8eaed;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            border-color: #1a73e8;
+        }
+
+        /* Stagger animation */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active .stagger-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.active .stagger-item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .slide.active .stagger-item:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .slide.active .stagger-item:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .slide.active .stagger-item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .stagger-item:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .stagger-item:nth-child(6) {
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .stagger-item:nth-child(7) {
+            transition-delay: 0.7s;
+        }
+
+        .slide.active .stagger-item:nth-child(8) {
+            transition-delay: 0.8s;
+        }
+
+        .slide.active .stagger-item:nth-child(9) {
+            transition-delay: 0.9s;
+        }
+
+        .slide.active .stagger-item:nth-child(10) {
+            transition-delay: 1.0s;
+        }
+
+        /* Fade in scale */
+        .fade-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active .fade-scale {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Background blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.12;
+            animation: blobFloat 12s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -20px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        /* Typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: #1a73e8;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Search bar */
+        .search-bar {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Floating shortcut icons */
+        .shortcut-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .shortcut-icon:hover {
+            transform: scale(1.15);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Scrollbar hide */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Tag chip */
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .tag-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Contact link */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid #e8eaed;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-link:hover {
+            background: #f8f9fa;
+            border-color: #1a73e8;
+            transform: translateX(4px);
+        }
+
+        /* Org badge */
+        .org-badge {
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid #e8eaed;
+            transition: all 0.3s ease;
+        }
+
+        .org-badge:hover {
+            border-color: #34A853;
+            background: rgba(52, 168, 83, 0.04);
+        }
+
+        /* Keyboard hint */
+        .kbd {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid #dadce0;
+            background: #f8f9fa;
+            font-size: 12px;
+            color: #5f6368;
+            font-family: 'Inter', monospace;
+            min-width: 28px;
+        }
+
+        /* Timeline */
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 3px solid #1a73e8;
+            background: white;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .timeline-line {
+            width: 2px;
+            background: #e8eaed;
+            flex-shrink: 0;
+            min-height: 40px;
+        }
+
+        /* Marquee Animations */
+        .marquee-track {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .marquee-up {
+            animation: marqueeUp 25s linear infinite;
+        }
+
+        .marquee-down {
+            animation: marqueeDown 25s linear infinite;
+        }
+
+        .marquee-up-slow {
+            animation: marqueeUp 40s linear infinite;
+        }
+
+        .marquee-down-fast {
+            animation: marqueeDown 15s linear infinite;
+        }
+
+        @keyframes marqueeUp {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        @keyframes marqueeDown {
+            0% {
+                transform: translateY(-50%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Checkmark Animation */
+        .checkmark-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #34A853;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active .checkmark-circle {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .checkmark-svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .checkmark-path {
+            stroke: white;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 60;
+            stroke-dashoffset: 60;
+            transition: stroke-dashoffset 0.8s ease 0.3s;
+        }
+
+        .slide.active .checkmark-path {
+            stroke-dashoffset: 0;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        /* Easter Egg Animation */
+        @keyframes logoExplode {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.5) rotate(180deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        .logo-explode {
+            animation: logoExplode 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .nav-arrow {
+                display: none;
+            }
+
+            .slide {
+                padding: 20px;
+            }
+
+            .floating-icon {
+                font-size: 24px;
+            }
+
+            .help-button {
+                right: 76px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-google">
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+        <div class="loading-text">Loading portfolio...</div>
+    </div>
+
+    <!-- Floating Icons Background -->
+    <div class="floating-icons" id="floatingIcons"></div>
+
+    <!-- Cursor Trail -->
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 20%"></div>
+
+    <!-- Help Button -->
+    <div class="help-button" id="helpButton" onclick="toggleShortcuts()">?</div>
+
+
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div class="shortcuts-modal" id="shortcutsModal">
+        <div class="shortcuts-content">
+            <h3 class="text-2xl font-google-display font-medium text-neutral-900 mb-6">Keyboard Shortcuts</h3>
+            <div class="shortcut-item">
+                <span class="text-neutral-700">Next slide</span>
+                <span class="kbd">→</span>
+            </div>
+            <div class="shortcut-item">
+                <span class="text-neutral-700">Previous slide</span>
+                <span class="kbd">←</span>
+            </div>
+            <div class="shortcut-item">
+                <span class="text-neutral-700">Next slide (Space)</span>
+                <span class="kbd">Space</span>
+            </div>
+            <div class="shortcut-item">
+                <span class="text-neutral-700">Show shortcuts</span>
+                <span class="kbd">?</span>
+            </div>
+            <div class="shortcut-item">
+                <span class="text-neutral-700">Go to slide 1-5</span>
+                <span class="kbd">1-5</span>
+            </div>
+            <button class="btn-filled mt-6 w-full" onclick="toggleShortcuts()">Got it!</button>
+        </div>
+    </div>
+
+    <!-- Nav Arrows -->
+    <div class="nav-arrow left hidden" id="arrowLeft" onclick="prevSlide()">
+        <iconify-icon icon="lucide:chevron-left" width="22" style="color:#5f6368"></iconify-icon>
+    </div>
+    <div class="nav-arrow right" id="arrowRight" onclick="nextSlide()">
+        <iconify-icon icon="lucide:chevron-right" width="22" style="color:#5f6368"></iconify-icon>
+    </div>
+
+    <!-- Slides -->
+    <div class="slides-wrapper" id="slidesWrapper">
+
+        <!-- ====== SLIDE 1: WELCOME (Google Onboarding Style) ====== -->
+        <div class="slide active" style="background-color: rgba(255, 255, 255, 0.5);">
+            <br>
+            <br>
+            <div class="blob" style="width:500px;height:500px;background:#4285F4;top:-150px;right:-150px;"></div>
+            <div class="blob"
+                style="width:400px;height:400px;background:#34A853;bottom:-100px;left:-100px;animation-delay:-4s;">
+            </div>
+
+            <div class="text-center max-w-2xl mx-auto px-6">
+                <!-- Chrome Logo -->
+                <div class="fade-scale mb-12 flex justify-center">
+                    <div class="chrome-logo" id="chromeLogo" onclick="triggerEasterEgg()">
+                        <div class="chrome-ring"></div>
+                        <div class="chrome-ring"></div>
+                        <div class="chrome-ring"></div>
+                        <div class="chrome-ring"></div>
+                        <div class="chrome-center"></div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Greeting -->
+                <h1 class="fade-scale font-google-display text-5xl md:text-6xl font-medium text-neutral-900 tracking-tight mb-4"
+                    style="transition-delay:0.15s">
+                    <span id="greetingText">Selamat Datang</span>
+                </h1>
+
+                <p class="fade-scale text-xl text-neutral-500 mb-12 font-google" style="transition-delay:0.3s">
+                    Kenali lebih dekat <span class="text-primary font-semibold">M. Thio Saputra</span>
+                </p>
+
+                <!-- Search Bar with Typing Effect -->
+                <div class="fade-scale search-bar mx-auto max-w-md bg-neutral-100 rounded-full px-6 py-4 flex items-center gap-3 mb-10 cursor-text"
+                    style="transition-delay:0.45s" onclick="nextSlide()">
+                    <iconify-icon icon="lucide:search" width="20" style="color:#9aa0a6"></iconify-icon>
+                    <span class="text-neutral-400 text-base" id="typingText"></span>
+                    <span class="typing-cursor"></span>
+                </div>
+
+                <!-- Shortcut Icons -->
+                <div class="fade-scale flex justify-center gap-4 flex-wrap mb-10" style="transition-delay:0.6s">
+                    <div class="shortcut-icon bg-red-50 text-error" onclick="goToSlide(1)" title="Tentang">
+                        <iconify-icon icon="lucide:user"></iconify-icon>
+                    </div>
+                    <div class="shortcut-icon bg-blue-50 text-primary" onclick="goToSlide(2)" title="Skills">
+                        <iconify-icon icon="lucide:code-2"></iconify-icon>
+                    </div>
+                    <div class="shortcut-icon bg-yellow-50 text-tertiary" onclick="goToSlide(3)" title="Proyek">
+                        <iconify-icon icon="lucide:folder-open"></iconify-icon>
+                    </div>
+                    <div class="shortcut-icon bg-green-50 text-secondary" onclick="goToSlide(4)" title="Kontak">
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                    </div>
+                </div>
+
+                <!-- Material CTA Button -->
+                <div class="fade-scale" style="transition-delay:0.75s">
+                    <button class="btn-filled" onclick="nextSlide()">
+                        Let's get started
+                    </button>
+                </div>
+
+                <!-- Keyboard Hint -->
+                <div class="fade-scale mt-16 flex items-center justify-center gap-3 text-sm text-neutral-400"
+                    style="transition-delay:0.9s">
+                    <span>Tekan</span>
+                    <span class="kbd">→</span>
+                    <span>atau geser untuk melanjutkan</span>
+                </div>
+            </div><br>
+            <br> <br>
+        </div>
+
+        <!-- ====== SLIDE 2: ABOUT ====== -->
+        <div class="slide" style="background: #ffffff;">
+            <br>
+            <div class="blob" style="width:400px;height:400px;background:#EA4335;top:-100px;left:-80px;"></div>
+            <div class="blob"
+                style="width:320px;height:320px;background:#FBBC05;bottom:-80px;right:-60px;animation-delay:-3s;"></div>
+
+            <div class="max-w-4xl mx-auto px-6 w-full">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- Left: Avatar & Quick Info -->
+                    <div>
+                        <div class="stagger-item mb-6">
+                            <div
+                                class="w-28 h-28 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-lg">
+                                <img src="../gudang/me.png" alt="" class="w-full h-full rounded-full">
+                            </div>
+                        </div>
+                        <h2
+                            class="stagger-item text-4xl font-google-display font-medium text-neutral-900 tracking-tight mb-2">
+                            Muhammad Thio Saputra
+                        </h2>
+                        <p class="stagger-item text-primary font-medium text-lg mb-1">@flessan</p>
+                        <p class="stagger-item text-neutral-500 text-base mb-6">
+                            Web Developer & Automation Engineer
+                        </p>
+
+                        <div class="stagger-item flex flex-wrap gap-2 mb-6">
+                            <span class="tag-chip bg-primary-container text-primary-on-container">
+                                <iconify-icon icon="lucide:map-pin" width="14"></iconify-icon>
+                                Banjarmasin
+                            </span>
+                            <span class="tag-chip bg-error-container text-error-on-container">
+                                <iconify-icon icon="lucide:cake" width="14"></iconify-icon>
+                                30 Juli 2009
+                            </span>
+                            <span class="tag-chip bg-secondary-container text-secondary-on-container">
+                                <iconify-icon icon="lucide:heart" width="14"></iconify-icon>
+                                Islam
+                            </span>
+                            <span class="tag-chip bg-tertiary-container text-tertiary-on-container">
+                                <iconify-icon icon="lucide:users" width="14"></iconify-icon>
+                                Banjar
+                            </span>
+                        </div>
+
+                        <div class="stagger-item flex items-center gap-2 text-sm text-neutral-500">
+                            <iconify-icon icon="lucide:clock" width="16"></iconify-icon>
+                            <span>Zona Waktu: <strong class="text-neutral-700">WITA (UTC+8)</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Education & Org Timeline -->
+                    <div>
+                        <h3 class="stagger-item text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-6">
+                            Pendidikan & Organisasi
+                        </h3>
+
+                        <!-- Education Timeline -->
+                        <div class="stagger-item flex gap-4 mb-6">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot" style="border-color:#1a73e8"></div>
+                                <div class="timeline-line flex-1"></div>
+                            </div>
+                            <div class="pb-6">
+                                <p class="font-semibold text-neutral-900 text-base">SD Islam Terpadu Al-Fatih</p>
+                                <p class="text-sm text-neutral-400">Pendidikan Dasar</p>
+                            </div>
+                        </div>
+                        <div class="stagger-item flex gap-4 mb-6">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot" style="border-color:#34A853"></div>
+                                <div class="timeline-line flex-1"></div>
+                            </div>
+                            <div class="pb-6">
+                                <p class="font-semibold text-neutral-900 text-base">Ponpes Raudhatul Musthofa</p>
+                                <p class="text-sm text-neutral-400">Pendidikan Non-Formal</p>
+                            </div>
+                        </div>
+                        <div class="stagger-item flex gap-4 mb-10">
+                            <div class="flex flex-col items-center">
+                                <div class="timeline-dot" style="border-color:#FBBC05"></div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-neutral-900 text-base">SMK Negeri 4 Banjarmasin</p>
+                                <p class="text-sm text-neutral-400">RPL (Rekayasa Perangkat Lunak) · 2025-2028</p>
+                            </div>
+                        </div>
+
+                        <!-- Org Badges -->
+                        <h3 class="stagger-item text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-4">
+                            Organisasi Di Masa SMK
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="stagger-item org-badge">
+                                <div class="flex items-center gap-2">
+                                    <iconify-icon icon="lucide:star" width="16" style="color:#1a73e8"></iconify-icon>
+                                    <span class="text-sm font-medium text-neutral-700">OSIS</span>
+                                </div>
+                                <p class="text-xs text-neutral-400 mt-1">Sekbid Keagamaan</p>
+                            </div>
+                            <div class="stagger-item org-badge">
+                                <div class="flex items-center gap-2">
+                                    <iconify-icon icon="lucide:heart-pulse" width="16"
+                                        style="color:#EA4335"></iconify-icon>
+                                    <span class="text-sm font-medium text-neutral-700">PMR</span>
+                                </div>
+                                <p class="text-xs text-neutral-400 mt-1">Sekretaris</p>
+                            </div>
+                            <div class="stagger-item org-badge">
+                                <div class="flex items-center gap-2">
+                                    <iconify-icon icon="lucide:leaf" width="16" style="color:#34A853"></iconify-icon>
+                                    <span class="text-sm font-medium text-neutral-700">Green Gen</span>
+                                </div>
+                                <p class="text-xs text-neutral-400 mt-1">Div. Bank Sampah</p>
+                            </div>
+                            <div class="stagger-item org-badge">
+                                <div class="flex items-center gap-2">
+                                    <iconify-icon icon="lucide:book-open" width="16"
+                                        style="color:#FBBC05"></iconify-icon>
+                                    <span class="text-sm font-medium text-neutral-700">Habsyi</span>
+                                </div>
+                                <p class="text-xs text-neutral-400 mt-1">Penyair</p>
+                            </div>
+                        </div><br>
+                        <br> <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== SLIDE 3: SKILLS ====== -->
+        <div class="slide" style="background-color: rgba(255, 255, 255, 0.92);">
+            <br>
+            <br>
+            <div class="blob" style="width:450px;height:450px;background:#4285F4;bottom:-120px;right:-100px;"></div>
+            <div class="blob"
+                style="width:300px;height:300px;background:#EA4335;top:-80px;left:30%;animation-delay:-5s;"></div>
+
+            <div class="max-w-4xl mx-auto px-6 w-full">
+                <div class="text-center mb-12">
+                    <br>
+                    <br>
+                    <h2
+                        class="stagger-item text-4xl font-google-display font-medium text-neutral-900 tracking-tight mb-3">
+                        Keahlian Teknis</h2>
+                    <p class="stagger-item text-neutral-500 text-base">Tools & technologies yang dikuasai</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                    <!-- Frontend -->
+                    <div>
+                        <div class="stagger-item flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+                                <iconify-icon icon="lucide:layout" width="20" style="color:#1a73e8"></iconify-icon>
+                            </div>
+                            <h3 class="font-semibold text-neutral-900 text-base">Frontend Development</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span class="text-neutral-600">HTML5 /
+                                        CSS3 / JS</span><span class="text-neutral-400 font-medium">95%</span></div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/4 bg-blue-500"></div>
+                                        <div class="w-1/4 bg-red-500"></div>
+                                        <div class="w-1/4 bg-yellow-500"></div>
+                                        <div class="w-1/4 bg-green-500"></div>
+                                        <div class="w-1/4 bg-red-500"></div>
+                                        <div class="w-1/6 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span class="text-neutral-600">React /
+                                        TypeScript</span><span class="text-neutral-400 font-medium">88%</span></div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/5 bg-yellow-500"></div>
+                                        <div class="w-1/5 bg-green-500"></div>
+                                        <div class="w-1/4 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span class="text-neutral-600">Vue /
+                                        Nunjucks / Eleventy</span><span class="text-neutral-400 font-medium">78%</span>
+                                </div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/6 bg-yellow-500"></div>
+                                        <div class="w-1/6 bg-green-500"></div>
+                                        <div class="w-1/1 bg-red-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span class="text-neutral-600">Tailwind /
+                                        Bootstrap</span><span class="text-neutral-400 font-medium">92%</span></div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/5 bg-yellow-500"></div>
+                                        <div class="w-1/5 bg-green-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/6 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div>
+                        <div class="stagger-item flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center">
+                                <iconify-icon icon="lucide:server" width="20" style="color:#34A853"></iconify-icon>
+                            </div>
+                            <h3 class="font-semibold text-neutral-900 text-base">Backend Development</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span
+                                        class="text-neutral-600">PHP</span><span
+                                        class="text-neutral-400 font-medium">82%</span></div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/5 bg-yellow-500"></div>
+                                        <div class="w-1/6 bg-green-500"></div>
+                                        <div class="w-1/3 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span
+                                        class="text-neutral-600">Go</span><span
+                                        class="text-neutral-400 font-medium">70%</span></div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/5 bg-yellow-500"></div>
+                                        <div class="w-1/5 bg-green-500"></div>
+                                        <div class="w-1/2 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span class="text-neutral-600">PostgreSQL
+                                        / MySQL</span><span class="text-neutral-400 font-medium">85%</span></div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/5 bg-yellow-500"></div>
+                                        <div class="w-1/5 bg-green-500"></div>
+                                        <div class="w-1/4 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="stagger-item">
+                                <div class="flex justify-between text-sm mb-2"><span class="text-neutral-600">Firebase /
+                                        NeonDB / REST API</span><span class="text-neutral-400 font-medium">80%</span>
+                                </div>
+                                <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                    <div class="flex h-4 w-full">
+                                        <div class="w-1/5 bg-blue-500"></div>
+                                        <div class="w-1/5 bg-red-500"></div>
+                                        <div class="w-1/5 bg-yellow-500"></div>
+                                        <div class="w-1/5 bg-green-500"></div>
+                                        <div class="w-1/3 bg-white-500"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DevOps -->
+                    <div>
+                        <div class="stagger-item flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-xl bg-tertiary-container flex items-center justify-center">
+                                <iconify-icon icon="lucide:terminal" width="20" style="color:#FBBC05"></iconify-icon>
+                            </div>
+                            <h3 class="font-semibold text-neutral-900 text-base">Automation & DevOps</h3>
+                        </div>
+                        <div class="stagger-item flex flex-wrap gap-2">
+                            <span class="tag-chip bg-tertiary-container text-tertiary-on-container">Bash/Shell</span>
+                            <span class="tag-chip bg-tertiary-container text-tertiary-on-container">Git & GitHub</span>
+                            <span class="tag-chip bg-tertiary-container text-tertiary-on-container">CI/CD</span>
+                            <span class="tag-chip bg-tertiary-container text-tertiary-on-container">Cloudflare
+                                Pages</span>
+                            <span class="tag-chip bg-tertiary-container text-tertiary-on-container">CF Workers</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div>
+                        <div class="stagger-item flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center">
+                                <iconify-icon icon="lucide:wrench" width="20" style="color:#EA4335"></iconify-icon>
+                            </div>
+                            <h3 class="font-semibold text-neutral-900 text-base">Tools & Platform</h3>
+                        </div>
+                        <div class="stagger-item flex flex-wrap gap-2">
+                            <span class="tag-chip bg-error-container text-error-on-container">VS Code</span>
+                            <span class="tag-chip bg-error-container text-error-on-container">DevTools</span>
+                            <span class="tag-chip bg-error-container text-error-on-container">Windows</span>
+                            <span class="tag-chip bg-error-container text-error-on-container">Android</span>
+                            <span class="tag-chip bg-error-container text-error-on-container">Linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fun fact -->
+                <div class="stagger-item mt-12 text-center">
+                    <p class="text-sm text-neutral-400">
+                        <iconify-icon icon="lucide:sparkles" width="14" style="vertical-align:-2px"></iconify-icon>
+                        "Flessan" — dari kata <em>flex</em> (fleksibel) + akhiran <em>-an</em>, mencerminkan pribadi
+                        yang adaptif
+                    </p>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <!-- ====== SLIDE 4: PROJECTS ====== -->
+        <div class="slide" style="background-color: rgba(255, 255, 255, 0.5);">
+            <br>
+            <br>
+            <div class="blob" style="width:350px;height:350px;background:#FBBC05;top:-80px;right:10%;opacity:0.1;">
+                <br>
+                <br>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-6 w-full">
+                <div class="text-center mb-10">
+                    <br>
+                    <br>
+                    <h2
+                        class="stagger-item text-4xl font-google-display font-medium text-neutral-900 tracking-tight mb-3">
+                        Proyek-Proyek</h2>
+                    <p class="stagger-item text-neutral-500 text-base">13+ proyek yang sudah dibangun — dari web app
+                        hingga open-source tools</p>
+                </div>
+
+                <div class="stagger-item relative w-full h-[48vh] overflow-hidden my-6">
+                    <!-- Fading Overlays -->
+                    <div
+                        class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#f8f9fa] via-[#f8f9fa]/80 to-transparent z-20 pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#f8f9fa] via-[#f8f9fa]/80 to-transparent z-20 pointer-events-none">
+                    </div>
+
+                    <!-- Waterfall Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full">
+
+                        <!-- Column 1 (Scrolls UP) -->
+                        <div class="marquee-column h-full overflow-hidden">
+                            <div class="marquee-track marquee-up">
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:message-circle" width="20"
+                                            style="color:#1a73e8"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Anonimbuz</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Media sosial anonim only-text
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">React</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PostgreSQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:school" width="20"
+                                            style="color:#34A853"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Skenpintas</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Portal layanan digital siswa
+                                        SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">Web
+                                            App</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:wrench" width="20"
+                                            style="color:#6366f1"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">QDT</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">QuickDevTools untuk developer
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:monitor" width="20"
+                                            style="color:#0891b2"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">HTMLWalLarper</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">HTML Live Wallpaper untuk Linux
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+
+                                <!-- Duplicate for infinite loop -->
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:message-circle" width="20"
+                                            style="color:#1a73e8"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Anonimbuz</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Media sosial anonim only-text
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">React</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PostgreSQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:school" width="20"
+                                            style="color:#34A853"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Skenpat</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Portal layanan digital siswa
+                                        SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">Web
+                                            App</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:wrench" width="20"
+                                            style="color:#6366f1"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">34Labs</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">QuickDevTools untuk developer
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:monitor" width="20"
+                                            style="color:#0891b2"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">HTMLWalLarper</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">HTML Live Wallpaper untuk Linux
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Column 2 (Scrolls DOWN) -->
+                        <div class="marquee-column h-full overflow-hidden">
+                            <div class="marquee-track marquee-down">
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:palette" width="20"
+                                            style="color:#9333ea"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Dotfiles Library</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Kumpulan konfigurasi Linux rice
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">TypeScript</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">CF
+                                            Workers</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:heart-pulse" width="20"
+                                            style="color:#EA4335"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Website PMR</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Website resmi PMR SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PHP</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">MySQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:pen-line" width="20"
+                                            style="color:#d97706"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">NurLaily</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Draft harian terminal → website
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:gamepad-2" width="20"
+                                            style="color:#ea580c"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">lintasindo</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Visual novel simulasi lalu
+                                        lintas</p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+
+                                <!-- Duplicate -->
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:palette" width="20"
+                                            style="color:#9333ea"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Dotfiles Library</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Kumpulan konfigurasi Linux rice
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">TypeScript</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">CF
+                                            Workers</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:heart-pulse" width="20"
+                                            style="color:#EA4335"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Website PMR</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Website resmi PMR SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PHP</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">MySQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:pen-line" width="20"
+                                            style="color:#d97706"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">NurLaily</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Draft harian terminal → website
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:gamepad-2" width="20"
+                                            style="color:#ea580c"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">lintasindo</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Visual novel simulasi lalu
+                                        lintas</p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Column 3 (Scrolls UP, hidden on mobile) -->
+                        <div class="marquee-column h-full overflow-hidden hidden md:block">
+                            <div class="marquee-track marquee-up-slow">
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:wrench" width="20"
+                                            style="color:#6366f1"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">34Labs</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">QuickDevTools untuk developer
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:gamepad-2" width="20"
+                                            style="color:#ea580c"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">lintasindo</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Visual novel simulasi lalu
+                                        lintas</p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:message-circle" width="20"
+                                            style="color:#1a73e8"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Anonimbuz</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Media sosial anonim only-text
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">React</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PostgreSQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:heart-pulse" width="20"
+                                            style="color:#EA4335"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Website PMR</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Website resmi PMR SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PHP</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">MySQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+
+                                <!-- Duplicate -->
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:wrench" width="20"
+                                            style="color:#6366f1"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">34Labs</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">QuickDevTools untuk developer
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:gamepad-2" width="20"
+                                            style="color:#ea580c"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">lintasindo</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Visual novel simulasi lalu
+                                        lintas</p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:message-circle" width="20"
+                                            style="color:#1a73e8"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Anonimbuz</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Media sosial anonim only-text
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">React</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PostgreSQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:heart-pulse" width="20"
+                                            style="color:#EA4335"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Website PMR</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Website resmi PMR SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">PHP</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">MySQL</span>
+                                    </div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Column 4 (Scrolls DOWN, hidden on mobile/tablet) -->
+                        <div class="marquee-column h-full overflow-hidden hidden lg:block">
+                            <div class="marquee-track marquee-down-fast">
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:pen-line" width="20"
+                                            style="color:#d97706"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">NurLaily</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Draft harian terminal → website
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:monitor" width="20"
+                                            style="color:#0891b2"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">HTMLWalLarper</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">HTML Live Wallpaper untuk Linux
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:palette" width="20"
+                                            style="color:#9333ea"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Dotfiles Library</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Kumpulan konfigurasi Linux rice
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">TypeScript</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">CF
+                                            Workers</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:school" width="20"
+                                            style="color:#34A853"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Skenpat</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Portal layanan digital siswa
+                                        SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">Web
+                                            App</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+
+                                <!-- Duplicate -->
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:pen-line" width="20"
+                                            style="color:#d97706"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">NurLaily</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Draft harian terminal → website
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:monitor" width="20"
+                                            style="color:#0891b2"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">HTMLWalLarper</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">HTML Live Wallpaper untuk Linux
+                                    </p>
+                                    <span class="inline-block mt-3 text-xs font-medium text-primary-light">● Open
+                                        Source</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:palette" width="20"
+                                            style="color:#9333ea"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Dotfiles Library</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Kumpulan konfigurasi Linux rice
+                                    </p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">TypeScript</span><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">CF
+                                            Workers</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-tertiary">● Ongoing</span>
+                                </div>
+                                <div class="project-card bg-white rounded-2xl p-5 cursor-pointer">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center mb-3">
+                                        <iconify-icon icon="lucide:school" width="20"
+                                            style="color:#34A853"></iconify-icon>
+                                    </div>
+                                    <h4 class="font-semibold text-base text-neutral-900 mb-2">Skenpat</h4>
+                                    <p class="text-sm text-neutral-400 leading-relaxed">Portal layanan digital siswa
+                                        SMKN 4</p>
+                                    <div class="flex flex-wrap gap-1 mt-3"><span
+                                            class="text-xs px-2 py-1 bg-neutral-100 rounded text-neutral-500">Web
+                                            App</span></div>
+                                    <span class="inline-block mt-3 text-xs font-medium text-secondary">● Live</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- More projects hint -->
+                <div class="stagger-item text-center mt-8">
+                    <p class="text-sm text-neutral-400">+ 5 proyek lainnya termasuk NovaUI, GMD2TXT, GoScRcPy!,
+                        AdbPureFlow & Portfolio</p>
+                </div>
+
+                <!-- OSS Contribution -->
+                <div
+                    class="stagger-item mt-8 bg-white rounded-2xl p-6 border border-neutral-200 flex items-center gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-neutral-900 flex items-center justify-center flex-shrink-0">
+                        <iconify-icon icon="lucide:git-pull-request" width="24" style="color:white"></iconify-icon>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-base text-neutral-900">Kontribusi Open Source</p>
+                        <p class="text-sm text-neutral-500">Muffon (2.2k ⭐) — terjemahan Bahasa Indonesia ·
+                            KiyoEditz/Anomia — issue & PR</p>
+                    </div>
+                </div>
+                <br>
+                <br> <br>
+                <br>
+            </div>
+        </div>
+
+        <!-- ====== SLIDE 5: CONTACT (You're All Set!) ====== -->
+        <div class="slide" style="z-index: -50; background-color: rgba(255, 255, 255, 0.135);">
+            <div class="blob" style="width:400px;height:400px;background:#34A853;top:-100px;left:-80px;"></div>
+            <div class="blob"
+                style="width:350px;height:350px;background:#4285F4;bottom:-100px;right:-80px;animation-delay:-6s;">
+            </div>
+
+            <div class="max-w-lg mx-auto px-6 w-full text-center">
+                <br>
+                <br>
+                <!-- Checkmark Animation -->
+                <div class="checkmark-circle">
+                    <svg class="checkmark-svg" viewBox="0 0 52 52">
+                        <path class="checkmark-path" d="M14 27l7.8 7.8L38 17" />
+                    </svg>
+                </div>
+
+                <h2 class="stagger-item text-4xl font-google-display font-medium text-neutral-900 tracking-tight mb-3">
+                    You're all set!</h2>
+                <p class="stagger-item text-neutral-500 text-base mb-2">Currently open to work & kolaborasi</p>
+                <p class="stagger-item text-sm text-secondary font-medium mb-10">
+                    <iconify-icon icon="lucide:circle-dot" width="14" style="vertical-align:-2px"></iconify-icon>
+                    Available for freelance & collaboration
+                </p>
+
+                <div class="space-y-3 text-left mb-10">
+                    <a href="mailto:flessan@yahoo.com" class="stagger-item contact-link">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-error-container flex items-center justify-center flex-shrink-0">
+                            <iconify-icon icon="lucide:mail" width="20" style="color:#EA4335"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="font-medium text-base text-neutral-900">Email</p>
+                            <p class="text-sm text-neutral-400">flessan@yahoo.com</p>
+                        </div>
+                        <iconify-icon icon="lucide:arrow-up-right" width="18"
+                            style="color:#dadce0;margin-left:auto"></iconify-icon>
+                    </a>
+
+                    <a href="https://github.com/flessan" target="_blank" class="stagger-item contact-link">
+                        <div class="w-12 h-12 rounded-xl bg-neutral-900 flex items-center justify-center flex-shrink-0">
+                            <iconify-icon icon="lucide:github" width="20" style="color:white"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="font-medium text-base text-neutral-900">GitHub</p>
+                            <p class="text-sm text-neutral-400">@flessan — Web Developer & Automation Engineer</p>
+                        </div>
+                        <iconify-icon icon="lucide:arrow-up-right" width="18"
+                            style="color:#dadce0;margin-left:auto"></iconify-icon>
+                    </a>
+
+                    <a href="https://flessan.pages.dev" target="_blank" class="stagger-item contact-link">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center flex-shrink-0">
+                            <iconify-icon icon="lucide:globe" width="20" style="color:#1a73e8"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="font-medium text-base text-neutral-900">Portfolio</p>
+                            <p class="text-sm text-neutral-400">flessan.pages.dev</p>
+                        </div>
+                        <iconify-icon icon="lucide:arrow-up-right" width="18"
+                            style="color:#dadce0;margin-left:auto"></iconify-icon>
+                    </a>
+
+                    <a href="https://linkedin.com/in/flessan" target="_blank" class="stagger-item contact-link">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center flex-shrink-0">
+                            <iconify-icon icon="lucide:linkedin" width="20" style="color:#0a66c2"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="font-medium text-base text-neutral-900">LinkedIn</p>
+                            <p class="text-sm text-neutral-400">linkedin.com/in/flessan</p>
+                        </div>
+                        <iconify-icon icon="lucide:arrow-up-right" width="18"
+                            style="color:#dadce0;margin-left:auto"></iconify-icon>
+                    </a>
+
+                    <a href="https://facebook.com/flethio" target="_blank" class="stagger-item contact-link">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center flex-shrink-0">
+                            <iconify-icon icon="lucide:facebook" width="20" style="color:#1877f2"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="font-medium text-base text-neutral-900">Facebook</p>
+                            <p class="text-sm text-neutral-400">@flethio — Life Archive</p>
+                        </div>
+                        <iconify-icon icon="lucide:arrow-up-right" width="18"
+                            style="color:#dadce0;margin-left:auto"></iconify-icon>
+                    </a>
+                </div>
+
+                <!-- Visi -->
+                <div class="stagger-item bg-surface-container rounded-2xl p-6 text-left border border-neutral-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="lucide:target" width="18" style="color:#1a73e8"></iconify-icon>
+                        <h4 class="font-semibold text-base text-neutral-900">Visi</h4>
+                    </div>
+                    <p class="text-sm text-neutral-500 leading-relaxed">
+                        Fokus pada pengembangan web yang <strong class="text-neutral-700">efisien, scalable, dan
+                            future-proof</strong> —
+                        spesialis dalam membangun & deploy aplikasi web, automasi workflow, dan transformasi situs
+                        statis menjadi pengalaman interaktif dengan teknik modern.
+                    </p>
+                </div>
+
+                <!-- Footer -->
+                <div class="stagger-item mt-8 flex items-center justify-center gap-3 text-xs text-neutral-400">
+                    <span>Made with</span>
+                    <iconify-icon icon="lucide:heart" width="14" style="color:#EA4335"></iconify-icon>
+                    <span>by Flessan · 2025</span>
+                </div>
+                <br>
+                <br> <br>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Dots Navigation -->
+    <div
+        class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50 bg-white/90 backdrop-blur-md px-5 py-3 rounded-full shadow-lg border border-neutral-100">
+        <div class="dot active" data-slide="0" onclick="goToSlide(0)"></div>
+        <div class="dot" data-slide="1" onclick="goToSlide(1)"></div>
+        <div class="dot" data-slide="2" onclick="goToSlide(2)"></div>
+        <div class="dot" data-slide="3" onclick="goToSlide(3)"></div>
+        <div class="dot" data-slide="4" onclick="goToSlide(4)"></div>
+    </div>
+
+    <!-- Slide Counter -->
+    <div
+        class="fixed bottom-8 right-8 z-50 text-xs text-neutral-400 font-medium bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-neutral-100 shadow-sm">
+        <span id="slideNum">1</span> / 5
+    </div>
+
+    <script>
+        // Initialize variables
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const wrapper = document.getElementById('slidesWrapper');
+        const progressBar = document.getElementById('progressBar');
+        const dots = document.querySelectorAll('.dot');
+        const arrowLeft = document.getElementById('arrowLeft');
+        const arrowRight = document.getElementById('arrowRight');
+        const slideNum = document.getElementById('slideNum');
+        const slides = document.querySelectorAll('.slide');
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Floating Tech Icons
+        const techIcons = [
+            'logos:html-5', 'logos:css-3', 'logos:javascript', 'logos:react', 'logos:vue',
+            'logos:nodejs-icon', 'logos:php', 'logos:go', 'logos:postgresql', 'logos:mysql',
+            'logos:git-icon', 'logos:github-icon', 'logos:docker-icon', 'logos:linux-tux',
+            'logos:typescript-icon', 'logos:tailwindcss-icon', 'logos:bootstrap', 'logos:firebase',
+            'logos:cloudflare-icon', 'logos:vscode'
+        ];
+
+        const floatingIconsContainer = document.getElementById('floatingIcons');
+        const iconCount = 20;
+
+        for (let i = 0; i < iconCount; i++) {
+            const icon = document.createElement('div');
+            icon.className = 'floating-icon';
+            icon.innerHTML = `<iconify-icon icon="${techIcons[i % techIcons.length]}"></iconify-icon>`;
+            icon.style.left = `${Math.random() * 100}%`;
+            icon.style.top = `${Math.random() * 100}%`;
+            icon.style.animationDelay = `${Math.random() * 20}s`;
+            icon.style.animationDuration = `${15 + Math.random() * 10}s`;
+            floatingIconsContainer.appendChild(icon);
+        }
+
+        // Google Particles
+        const particleColors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'google-particle';
+            particle.style.background = particleColors[i % particleColors.length];
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 15}s`;
+            particle.style.animationDuration = `${10 + Math.random() * 10}s`;
+            floatingIconsContainer.appendChild(particle);
+        }
+
+        // Cursor Trail
+        const cursorTrail = document.getElementById('cursorTrail');
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursorTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+
+            cursorTrail.style.left = `${trailX - 10}px`;
+            cursorTrail.style.top = `${trailY - 10}px`;
+
+            const hue = (Date.now() / 20) % 360;
+            cursorTrail.style.background = `radial-gradient(circle, hsla(${hue}, 70%, 60%, 0.3) 0%, transparent 70%)`;
+
+            requestAnimationFrame(animateCursorTrail);
+        }
+        animateCursorTrail();
+
+        // Mouse Parallax on Background
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+            document.querySelectorAll('.blob').forEach(blob => {
+                blob.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            document.querySelectorAll('.floating-icon').forEach((icon, i) => {
+                const factor = (i % 5 + 1) * 0.3;
+                icon.style.transform = `translate(${x * factor}px, ${y * factor}px) rotate(${x * factor}deg)`;
+            });
+        });
+
+        // Typing Effect
+        const phrases = [
+            'Cari tahu tentang Flessan...',
+            'Web Developer muda 16 tahun',
+            '13+ proyek & open-source contributor',
+            'SMK Negeri 4 Banjarmasin — RPL',
+        ];
+        let phraseIdx = 0, charIdx = 0, isDeleting = false;
+        const typingEl = document.getElementById('typingText');
+
+        function typeEffect() {
+            const current = phrases[phraseIdx];
+            if (!isDeleting) {
+                typingEl.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+                if (charIdx === current.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                    return;
+                }
+                setTimeout(typeEffect, 60);
+            } else {
+                typingEl.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+                if (charIdx === 0) {
+                    isDeleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                    setTimeout(typeEffect, 400);
+                    return;
+                }
+                setTimeout(typeEffect, 30);
+            }
+        }
+        typeEffect();
+
+        // Dynamic Time-Based Greeting
+        function setGreeting() {
+            const hour = new Date().getHours();
+            const greetingEl = document.getElementById('greetingText');
+            let greeting = 'Selamat Datang';
+
+            if (hour >= 5 && hour < 12) {
+                greeting = 'Selamat Pagi';
+            } else if (hour >= 12 && hour < 15) {
+                greeting = 'Selamat Siang';
+            } else if (hour >= 15 && hour < 18) {
+                greeting = 'Selamat Sore';
+            } else {
+                greeting = 'Selamat Malam';
+            }
+
+            greetingEl.textContent = greeting;
+        }
+        setGreeting();
+
+
+        // Keyboard Shortcuts Modal
+        function toggleShortcuts() {
+            const modal = document.getElementById('shortcutsModal');
+            modal.classList.toggle('active');
+        }
+
+        // Ripple Effect
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const ripple = document.createElement('span');
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+
+            button.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        document.querySelectorAll('.btn-filled').forEach(button => {
+            button.addEventListener('click', createRipple);
+        });
+
+        // Confetti Effect
+        function createConfetti() {
+            const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = '-10px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(confetti);
+
+                const duration = 2000 + Math.random() * 1000;
+                const xDrift = (Math.random() - 0.5) * 200;
+
+                confetti.animate([
+                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${xDrift}px, ${window.innerHeight + 100}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }).onfinish = () => confetti.remove();
+            }
+        }
+
+        // Easter Egg - Logo Click
+        let logoClickCount = 0;
+        let logoClickTimer;
+
+        function triggerEasterEgg() {
+            logoClickCount++;
+            clearTimeout(logoClickTimer);
+
+            if (logoClickCount >= 5) {
+                const logo = document.getElementById('chromeLogo');
+                logo.classList.add('logo-explode');
+                setTimeout(() => logo.classList.remove('logo-explode'), 1000);
+                createConfetti();
+                logoClickCount = 0;
+            }
+
+            logoClickTimer = setTimeout(() => {
+                logoClickCount = 0;
+            }, 1000);
+        }
+
+        // Slide Navigation
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides || index === currentSlide) return;
+
+            slides[currentSlide].classList.remove('active');
+
+            currentSlide = index;
+            wrapper.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+            slideNum.textContent = currentSlide + 1;
+
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide);
+            });
+
+            arrowLeft.classList.toggle('hidden', currentSlide === 0);
+            arrowRight.classList.toggle('hidden', currentSlide === totalSlides - 1);
+
+            setTimeout(() => {
+                slides[currentSlide].classList.add('active');
+            }, 100);
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        // Enhanced Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            // Close modal on Escape
+            if (e.key === 'Escape') {
+                document.getElementById('shortcutsModal').classList.remove('active');
+                return;
+            }
+
+            // Toggle shortcuts with ?
+            if (e.key === '?' || e.key === '/') {
+                e.preventDefault();
+                toggleShortcuts();
+                return;
+            }
+
+
+            // Number keys for direct slide access
+            if (e.key >= '1' && e.key <= '5') {
+                goToSlide(parseInt(e.key) - 1);
+                return;
+            }
+
+            // Navigation
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        // Touch/Swipe support
+        let touchStartX = 0, touchStartY = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].screenX;
+            const endY = e.changedTouches[0].screenY;
+            const diffX = touchStartX - endX;
+            const diffY = touchStartY - endY;
+
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 60) {
+                if (diffX > 0) nextSlide();
+                else prevSlide();
+            }
+        }, { passive: true });
+
+        // Init first slide
+        slides[0].classList.add('active');
+    </script>
+</body>
+
+</html>
