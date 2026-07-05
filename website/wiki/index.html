@@ -49,6 +49,34 @@
 
 <body
 	class="skin--responsive skin-vector skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-2 ns-subject mw-editable page-Pengguna_Flessan rootpage-Pengguna_Flessan skin-vector-2022 action-view">
+	<div
+		style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgb(255, 255, 255); z-index: 9999; animation: hilangOtomatis 1s ease-in-out 1s forwards;">
+	</div>
+
+
+	<!-- CSS Keyframes (Di dalam tag style karena keyframes tidak bisa ditulis di inline css) -->
+	<style>
+		@keyframes hilangOtomatis {
+			0% {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			/* Awal: Sangat terlihat (Hitam) */
+			90% {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			/* Tahan opasitas hingga detik ke-2.7 */
+			100% {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			/* Akhir: Menghilang total */
+		}
+	</style>
 	<div id="mw-aria-live-region" class="mw-aria-live-region" aria-live="polite"></div><a class="mw-jump-link"
 		href="#bodyContent">Lompat ke isi</a>
 	<div class="vector-header-container">

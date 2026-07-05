@@ -3,80 +3,1228 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Effect</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Thio Saputra | Musician & Developer</title>
+    <meta name="description"
+        content="Musician & full-stack developer based in Banjarmasin. 3 years building simple, functional software.">
+    <meta name="keywords"
+        content="Thio Saputra, Flessan, Musician, Developer, Banjarmasin, Kalimantan Selatan, UI/UX, Mobile, Website">
+    <meta name="author" content="Thio Saputra">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://flessan.pages.dev" />
+    <link rel="canonical" href="https://thio.qzz.io" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flessan.pages.dev">
+    <meta property="og:url" content="https://thio.qzz.io">
+    <meta property="og:title" content="Thio Saputra | Musician & Developer">
+    <meta property="og:description"
+        content="Musician & full-stack developer based in Banjarmasin. Building simple, functional software.">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thio Saputra | Musician & Developer">
+    <meta name="twitter:description"
+        content="Musician & full-stack developer based in Banjarmasin. Building simple, functional software.">
+
+    <!-- DNS Prefetch for Speed -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://linkedin.com">
+    <link rel="dns-prefetch" href="https://github.com">
+
+    <!-- Preconnect & Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Advanced Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Thio Saputra",
+        "url": "https://flessan.pages.dev",
+        "url": "https://thio.qzz.io",
+        "jobTitle": "Musician & Full-Stack Developer",
+        "worksFor": [{"@type": "Organization", "name": "34labs"}],
+        "alumniOf": [{"@type": "CollegeOrUniversity", "name": "SMK Negeri 4 Banjarmasin"}],
+        "knowsAbout": ["Go", "Nunjucks", "11ty", "CSS3", "JavaScript", "PHP", "PostgreSQL", "Git", "UI/UX", "Shell Scripting"],
+        "sameAs": [
+          "https://github.com/flessan",
+          "https://linkedin.com/in/flethio"
+        ]
+      }
+    }
+    </script>
+
+    <!-- Prevent FOUC for Dark Mode -->
+    <script>
+        (function () {
+            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
 
     <style>
-        body {
+        :root {
+            --bg-color: #eaf4fb;
+            --content-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #34495e;
+            --text-muted: #7f8c8d;
+            --accent: #4bb2e1;
+            --accent-hover: #3997c6;
+            --border: #d0eafc;
+            --input-bg: #ffffff;
+            --input-border: #a0c4d8;
+            --skill-bg: #d0eafc;
+            --skill-text: #4fc3f7;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --slider-bg: #b0d4e3;
+        }
+
+        .dark {
+            --bg-color: #0a0a0a;
+            --content-bg: #1e2a38;
+            --text-main: #ecf0f1;
+            --text-secondary: #bdc3c7;
+            --text-muted: #7f8c8d;
+            --accent: #367d9e;
+            --accent-hover: #388cb5;
+            --border: #34495e;
+            --input-bg: #2a3a4d;
+            --input-border: #7f8c8d;
+            --skill-bg: #1e2a38;
+            --skill-text: #4fc3f7;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --slider-bg: #3a5a6a;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #111;
-            color: white;
-            font-family: Arial, sans-serif;
+            padding: 0
         }
 
-        h1 {
-            font-size: 50px;
+        html {
+            scroll-behavior: smooth
         }
 
-        .cursor {
-            display: inline-block;
-            animation: blink .7s infinite;
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            transition: background .4s ease, color .4s ease
         }
 
-        @keyframes blink {
-            50% {
+        a,
+        button {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color .2s
+        }
+
+        a:hover,
+        button:hover {
+            color: var(--accent-hover);
+            text-decoration: underline
+        }
+
+        @keyframes fadeInUp {
+            from {
                 opacity: 0;
+                transform: translateY(20px)
             }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .site-navigation {
+            background: var(--content-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: var(--shadow);
+            transition: background .4s ease, border-color .4s ease
+        }
+
+        .username-nav {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -.3px;
+            transition: color .3s
+        }
+
+        .site-navigation>a {
+            text-decoration: none
+        }
+
+        .navigation-bar {
+            display: flex;
+            gap: 24px;
+            align-items: center
+        }
+
+        .navigation-bar a {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color .2s
+        }
+
+        .navigation-bar a:hover {
+            color: var(--text-main);
+            text-decoration: none
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+            flex-shrink: 0
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--slider-bg);
+            transition: .4s;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px
+        }
+
+        .slider .icon {
+            width: 14px;
+            height: 14px
+        }
+
+        .slider .sun {
+            position: absolute;
+            left: 30px;
+            color: #1a758e;
+            transition: opacity .10s
+        }
+
+        .slider .moon {
+            position: relative;
+            color: #ffffff;
+            opacity: 0;
+            transition: opacity .10s
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #fff;
+            transition: .4s;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .2)
+        }
+
+        input:checked+.slider {
+            background-color: var(--slider-bg)
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(24px)
+        }
+
+        input:checked+.slider .sun {
+            opacity: 0
+        }
+
+        input:checked+.slider .moon {
+            opacity: 1
+        }
+
+        .content-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 32px;
+            animation: fadeInUp .6s ease-out
+        }
+
+        .site-content {
+            display: flex;
+            gap: 36px
+        }
+
+        .sidebar-info {
+            flex: 0 0 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: sticky;
+            top: 84px;
+            align-self: flex-start
+        }
+
+        .profile-pic-sb {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform .3s ease;
+        }
+
+        .profile-pic-sb:hover {
+            transform: scale(1.05);
+        }
+
+        .username-sb {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+            transition: color .3s
+        }
+
+        .about-bio {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5
+        }
+
+        .user-details-ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 4px
+        }
+
+        .user-details-ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-secondary)
+        }
+
+        .user-details-ul li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+            transition: color .2s, transform .2s;
+            flex-shrink: 0
+        }
+
+        .user-details-ul li:hover svg {
+            color: var(--accent);
+            transform: translateX(2px)
+        }
+
+        .user-details-ul li a {
+            color: var(--accent);
+            font-weight: 600
+        }
+
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Nunito', sans-serif;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all .3s ease;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 4px
+        }
+
+        .cv-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(75, 178, 225, .3);
+            text-decoration: none;
+            color: #fff
+        }
+
+        .cv-btn svg {
+            width: 16px;
+            height: 16px
+        }
+
+        .cv-btn-up {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            font-family: 'Nunito', sans-serif;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 600;
+            transition: all .3s ease;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 4px
+        }
+
+        .cv-btn-up:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(75, 178, 225, .3);
+            text-decoration: none;
+            color: #fff
+        }
+
+        .cv-btn-up svg {
+            width: 16px;
+            height: 16px
+        }
+
+        .about-user {
+            flex: 1;
+            min-width: 0
+        }
+
+        .about-user h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 32px 0 12px;
+            letter-spacing: -.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color .3s
+        }
+
+        .about-user h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            opacity: .5;
+            transition: background .3s
+        }
+
+        .about-user h2:first-child {
+            margin-top: 0
+        }
+
+        .about-user p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            transition: color .3s
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px
+        }
+
+        .skill-tag {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--skill-bg);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            transition: all .2s ease;
+            cursor: default
+        }
+
+        .skill-tag svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--text-main);
+            transition: fill .2s
+        }
+
+        .skill-tag::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -32px;
+            background: var(--text-main);
+            color: var(--bg-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
+            z-index: 99
+        }
+
+        .skill-tag:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0)
+        }
+
+        .skill-tag:hover svg {
+            fill: var(--accent);
+        }
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px
+        }
+
+        .project-item {
+            display: flex;
+            gap: 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all .3s ease;
+            background: var(--content-bg)
+        }
+
+        .project-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent)
+        }
+
+        .project-mockup {
+            flex: 0 0 150px;
+            height: 90px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border)
+        }
+
+        .project-mockup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .project-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .project-title {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 15px
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5
+        }
+
+        .project-tags {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: auto
+        }
+
+        .project-links a {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .project-links a:hover {
+            text-decoration: underline
+        }
+
+        .project-links svg {
+            width: 14px;
+            height: 14px
+        }
+
+        .experience-ul {
+            list-style: none;
+            padding: 0
+        }
+
+        .experience-ul>li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: border-color .3s
+        }
+
+        .experience-ul>li:last-child {
+            border-bottom: none
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap
+        }
+
+        .exp-role {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 15px
+        }
+
+        .exp-place {
+            color: var(--accent);
+            font-weight: 600
+        }
+
+        .exp-date {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--skill-bg);
+            padding: 2px 8px;
+            border-radius: 12px;
+            white-space: nowrap
+        }
+
+        .exp-achievements {
+            list-style: none;
+            padding-left: 16px;
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .exp-achievements li {
+            position: relative;
+            font-size: 13px;
+            line-height: 1.5;
+            border-bottom: none;
+            padding: 0
+        }
+
+        .exp-achievements li::before {
+            content: "✓";
+            position: absolute;
+            left: -16px;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 12px
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px
+        }
+
+        .contact-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color .2s, transform .2s
+        }
+
+        .contact-icon svg {
+            width: 28px;
+            height: 28px;
+            padding: 8px;
+            background: var(--skill-bg);
+            border-radius: 50%;
+            color: var(--accent);
+            transition: background .2s, transform .2s, color .2s
+        }
+
+        .contact-icon:hover {
+            text-decoration: none;
+            color: var(--accent);
+            transform: translateY(-2px)
+        }
+
+        .contact-icon:hover svg {
+            background: var(--accent);
+            color: #fff
+        }
+
+        @media(max-width:700px) {
+            .site-navigation {
+                padding: 12px 20px
+            }
+
+            .content-wrapper {
+                padding: 20px
+            }
+
+            .site-content {
+                flex-direction: column;
+                gap: 24px
+            }
+
+            .sidebar-info {
+                flex: none;
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 12px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid var(--border)
+            }
+
+            .profile-pic-sb {
+                width: 60px;
+                height: 60px
+            }
+
+            .sidebar-info .about-bio,
+            .sidebar-info .user-details-ul {
+                width: 100%
+            }
+
+            .user-details-ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 16px
+            }
+
+            .about-user h2::after {
+                display: none
+            }
+
+            .project-item {
+                flex-direction: column
+            }
+
+            .project-mockup {
+                flex: none;
+                height: 220px;
+                width: 100%
+            }
+
+            .exp-header {
+                flex-direction: column;
+                gap: 4px
+            }
+        }
+
+        /* Layer Transisi Hitam */
+        #layar-hitam {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        /* Class untuk mengaktifkan animasi hitam */
+        #layar-hitam.aktif {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Layer Transisi Putih */
+        #layar-putih {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        /* Class untuk mengaktifkan animasi hitam */
+        #layar-putih.aktif {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>
-        <span id="text"></span><span class="cursor">|</span>
-    </h1>
+    <header class="site-navigation">
+        <a href="https://flessan.pages.dev" aria-label="Home">
+            <h1 class="username-nav">Thio Saputra</h1>
+        </a>
+        <nav class="navigation-bar" aria-label="Main Navigation">
+            <a href="./project" onclick="mulaiTransisiMAIN(event)">main</a>
+
+            <div id="layar-hitam"></div>
+            <div id="layar-putih"></div>
+
+            <script>
+                function mulaiTransisiMAIN(event) {
+                    // 1. Ambil link tujuan (./project) langsung dari atribut href
+                    const targetUrl = event.currentTarget.getAttribute('href');
+
+                    // 2. Cegah browser langsung pindah halaman seketika
+                    event.preventDefault();
+
+                    // 3. Munculkan layer transisi hitam
+                    const overlay = document.getElementById('layar-hitam');
+                    overlay.classList.add('aktif');
+
+                    // 4. Tunggu transisi selesai (0.6 detik), baru pindah halaman
+                    setTimeout(function () {
+                        window.location.href = targetUrl;
+                    }, 600);
+                }
+            </script>
+            <a href="./chrome" onclick="mulaiTransisiCHROME(event)">chrome</a>
+            <script>
+                function mulaiTransisiCHROME(event) {
+                    // 1. Ambil link tujuan (./project) langsung dari atribut href
+                    const targetUrl = event.currentTarget.getAttribute('href');
+
+                    // 2. Cegah browser langsung pindah halaman seketika
+                    event.preventDefault();
+
+                    // 3. Munculkan layer transisi hitam
+                    const overlay = document.getElementById('layar-putih');
+                    overlay.classList.add('aktif');
+
+                    // 4. Tunggu transisi selesai (0.6 detik), baru pindah halaman
+                    setTimeout(function () {
+                        window.location.href = targetUrl;
+                    }, 600);
+                }
+            </script>
+            <a href="./wiki" onclick="mulaiTransisiCHROME(event)">wiki</a>
+            <label class="theme-switch" for="dark-toggle" aria-label="Toggle dark mode">
+                <input type="checkbox" id="dark-toggle">
+                <div class="slider">
+                    <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </div>
+            </label>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="site-content">
+
+            <aside class="sidebar-info" aria-label="User Profile">
+                <img src="./gudang/me.png" alt="Thio Saputra Profile Picture" class="profile-pic-sb" width="90"
+                    height="90">
+                <h2 class="username-sb">Thio Saputra</h2>
+                <p class="about-bio"> musician & full-stack developer based in Banjarmasin. Building simple,
+                    functional software.</p>
+                <ul class="user-details-ul">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span><a href="mailto:flessan@yahoo.com">flessan@yahoo.com</a></span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span><a href="https://github.com/flessan">GitHub</a></span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        <span><a href="https://linkedin.com/in/flethio">LinkedIn</a></span>
+                    </li>
+                </ul>
+                <a href="./thiosaputra_cv.pdf" download class="cv-btn" aria-label="Download Thio Saputra CV">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download CV
+                </a>
+                <a href="./thiosaputra_cv.pdf" target="_blank" class="cv-btn-up"
+                    aria-label="Open Thio Saputra CV in New Tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    Open
+                </a>
+            </aside>
+
+            <div class="about-user">
+                <section class="about-section">
+                    <h2 id="about">About Me</h2>
+                    <p>I am a Web Developer passionate about efficiency, specializing in crafting and deploying seamless
+                        static and dynamic web applications. By leveraging Shell scripting, I focus on automating
+                        repetitive tasks to accelerate development workflows and enhance productivity.</p>
+                    <p>I excel at transforming traditional static sites into highly interactive experiences using modern
+                        frontend techniques and lightweight backend architectures. Whether it's setting up CI/CD
+                        pipelines, optimizing deployments, or managing full-stack systems, I am dedicated to engineering
+                        fast, scalable, and future-proof solutions.</p>
+                    <p><strong>Currently open to work</strong>, feel free to reach out!</p>
+                </section>
+
+                <section>
+                    <h2 id="skills">Skills</h2>
+                    <div class="skills-list">
+                        <!-- Inline SVGs replacing external image requests for Super Speed -->
+                        <span class="skill-tag" data-name="Go">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Go</title>
+                                <path
+                                    d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07zM.047 11.306c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082zm12.129-2.36c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.77.105-.13.198-.27.315-.434H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 01.292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 01-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.02 1.098-.2 2.15-.07 3.096.571.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.2m3.868 6.461c-1.064-.024-2.034-.328-2.852-1.029a3.665 3.665 0 01-1.262-2.255c-.21-1.32.152-2.489.947-3.529.853-1.122 1.881-1.706 3.272-1.95 1.192-.21 2.314-.095 3.33.595.923.63 1.496 1.484 1.648 2.605.198 1.578-.257 2.863-1.344 3.962-.771.783-1.718 1.273-2.805 1.495-.315.06-.63.07-.934.106zm2.78-4.72c-.011-.153-.011-.27-.034-.387-.21-1.157-1.274-1.81-2.384-1.554-1.087.245-1.788.935-2.045 2.033-.21.912.234 1.835 1.075 2.21.643.28 1.285.244 1.905-.07.923-.48 1.425-1.228 1.484-2.233z" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="Nunjucks">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Nunjucks</title>
+                                <path
+                                    d="M0 12v12h24V0H0v12zm8.2-1.9V3h3v17.3h-3c-.7-2.5-1.4-5-2.2-7.5v7.5H3V3h3c.8 2.3 1.5 4.7 2.2 7.1zM20.9 7v11.6c0 .2-.1.7-.5 1.1-.4.4-.8.5-.9.6h-5.1c-.2 0-.7-.1-1-.5-.4-.4-.5-.9-.6-1.2v-3.8c1-.2 2-.5 3-.7v3.1h2.1V7h3zM0 24" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="11ty">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Eleventy</title>
+                                <path
+                                    d="M3.398 12V0h17.204v24H3.398zm13.17 6.07a1.07 1.07 0 00.373-.107c.432-.213.68-.672.877-1.626.076-.372 1.195-6.168 1.209-6.263.026-.186-.008-.382-.084-.476a.325.325 0 00-.087-.064l-.06-.031h-.291c-.253 0-.298 0-.348.02-.113.039-.207.156-.255.316-.011.038-.168.881-.348 1.873l-.328 1.802-.046-.21c-.56-2.547-.764-3.452-.794-3.532a.383.383 0 00-.103-.16c-.105-.107-.117-.11-.567-.11-.411 0-.422 0-.5.074-.086.079-.122.216-.111.42.006.115.045.27.688 2.784.663 2.587.751 2.943.787 3.177.046.3-.05.713-.208.893-.032.037-.037.039-.084.032-.028 0-.12-.027-.204-.051-.268-.078-.362-.072-.462.028-.096.096-.137.248-.138.51 0 .256.028.34.159.473.131.133.324.208.595.23.164.012.22.012.33-.001zm-1.896-1.712a.31.31 0 00.16-.192c.02-.058.022-.098.022-.356 0-.255-.003-.299-.021-.354-.04-.121-.136-.196-.278-.217-.041-.01-.2-.01-.355-.01-.365-.001-.378-.01-.446-.184-.068-.18-.096-.326-.113-.602a85.799 85.799 0 01-.012-1.94v-1.765h.35c.454 0 .507-.01.602-.113a.465.465 0 00.102-.24 3.273 3.273 0 000-.534c-.026-.16-.099-.271-.211-.322-.057-.025-.065-.026-.45-.03h-.392l-.003-1.22c-.003-1.09-.005-1.227-.021-1.278a.378.378 0 00-.201-.247c-.052-.024-.072-.025-.32-.029-.27 0-.356 0-.429.038-.087.042-.148.133-.185.278-.014.054-.032.346-.076 1.262l-.06 1.194s-.08 0-.18.01c-.206.01-.263.022-.327.086-.092.092-.12.19-.127.455-.01.334.02.487.115.588.075.081.134.1.345.106l.173.01v1.785c0 1.7.006 2.019.034 2.274.041.37.13.709.241.928.194.38.544.617.988.668h1.005l.07-.04zm-7.447 0c.098-.053.16-.154.2-.332.016-.077.018-.401.018-4.518 0-4.184-.001-4.44-.02-4.51-.05-.194-.19-.29-.378-.26-.035.01-.344.084-.686.175-.343.09-.684.18-.758.198-.17.043-.214.062-.281.126-.105.098-.122.185-.122.606 0 .416.016.5.12.604.094.095.189.1.456.03.103-.026.193-.048.2-.048.01 0 .014.784.017 3.763.003 3.436.005 3.77.021 3.84.048.202.113.296.236.34.034.013.133.016.487.014.435 0 .445 0 .49-.027zm3.203 0c.092-.046.152-.135.197-.29l.024-.084.003-4.435c.002-3.194 0-4.456-.01-4.509-.033-.2-.145-.308-.322-.308-.066 0-.198.03-.857.204-.56.147-.799.214-.849.239a.34.34 0 00-.17.184c-.024.06-.024.071-.024.479 0 .415 0 .417.026.483a.362.362 0 00.083.12c.1.1.172.105.456.034a5.46 5.46 0 01.208-.05c.008 0 .012 1.202.014 3.791l.003 3.79.026.086a.48.48 0 00.135.23c.078.062.085.063.57.06.414 0 .447 0 .487-.024z" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="CSS3">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>CSS</title>
+                                <path
+                                    d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="JavaScript">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>JavaScript</title>
+                                <path
+                                    d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="PHP">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>PHP</title>
+                                <path
+                                    d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="PostgreSQL">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>PostgreSQL</title>
+                                <path
+                                    d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z" />
+                            </svg>
+                        </span>
+                        <span class="skill-tag" data-name="GitHub">
+                            <svg fill="#426a88" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>GitHub</title>
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                        </span>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 id="projects">Projects</h2>
+                    <ul class="project-list">
+                        <li>
+                            <article class="project-item">
+                                <div class="project-mockup">
+                                    <img src="https://placehold.co/600x400/EEE/31343C?font=poppins&text=Anonimbuz"
+                                        alt="Anonimbuz" loading="lazy" decoding="async" width="140" height="90">
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-title">Anonimbuz</div>
+                                    <div class="project-desc">Only-Text Social Media with Anonymity and some features.
+                                    </div>
+                                    <div class="project-tags">React, JavaScript, CSS, PostgreSQL, JWT, NeonDB,
+                                        Cloudflare Pages</div>
+                                    <div class="project-links">
+                                        <a href="https://anon.thio.qzz.io" title="Live">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                            Live
+                                        </a>
+                                        <a href="./project/Anonimbuz" title="Case Study">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                            </svg>
+                                            Case Study
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+
+                        <li>
+                            <article class="project-item">
+                                <div class="project-mockup">
+                                    <img src="./gudang/dotfiles.avif" alt="The Amazing Dotfiles Library" loading="lazy"
+                                        decoding="async" width="140" height="90">
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-title">Dotfiles Library</div>
+                                    <div class="project-desc">Linux Dotfiles for Rice rice rice (TMK).</div>
+                                    <div class="project-tags">React, TypeScript, CSS, PostgreSQL, JWT, NeonDB Auth,
+                                        Cloudflare Workers</div>
+                                    <div class="project-links">
+                                        <a href="https://dotfiles.qzz.io" title="Live">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                            Live
+                                        </a>
+                                        <a href="https://github.com/filesdot" title="GitHub Repo">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path
+                                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                            </svg>
+                                            Code
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+
+                        <!-- <li>
+                            <article class="project-item">
+                                <div class="project-mockup">
+                                    <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=TokoPintar+Mockup"
+                                        alt="TokoPintar App Mockup" loading="lazy" decoding="async" width="140"
+                                        height="90">
+                                </div>
+                                <div class="project-content">
+                                    <div class="project-title">TokoPintar</div>
+                                    <div class="project-desc">E-commerce platform for UMKM with simplified inventory
+                                        management. Boosted conversion by +158%.</div>
+                                    <div class="project-tags">Next.js</div>
+                                    <div class="project-links">
+                                        <a href="#" title="Live Demo">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                            Live
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </li> -->
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 id="experience">Experience</h2>
+                    <ul class="experience-ul">
+                        <li>
+                            <div class="exp-header">
+                                <div><span class="exp-role">Freelance Developer</span> @ <span
+                                        class="exp-place">Freelance</span></div>
+                                <span class="exp-date">2025 – Now</span>
+                            </div>
+                            <ul class="exp-achievements">
+                                <li>Build Dotfiles Library (React, TypeScript, CSS, PostgreSQL, JWT, NeonDB Auth,
+                                    Cloudflare Workers) - ongoing</li>
+                                <li>Build Portfolio (HTML, Vanilla CSS, JS) with SEO Optimized and Mobile Friendly -
+                                    finished</li>
+                                <li>Build Website for PMR SMKN 4 Banjarmasin (PHP, MySQL, Vanilla CSS) - ongoing</li>
+                            </ul>
+                        </li>
+                        <!-- <li>
+                            <div class="exp-header">
+                                <div><span class="exp-role">Full-Stack Developer</span> @ <span
+                                        class="exp-place">Gojek</span></div>
+                                <span class="exp-date">2021 – 2023</span>
+                            </div>
+                            <ul class="exp-achievements">
+                                <li>Developed high-availability API gateways handling 1M+ daily requests</li>
+                                <li>Implemented caching strategies that reduced server costs by 22%</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="exp-header">
+                                <div><span class="exp-role">UI/UX Musician</span> @ <span
+                                        class="exp-place">Kata.ai</span></div>
+                                <span class="exp-date">2019 – 2021</span>
+                            </div>
+                            <ul class="exp-achievements">
+                                <li>Created conversational UX patterns adopted by enterprise banking clients</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="exp-header">
+                                <div><span class="exp-role">B.Sc. Computer Science</span> @ <span
+                                        class="exp-place">Universitas Indonesia</span></div>
+                                <span class="exp-date">2015 – 2019</span>
+                            </div>
+                        </li> -->
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 id="contact">Contact</h2>
+                    <p>Let's connect and build something great together.</p>
+                    <div class="contact-row">
+                        <a href="mailto:flessan@yahoo.com" class="contact-icon" aria-label="Send Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://linkedin.com/in/flessan" class="contact-icon" aria-label="Visit LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/flessan" class="contact-icon" aria-label="Visit GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </main>
 
     <script>
-        const words = [""];
-        const text = document.getElementById("text");
-
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
-
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-
-            if (!deleting) {
-                text.textContent = currentWord.substring(0, charIndex++);
-                if (charIndex > currentWord.length) {
-                    deleting = true;
-                    setTimeout(typeEffect, 1000); // jeda sebelum hapus
-                    return;
-                }
-            } else {
-                text.textContent = currentWord.substring(0, charIndex--);
-                if (charIndex < 0) {
-                    deleting = false;
-                    wordIndex = (wordIndex + 1) % words.length;
-                }
-            }
-
-            setTimeout(typeEffect, deleting ? 80 : 150);
-        }
-
-        typeEffect();
-    </script>
-    <script>
-        setTimeout(() => {
-            // window.location.replace("./whois.htm");
-            window.location.replace("./fastpages.docx");
-        }, 3500);
+        // Dark Mode Toggle
+        const toggle = document.getElementById('dark-toggle');
+        const html = document.documentElement;
+        if (html.classList.contains('dark')) { toggle.checked = true; }
+        toggle.addEventListener('change', function () {
+            if (this.checked) { html.classList.add('dark'); localStorage.setItem('theme', 'dark'); }
+            else { html.classList.remove('dark'); localStorage.setItem('theme', 'light'); }
+        });
     </script>
 
 </body>
