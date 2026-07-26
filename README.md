@@ -4,6 +4,8 @@
     <img src="https://img.shields.io/badge/Click%20%20Here%20to%20See%20the%20SIMPLER%20Page-000000?style=for-the-badge" alt="GoToBottom">
   </a>
 
+</p>
+
 ![Metrics](https://github.com/flessan/flessan/blob/main/github-metrics.svg)
 
 ### whoami
@@ -17,5 +19,14 @@ Some of my public work:
 
 * [Email: tio@cc.cc](mailto:tio@cc.cc)
 
+### Visito Counto (Since 26/07/26)
+
+<div align="center">
+
+  ![flessan](https://count.getloli.com/@:flessan?theme=rule34)
+
 ---
+
+</div>
+
 ### My Pins:
