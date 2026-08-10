@@ -23,7 +23,7 @@ Some of my public work:
 
 <div align="center">
 
-  ![flessan](https://count.getloli.com/@:flessan?theme=rule34)
+  ![flessan](https://count.getloli.com/@:flessan?theme=minecraft)
 
 ---
 
