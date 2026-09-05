@@ -23,10 +23,6 @@ Some of my public work:
 
 <div align="center">
 
-  ![flessan](https://count.getloli.com/@:flessan?theme=minecraft)
-
----
+  ![flessan](https://count.getloli.com/@:flessan?theme=booru-ve)
 
 </div>
-
-### My Pins:
