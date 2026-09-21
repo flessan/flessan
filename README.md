@@ -10,7 +10,7 @@
 
 ### whoami
 
-Web Developer & Automation Engineer. I build and deploy fast, scalable static and dynamic web applications. Proficient in Bash, and modern frontend tools to automate workflows and transform static setups into interactive, full-stack experiences.
+Web Developer & Automation Enthusiast. I build and deploy fast, scalable web applications, both static and dynamic. I enjoy tinkering with APIs, especially those involving Telegram and Discord, to automate web tasks one bot at a time. I like finding workarounds. I prefer the "hard but free" path over paid solutions (unless, of course, you're in a rush, then the paid route makes sense).
 
 Some of my public work:
 [Main page](https://thio.qzz.io)
