@@ -18,6 +18,7 @@ Some of my public work:
 ### Links
 
 * [Email: tio@cc.cc](mailto:tio@cc.cc)
+* [flessan@duck.com](mailto:flessan@duck.com)
 
 ### Visito Counto (Since 26/07/26)
 
