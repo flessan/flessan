@@ -1,12 +1,9 @@
+<div align="center">
 
-<p align="right">
-  <a href="https://github.com/flessan/flessan/blob/main/cabang/markdown/main.md">
-    <img src="https://img.shields.io/badge/Click%20%20Here%20to%20See%20the%20SIMPLER%20Page-000000?style=for-the-badge" alt="GoToBottom">
-  </a>
+  ![flessan](https://count.getloli.com/@:flessan?theme=booru-ve)
 
-</p>
+</div>
 
-![Metrics](https://github.com/flessan/flessan/blob/main/github-metrics.svg)
 
 ### whoami
 
@@ -20,10 +17,15 @@ Some of my public work:
 * [Email: tio@cc.cc](mailto:tio@cc.cc)
 * [flessan@duck.com](mailto:flessan@duck.com)
 
-### Visito Counto (Since 26/07/26)
+<p align="right">
+  <a href="https://github.com/flessan/flessan/blob/main/cabang/markdown/main.md">
+    <img src="https://img.shields.io/badge/Click%20%20Here%20to%20See%20the%20SIMPLER%20Page-000000?style=for-the-badge" alt="GoToBottom">
+  </a>
+
+</p>
 
 <div align="center">
-
-  ![flessan](https://count.getloli.com/@:flessan?theme=booru-ve)
+  
+![Metrics](https://github.com/flessan/flessan/blob/main/github-metrics.svg) - [Lowlighter/Metrics](https://github.com/Lowlighter/Metrics)
 
 </div>
